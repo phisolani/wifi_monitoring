@@ -37,8 +37,6 @@ wtp_aggregated_stats = WTPAggregatedStats(wtp_name='WTP1', options=options)  # D
 
 try:
     while True:
-        # TODO: Create one thread for each of the WTPs and change it to RemoteCapture
-        # TODO: Install and test the necessary libraries at the remote host
         # Creating the capture object
         cap = pyshark.LiveCapture(interface=options.interface, monitor_mode=True)
 
@@ -56,7 +54,6 @@ try:
         #  Changing channel for the next iteration...
         #  call('iw dev ' + options.interface + ' set freq ' + random.choice(channel_frequencies), shell=True)
 
-        # TODO: get the list of WTPs and create the Json file accordingly
         wtp_raw_stats = WTPRawStats(options=options)  # Defining wtp statistics dictionary
         crr_aggregated_packet_stats = WTPPacketCounters()  # Creating wtp packet counters dictionary
         pkt_counter = 0
@@ -144,16 +141,12 @@ try:
                 live_capture_logger.warning('Packet with different format arrived! ' + str(pkt))
 
         # Adding raw statistics into a stats file
-        wtp_raw_stats_file = open('stats/wtp1_raw_stats.json', 'w+')
-        wtp_raw_stats_file.write(str(json.dumps(wtp_raw_stats.get())))
-        wtp_raw_stats_file.close()
+        add_wtp_raw_stats_to_file(wtp_raw_stats=wtp_raw_stats)
 
         # Creating aggregated statistics file
         crr_aggregated_packet_stats.get()['TIME'] = str(datetime.datetime.now().time())
-        wtp_aggregated_stats.get()['WTPS'][0]['MEASUREMENTS']['PACKETS'].append(crr_aggregated_packet_stats.get())
-        wtp_aggregated_stats_file = open('stats/wtp1_aggregated_stats.json', 'w+')
-        wtp_aggregated_stats_file.write(str(json.dumps(wtp_aggregated_stats, default=lambda o: o.__dict__['data'])))
-        wtp_aggregated_stats_file.close()
+        wtp_aggregated_stats.get()['MEASUREMENTS']['PACKETS'].append(crr_aggregated_packet_stats.get())
+        add_wtp_aggregated_stats_to_file(wtp_aggregated_stats=wtp_aggregated_stats)
 
         # Change channel frequency
         # print random.choice(channel_frequencies)

@@ -5,9 +5,11 @@ import dash_html_components as html
 import plotly
 import json
 
+from configs.general import *
+
 
 # TODO: read list of WTPs statistics
-wtps_stats_files = ['stats/wtp1_aggregated_stats.json']
+wtps_stats_files = [application_path + '/stats/wtp1_aggregated_stats.json']
 
 app = dash.Dash(__name__)
 
@@ -32,15 +34,13 @@ def update_graph_live():
         with open(wtp_stats) as f:
             wtp_aggregated_stats = json.load(f)
 
-        print(wtp_aggregated_stats)
-
         data = {'TIME': [],
                 'MANAGEMENT': [],
                 'CONTROL': [],
                 'DATA': [],
                 'OTHER': []}
 
-        for packets in wtp_aggregated_stats['WTPS'][0]['MEASUREMENTS']['PACKETS']:
+        for packets in wtp_aggregated_stats['MEASUREMENTS']['PACKETS']:
             if packets is not None:
                 data['MANAGEMENT'].append(packets['MANAGEMENT'])
                 data['CONTROL'].append(packets['CONTROL'])

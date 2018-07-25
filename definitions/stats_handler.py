@@ -35,19 +35,16 @@ class WTPRawStats:
 class WTPAggregatedStats:
     def __init__(self, wtp_name, options):
         self.data = {
-            'WTPS': [
-                {'NAME': wtp_name,
-                 'OPTIONS': {'INTERFACE': options.interface,
-                             'MODE': options.mode,
-                             'TIMEOUT': options.timeout,
-                             'PACKETS': options.packets,
-                             'FILENAME': options.filename,
-                             'BUFFER_SIZE': options.buffer_size
-                             },
-                 'MEASUREMENTS':
-                     {'PACKETS': RingBuffer(options.buffer_size)}
-                 }
-            ]
+            'NAME': wtp_name,
+            'OPTIONS': {'INTERFACE': options.interface,
+                        'MODE': options.mode,
+                        'TIMEOUT': options.timeout,
+                        'PACKETS': options.packets,
+                        'FILENAME': options.filename,
+                        'BUFFER_SIZE': options.buffer_size
+                        },
+            'MEASUREMENTS':
+                {'PACKETS': RingBuffer(options.buffer_size)}
         }
 
     def __str__(self):

@@ -11,6 +11,7 @@ __status__ = "Prototype"
 '''Python script for logging configurations'''
 
 import logging
+from configs.general import *
 
 # Creating logs for apps and scripts
 live_capture_logger = logging.getLogger('Live Capture')
@@ -21,8 +22,8 @@ live_capture_logger.setLevel(logging.INFO)
 wifi_monitoring_logger.setLevel(logging.INFO)
 
 # Creating file handlers
-live_capture_file_handler = logging.FileHandler('logs/live_capture.log')
-wifi_monitoring_file_handler = logging.FileHandler('logs/wifi_monitoring.log')
+live_capture_file_handler = logging.FileHandler(application_path + '/logs/live_capture.log')
+wifi_monitoring_file_handler = logging.FileHandler(application_path + '/logs/wifi_monitoring.log')
 
 # Setting the log levels
 live_capture_file_handler.setLevel(logging.DEBUG)
