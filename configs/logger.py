@@ -10,8 +10,9 @@ __status__ = "Prototype"
 
 '''Python script for logging configurations'''
 
+from configs.common_settings import *
+
 import logging
-from configs.general import *
 
 # Creating logs for apps and scripts
 live_capture_logger = logging.getLogger('Live Capture')
