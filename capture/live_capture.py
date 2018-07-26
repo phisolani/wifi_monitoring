@@ -10,51 +10,38 @@ __status__ = "Prototype"
 
 '''Python script for monitoring IEEE 802.11 networks'''
 
+from models.packet_types import *
+from handlers.files_handler import *
+from configs.local_settings import *
+from configs.logger import *
+
 import pyshark
 import datetime
-from optparse import OptionParser
-from definitions.packet_types import *
-from handlers.files_handler import *
 
-
-# TODO: load it from a configuration file where all WTPs have to be configured
-# Parameters from shell (only for testing)
-parser = OptionParser()
-parser.add_option("", "--interface", type="string", default="en0")
-parser.add_option("", "--mode", type="string", default="time")  # other options are: per_packet, file, and time
-parser.add_option("", "--timeout", type="int", default=5)
-parser.add_option("", "--packets", type="int", default=300)
-parser.add_option("", "--filename", type="string", default='traces/test2.pcap')
-parser.add_option("", "--buffer_size", type="int", default=10)
-
-(options, args) = parser.parse_args()
-
-live_capture_logger.info('Starting live capture with: ' + str(options))
-
-initialize_stats_files(options)  # Initializing stats file
-wtp_aggregated_stats = WTPAggregatedStats(wtp_name='WTP1', options=options)  # Defining wtp aggregated statistics dictionary
-
+live_capture_logger.info('Starting live capture!')
+initialize_stats_files()  # Initializing stats file
+wtp_aggregated_stats = WTPAggregatedStats()  # Defining wtp aggregated statistics dictionary
 
 try:
     while True:
         # Creating the capture object
-        cap = pyshark.LiveCapture(interface=options.interface, monitor_mode=True)
+        cap = pyshark.LiveCapture(interface=wtp_interface, monitor_mode=monitor_mode)
 
-        if options.mode == 'time':  # Mode based on timeout
-            cap.sniff(timeout=options.timeout)
+        if monitoring_type == 'timeout':  # Mode based on timeout
+            cap.sniff(timeout=monitoring_interval)
             cap = cap._packets  # To keep it generic on the for loop
-        elif options.mode == 'per_packet':  # Mode based on the amount of packets monitored
+        elif monitoring_type == 'per_packet':  # Mode based on the amount of packets monitored
             # TODO: Support mode based on amount of packets transmitted
-            for packet in cap.sniff_continuously(packet_count=options.packets):
+            for packet in cap.sniff_continuously(packet_count=monitoring_packets_limit):
                 live_capture_logger.info('Packet received!\n' + str(packet))
         else:
-            cap = pyshark.FileCapture(options.filename)  # Mode based on an input file (.cap or .pcap)
+            cap = pyshark.FileCapture(monitoring_file)  # Mode based on an input file (.cap or .pcap)
 
         # TODO: check how this can be done (at the WTPs or Controller side?)
         #  Changing channel for the next iteration...
         #  call('iw dev ' + options.interface + ' set freq ' + random.choice(channel_frequencies), shell=True)
 
-        wtp_raw_stats = WTPRawStats(options=options)  # Defining wtp statistics dictionary
+        wtp_raw_stats = WTPRawStats()  # Defining wtp statistics dictionary
         crr_aggregated_packet_stats = WTPPacketCounters()  # Creating wtp packet counters dictionary
         pkt_counter = 0
         print cap

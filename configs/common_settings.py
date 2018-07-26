@@ -8,8 +8,8 @@ __maintainer__ = "Pedro Heleno Isolani"
 __email__ = "pedro.isolani@uantwerpen.be"
 __status__ = "Prototype"
 
-'''Python script for general configurations'''
-
+'''Python script for general settings'''
 import os
 
+# Application path
 application_path = os.path.normpath(os.getcwd() + os.sep + os.pardir)
