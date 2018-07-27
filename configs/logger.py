@@ -23,6 +23,7 @@ live_capture_logger.setLevel(logging.INFO)
 wifi_monitoring_logger.setLevel(logging.INFO)
 
 # Creating file handlers
+print application_path
 live_capture_file_handler = logging.FileHandler(application_path + '/logs/live_capture.log')
 wifi_monitoring_file_handler = logging.FileHandler(application_path + '/logs/wifi_monitoring.log')
 
