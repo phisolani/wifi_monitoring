@@ -9,7 +9,7 @@ from configs.local_settings import *
 
 
 # TODO: read list of WTPs statistics
-wtps_stats_files = [application_path + '/stats/wtp1_aggregated_stats.json']
+wtps_stats_files = ['../stats/wtp1_aggregated_stats.json']
 
 app = dash.Dash(__name__)
 

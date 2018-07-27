@@ -16,6 +16,7 @@ virtualenv venv
 # Activate the virtual env
 source venv/bin/activate
 
-# Installing pyshark
+# Installing pyshark, enum34
 pip install pyshark==0.3.7.11
+pip install enum34
 
