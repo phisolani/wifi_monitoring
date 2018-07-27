@@ -20,3 +20,7 @@ source venv/bin/activate
 pip install pyshark==0.3.7.11
 pip install enum34
 
+# Creating stats and logs folder
+mkdir stats
+mkdir logs
+
