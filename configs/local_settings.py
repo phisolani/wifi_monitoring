@@ -30,7 +30,7 @@ try:
     wifi_monitoring_logger.info('Loading local_settings.ini...')
     # Parsing local_settings.ini
     config = ConfigParser.SafeConfigParser()
-    config.read('../configs/local_settings.ini')
+    config.read('configs/local_settings.ini')
     if config.has_section('WTP'):
         if config.has_option('WTP', 'wtp_name'):
             wtp_name = config.get('WTP', 'wtp_name')

@@ -21,8 +21,8 @@ live_capture_logger.setLevel(logging.INFO)
 wifi_monitoring_logger.setLevel(logging.INFO)
 
 # Creating file handlers
-live_capture_file_handler = logging.FileHandler('../logs/live_capture.log')
-wifi_monitoring_file_handler = logging.FileHandler('../logs/wifi_monitoring.log')
+live_capture_file_handler = logging.FileHandler('logs/live_capture.log')
+wifi_monitoring_file_handler = logging.FileHandler('logs/wifi_monitoring.log')
 
 # Setting the log levels
 live_capture_file_handler.setLevel(logging.DEBUG)
