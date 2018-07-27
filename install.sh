@@ -11,9 +11,11 @@ export LC_ALL="en_US.UTF-8"
 export LC_CTYPE="en_US.UTF-8"
 
 # Creating virtual env
-virtualenv ../venv
+virtualenv venv
 
 # Activate the virtual env
 source venv/bin/activate
 
+# Installing pyshark
+pip install pyshark==0.3.7.11
 
