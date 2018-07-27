@@ -9,14 +9,13 @@ __email__ = "pedro.isolani@uantwerpen.be"
 __status__ = "Prototype"
 
 '''Python script for monitoring IEEE 802.11 networks'''
+import pyshark
+import datetime
 
 from models.packet_types import *
 from handlers.files_handler import *
 from configs.local_settings import *
 from configs.logger import *
-
-import pyshark
-import datetime
 
 live_capture_logger.info('Starting live capture!')
 initialize_stats_files()  # Initializing stats file
