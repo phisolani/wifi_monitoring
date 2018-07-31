@@ -27,6 +27,11 @@ Also, check if your interface is up with:
 sudo ifconfig
 ```
 
+If it is not up, then run:
+```
+sudo ifconfig <interface_name> up
+```
+
 Then, run the live capture application and start collecting WiFi statistics:
 ```
 run sudo python capture/live_capture.py
