@@ -11,7 +11,23 @@ Clone the git repository:
 git clone https://github.com/phisolani/wifi_monitoring.git
 ```
 
+Go to the folder:
+```
+cd wifi_monitoring
+```
+
 Run the installation bash script:
 ```
-run sudo ./install.sh
+sudo ./install.sh
+```
+
+Edit configs/wtp_settings.ini to configure your wireless interface to be monitored and other parameters. 
+Also, check if your interface is up with:
+```
+sudo ifconfig
+```
+
+Then, run the live capture application and start collecting WiFi statistics:
+```
+run sudo python capture/live_capture.py
 ```
