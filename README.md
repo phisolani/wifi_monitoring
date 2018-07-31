@@ -1,10 +1,10 @@
-## WiFi City of Things Monitoring
+# WiFi City of Things Monitoring
 
 This project is designed to perform monitoring on WiFi enabled wireless devices. The setup comprises several Wireless Termination Points (WTPs) and a single Access Controller (AC).
 
 The installation procedure is written below:
 
-### On the WTPs:
+## On the WTPs:
 
 Clone the git repository:
 ```
