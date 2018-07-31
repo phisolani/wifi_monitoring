@@ -1,4 +1,4 @@
-# WiFi City of Things Monitoring
+# WiFi Monitoring Framework
 
 This project is designed to perform monitoring on WiFi enabled wireless devices. The setup comprises several Wireless Termination Points (WTPs) and a single Access Controller (AC).
 
