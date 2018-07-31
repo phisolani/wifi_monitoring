@@ -27,10 +27,10 @@ monitoring_ring_buffer_size = None
 opencapwap_path = None
 
 try:
-    wifi_monitoring_logger.info('Loading local_settings.ini...')
-    # Parsing local_settings.ini
+    wifi_monitoring_logger.info('Loading wtp_settings.ini...')
+    # Parsing wtp_settings.ini
     config = ConfigParser.SafeConfigParser()
-    config.read('configs/local_settings.ini')
+    config.read('configs/wtp_settings.ini')
     if config.has_section('WTP'):
         if config.has_option('WTP', 'wtp_name'):
             wtp_name = config.get('WTP', 'wtp_name')
@@ -56,5 +56,5 @@ try:
         if config.has_option('OpenCAPWAP', 'path'):
             opencapwap_path = config.get('OpenCAPWAP', 'path')
 except:
-    wifi_monitoring_logger.error('Error loading local_settings.ini!')
+    wifi_monitoring_logger.error('Error loading wtp_settings.ini!')
 wifi_monitoring_logger.info('Local settings successfully loaded!')

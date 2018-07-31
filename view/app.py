@@ -5,7 +5,7 @@ import dash_html_components as html
 import plotly
 import json
 
-from configs.local_settings import *
+from configs.wtp_settings import *
 
 
 # TODO: read list of WTPs statistics

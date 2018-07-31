@@ -18,7 +18,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # Adding root dir to sys.path
 from models.packet_types import *
 from handlers.files_handler import *
-from configs.local_settings import *
+from configs.wtp_settings import *
 from configs.logger import *
 
 live_capture_logger.info('Starting live capture!')

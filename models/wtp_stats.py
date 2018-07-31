@@ -10,7 +10,7 @@ __status__ = "Prototype"
 
 '''WTP stats for monitoring IEEE 802.11 networks'''
 from models.ring_buffer import RingBuffer
-from configs.local_settings import *
+from configs.wtp_settings import *
 
 
 class WTPRawStats:
