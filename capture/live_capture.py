@@ -13,6 +13,7 @@ import pyshark
 import datetime
 import os
 import sys
+from subprocess import call
 
 # Importing custom modules
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # Adding root dir to sys.path
@@ -22,6 +23,7 @@ from configs.wtp_settings import *
 from configs.logger import *
 
 live_capture_logger.info('Starting live capture!')
+call('ifconfig ' + wtp_interface + ' up', shell=True)  # Setting the WiFi card up
 initialize_stats_files()  # Initializing stats file
 wtp_aggregated_stats = WTPAggregatedStats()  # Defining wtp aggregated statistics dictionary
 
