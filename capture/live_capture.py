@@ -55,7 +55,7 @@ try:
             pkt_counter += 1
 
             # Packet necessary fields
-            packet_fields = ['radiotap', 'wlan']  # , 'wlan_radio', 'frame_info'
+            packet_fields = ['radiotap', 'wlan']
 
             if set(packet_fields).issubset(set(dir(pkt))):
                 # Checking packet type and subtype
@@ -84,15 +84,19 @@ try:
                 if pkt_subtype not in wtp_raw_stats.get()[pkt_type]:
                     wtp_raw_stats.get()[pkt_type][pkt_subtype] = []
 
-                # Retrieving RSSI
-                '''
-                if 'wlan_radio.signal_dbm' in pkt.wlan_radio._all_fields:
-                    rssi = int(pkt.wlan_radio.signal_dbm)
-                else:
-                    rssi = 'null'
-                '''
-                packet_info = {'wlan': {}}
+                # Getting RADIOTAP info
+                packet_info = {'radiotap': {'header_length': int(pkt.radiotap.length),
+                                            'packet_length': int(pkt.length),
+                                            'channel': int(pkt.radiotap.present_channel),
+                                            'mcs': int(pkt.radiotap.present_mcs),
+                                            'noise': int(pkt.radiotap.present_db_antnoise),
+                                            'signal': int(pkt.radiotap.present_db_antsignal),
+                                            'data_rate': float(pkt.radiotap.datarate),
+                                            'db_tx_attenuation': int(pkt.radiotap.present_db_tx_attenuation),
+                                            'tx_attenuation': int(pkt.radiotap.present_tx_attenuation)}}
 
+                # Getting WLAN info
+                packet_info = {'wlan': {}}
                 # Retrieving MAC Addresses
                 if 'wlan.sa_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['source_address'] = pkt.wlan.sa_resolved
@@ -109,27 +113,13 @@ try:
                 if 'wlan.bssid_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
 
-                # Getting general info
-                packet_info['radiotap'] = {'header_length': int(pkt.radiotap.length),
-                                           'packet_length': int(pkt.length)}
-                '''packet_info['wlan_radio'] = {'channel': pkt.wlan_radio.channel,
-                                             'data_rate': float(pkt.wlan_radio.data_rate),
-                                             'duration': int(pkt.wlan_radio.duration),
-                                             'frequency': pkt.wlan_radio.frequency,
-                                             'rssi': rssi}
-
-                if 'wlan_radio.noise_dbm' in pkt.wlan_radio._all_fields:
-                    packet_info['wlan_radio']['noise_level'] = int(pkt.wlan_radio.noise_dbm)
-
-                if 'wlan.fc.retry' in pkt.wlan._all_fields:
-                    packet_info['wlan_radio']['retry'] = int(pkt.wlan.fc_retry)
-                '''
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
-                    #packet_info['wlan']['time_epoch'] = float(pkt.frame_info.time_epoch)
 
-                wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)
-                # print json.dumps(wtp_raw_stats)
+                packet_info['wlan']['duration'] = int(pkt.wlan.duration)
+                packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
+
+                wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)  # Adding to WTP RAW stats
             else:
                 live_capture_logger.warning('Packet with different format arrived! ' + str(dir(pkt)))
 

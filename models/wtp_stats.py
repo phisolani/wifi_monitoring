@@ -12,12 +12,15 @@ __status__ = "Prototype"
 from models.ring_buffer import RingBuffer
 from configs.wtp_settings import *
 
+import socket
+
 
 class WTPRawStats:
     def __init__(self):
         self.data = {
             'NAME': wtp_name,
             'OPTIONS': {'INTERFACE': wtp_interface,
+                        'HOSTNAME': socket.gethostname(),
                         'MONITOR_TYPE': monitoring_type,
                         'MONITORING_INTERVAL': monitoring_interval,
                         'MONITORING_PACKETS_LIMIT': monitoring_packets_limit,
@@ -38,6 +41,7 @@ class WTPAggregatedStats:
         self.data = {
             'NAME': wtp_name,
             'OPTIONS': {'INTERFACE': wtp_interface,
+                        'HOSTNAME': socket.gethostname(),
                         'MONITOR_TYPE': monitoring_type,
                         'MONITORING_INTERVAL': monitoring_interval,
                         'MONITORING_PACKETS_LIMIT': monitoring_packets_limit,
