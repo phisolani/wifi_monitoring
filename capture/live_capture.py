@@ -130,7 +130,7 @@ try:
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)
                 # print json.dumps(wtp_raw_stats)
             else:
-                live_capture_logger.warning('Packet with different format arrived! ' + str(pkt))
+                live_capture_logger.warning('Packet with different format arrived! ' + str(dir(pkt)))
 
         # Adding raw statistics into a stats file
         add_wtp_raw_stats_to_file(wtp_raw_stats=wtp_raw_stats)
