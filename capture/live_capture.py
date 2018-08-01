@@ -55,7 +55,7 @@ try:
             pkt_counter += 1
 
             # Packet necessary fields
-            packet_fields = ['radiotap', 'wlan', 'wlan_radio', 'frame_info']
+            packet_fields = ['radiotap', 'wlan', 'wlan_radio']  # , 'frame_info'
 
             if set(packet_fields).issubset(set(dir(pkt))):
                 # Checking packet type and subtype
@@ -125,7 +125,7 @@ try:
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
-                    packet_info['wlan']['time_epoch'] = float(pkt.frame_info.time_epoch)
+                    #packet_info['wlan']['time_epoch'] = float(pkt.frame_info.time_epoch)
 
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)
                 # print json.dumps(wtp_raw_stats)
