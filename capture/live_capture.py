@@ -126,7 +126,7 @@ try:
                     crr_wtp_data_stats_key_fields['RC_ADDR'] = pkt.wlan.ra_resolved
 
                 if set(['wlan_mgt']).issubset(set(dir(pkt))):
-                    print pkt.wlan_mgt['ssid']
+                    print pkt.wlan_mgt.ssid
                     print dir(pkt.wlan_mgt)
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
