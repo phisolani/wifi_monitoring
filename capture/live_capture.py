@@ -138,6 +138,7 @@ try:
                 wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['TR_BYTES'] += int(pkt.length)
                 wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['TR_DATA_BYTES'] += int(pkt.length) - int(pkt.radiotap.length)
                 wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['PACKET_COUNTER'] += 1
+                wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['RETRIES'] = int(pkt.wlan.fc_retry)
 
                 #print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
                 #                                    default=lambda o: o.__dict__['data']))
