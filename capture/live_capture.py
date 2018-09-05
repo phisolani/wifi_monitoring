@@ -105,24 +105,24 @@ try:
 
                 if 'wlan.bssid_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
-                    crr_wtp_data_stats_key_fields.append(pkt.wlan.bssid_resolved)
+                    crr_wtp_data_stats_key_fields.append('BSS_ID: ' + str(pkt.wlan.bssid_resolved))
 
                 # Retrieving MAC Addresses
                 if 'wlan.sa_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['source_address'] = pkt.wlan.sa_resolved
-                    crr_wtp_data_stats_key_fields.append(pkt.wlan.sa_resolved)
+                    crr_wtp_data_stats_key_fields.append('SRC_ADDR: ' + str(pkt.wlan.sa_resolved))
 
                 if 'wlan.da_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['destination_address'] = pkt.wlan.da_resolved
-                    crr_wtp_data_stats_key_fields.append(pkt.wlan.da_resolved)
+                    crr_wtp_data_stats_key_fields.append('DST_ADDR:' + str(pkt.wlan.da_resolved))
 
                 if 'wlan.ta_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['transmitter_address'] = pkt.wlan.ta_resolved
-                    crr_wtp_data_stats_key_fields.append(pkt.wlan.ta_resolved)
+                    crr_wtp_data_stats_key_fields.append('TR_ADDR: ' + str(pkt.wlan.ta_resolved))
 
                 if 'wlan.ra_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
-                    crr_wtp_data_stats_key_fields.append(pkt.wlan.ra_resolved)
+                    crr_wtp_data_stats_key_fields.append('RC_ADDR: ' + str(pkt.wlan.ra_resolved))
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
