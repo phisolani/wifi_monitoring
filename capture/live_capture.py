@@ -125,7 +125,7 @@ try:
                     packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
                     crr_wtp_data_stats_key_fields['RC_ADDR'] = pkt.wlan.ra_resolved
 
-                if 'wlan_mgt' in pkt.all_fields:
+                if set(['wlan_mgt']).issubset(set(dir(pkt))):
                     print pkt.wlan_mgt
                     print dir(pkt.wlan_mgt)
 
