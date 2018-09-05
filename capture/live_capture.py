@@ -134,7 +134,7 @@ try:
                 if tuple(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
                     wtp_aggregated_data_stats[tuple(crr_wtp_data_stats_key_fields)] = crr_wtp_data_stats.get()
 
-                print 'dictionary: ' + wtp_aggregated_data_stats
+                print 'dictionary: ' + str(wtp_aggregated_data_stats)
                 print 'dic json: ' + str(json.dumps(wtp_aggregated_data_stats,
                                                     default=lambda o: o.__dict__['data']))
 
