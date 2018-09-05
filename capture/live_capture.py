@@ -136,8 +136,8 @@ try:
                     crr_wtp_data_stats.get()['PACKET_COUNTER'] += 1
                     wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)] = crr_wtp_data_stats.get()
 
-                print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
-                                                    default=lambda o: o.__dict__['data']))
+                #print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
+                #                                    default=lambda o: o.__dict__['data']))
 
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)  # Adding to WTP RAW stats
             else:
@@ -149,7 +149,7 @@ try:
         # Creating aggregated statistics file
         #wtp_aggregated_packet_stats.get()['TIME'] = str(datetime.datetime.now().time())
         wtp_aggregated_stats.get()['MEASUREMENTS']['PACKETS'].append(wtp_aggregated_packet_stats.get())
-        #wtp_aggregated_stats.get()['MEASUREMENTS']['DATA'].append(wtp_aggregated_data_stats)
+        wtp_aggregated_stats.get()['MEASUREMENTS']['DATA'].append(wtp_aggregated_data_stats)
         wtp_aggregated_stats.get()['MEASUREMENTS']['TIME'].append(str(datetime.datetime.now().time()))
         add_wtp_aggregated_stats_to_file(wtp_aggregated_stats=wtp_aggregated_stats)
 
