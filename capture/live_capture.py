@@ -68,7 +68,8 @@ try:
                 else:
                     pkt_type = 'OTHER'
 
-                crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type)
+                crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type,
+                                                            packet_subtype=pkt_subtype)
 
                 wtp_aggregated_packet_stats.get()[pkt_type] += 1  # Adding wtp aggregated packets in dictionary
 
