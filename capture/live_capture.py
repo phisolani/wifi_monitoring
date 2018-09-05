@@ -129,7 +129,7 @@ try:
                 packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
 
                 if tuple(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
-                    wtp_aggregated_data_stats[tuple(crr_wtp_data_stats_key_fields)] = WTPAggregatedDataStats()
+                    wtp_aggregated_data_stats[tuple(crr_wtp_data_stats_key_fields)] = WTPAggregatedDataStats().get()
 
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)  # Adding to WTP RAW stats
             else:
