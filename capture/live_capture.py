@@ -57,7 +57,7 @@ try:
         for pkt in cap:
             pkt_counter += 1
             crr_wtp_data_stats_key_fields = []  # WTP array with key fields BSS_ID, SRC, DST, TR, RC (all optional)
-            crr_wtp_data_stats = WTPAggregatedDataStats()
+            crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type)
 
             # Packet necessary fields
             packet_fields = ['radiotap', 'wlan']

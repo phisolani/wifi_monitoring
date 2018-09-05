@@ -37,8 +37,9 @@ class WTPRawStats:
 
 
 class WTPAggregatedDataStats:
-    def __init__(self):
+    def __init__(self, packet_type):
         self.data = {
+            'PACKET_TYPE': packet_type,
             'TR_BYTES': 0,          # total bytes transmitted
             'RC_BYTES': 0,          # total bytes received
             'TR_DATA_BYTES': 0,     # total bytes transmitted (excluding the headers)
