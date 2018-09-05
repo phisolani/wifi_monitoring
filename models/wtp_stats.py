@@ -41,6 +41,7 @@ class WTPAggregatedDataStats:
         self.data = {
             'PACKET_TYPE': packet_type,         # packet type
             'PACKET_SUBTYPE': packet_subtype,   # packet subtype
+            'PACKET_COUNTER': 0,                # packet counter
             'TR_BYTES': 0,                      # total bytes transmitted
             'RC_BYTES': 0,                      # total bytes received
             'TR_DATA_BYTES': 0,                 # total bytes transmitted (excluding the headers)

@@ -56,7 +56,7 @@ try:
 
         for pkt in cap:
             pkt_counter += 1
-            crr_wtp_data_stats_key_fields = []  # WTP array with key fields BSS_ID, SRC, DST, TR, RC (all optional)
+            crr_wtp_data_stats_key_fields = {}  # WTP dictionary with key fields BSS_ID, SRC, DST, TR, RC (if present)
 
             # Packet necessary fields
             packet_fields = ['radiotap', 'wlan']
@@ -106,24 +106,24 @@ try:
 
                 if 'wlan.bssid_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
-                    crr_wtp_data_stats_key_fields.append('BSS_ID: ' + str(pkt.wlan.bssid_resolved))
+                    crr_wtp_data_stats_key_fields['BSS_ID'] = pkt.wlan.bssid_resolved
 
                 # Retrieving MAC Addresses
                 if 'wlan.sa_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['source_address'] = pkt.wlan.sa_resolved
-                    crr_wtp_data_stats_key_fields.append('SRC_ADDR: ' + str(pkt.wlan.sa_resolved))
+                    crr_wtp_data_stats_key_fields["SRC_ADDR"] = pkt.wlan.sa_resolved
 
                 if 'wlan.da_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['destination_address'] = pkt.wlan.da_resolved
-                    crr_wtp_data_stats_key_fields.append('DST_ADDR:' + str(pkt.wlan.da_resolved))
+                    crr_wtp_data_stats_key_fields['DST_ADDR'] = pkt.wlan.da_resolved
 
                 if 'wlan.ta_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['transmitter_address'] = pkt.wlan.ta_resolved
-                    crr_wtp_data_stats_key_fields.append('TR_ADDR: ' + str(pkt.wlan.ta_resolved))
+                    crr_wtp_data_stats_key_fields['TR_ADDR'] = pkt.wlan.ta_resolved
 
                 if 'wlan.ra_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
-                    crr_wtp_data_stats_key_fields.append('RC_ADDR: ' + str(pkt.wlan.ra_resolved))
+                    crr_wtp_data_stats_key_fields['RC_ADDR'] = pkt.wlan.ra_resolved
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
@@ -132,11 +132,11 @@ try:
                 packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
 
                 # TODO: Calculate values on crr_wtp_data_stats
-                if str(tuple(crr_wtp_data_stats_key_fields)) not in wtp_aggregated_data_stats:
-                    wtp_aggregated_data_stats[str(tuple(crr_wtp_data_stats_key_fields))] = crr_wtp_data_stats.get()
+                if str(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
+                    crr_wtp_data_stats.get()['PACKET_COUNTER'] += 1
+                    wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)] = crr_wtp_data_stats.get()
 
-                print 'dictionary: ' + str(wtp_aggregated_data_stats)
-                print 'dic json: ' + str(json.dumps(wtp_aggregated_data_stats,
+                print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
                                                     default=lambda o: o.__dict__['data']))
 
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)  # Adding to WTP RAW stats
