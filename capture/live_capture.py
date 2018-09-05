@@ -108,6 +108,10 @@ try:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
                     crr_wtp_data_stats_key_fields['BSS_ID'] = pkt.wlan.bssid_resolved
 
+                if set(['wlan_mgt']).issubset(set(dir(pkt))):
+                    packet_info['wlan']['ss_id'] = pkt.wlan_mgt.ssid
+                    crr_wtp_data_stats_key_fields['SS_ID'] = pkt.wlan_mgt.ssid
+
                 # Retrieving MAC Addresses
                 if 'wlan.sa_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['source_address'] = pkt.wlan.sa_resolved
@@ -124,10 +128,6 @@ try:
                 if 'wlan.ra_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
                     crr_wtp_data_stats_key_fields['RC_ADDR'] = pkt.wlan.ra_resolved
-
-                if set(['wlan_mgt']).issubset(set(dir(pkt))):
-                    print pkt.wlan_mgt.ssid
-                    print dir(pkt.wlan_mgt)
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
