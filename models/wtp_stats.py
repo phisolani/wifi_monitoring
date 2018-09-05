@@ -43,9 +43,7 @@ class WTPAggregatedDataStats:
             'PACKET_SUBTYPE': packet_subtype,   # packet subtype
             'PACKET_COUNTER': 0,                # packet counter
             'TR_BYTES': 0,                      # total bytes transmitted
-            'RC_BYTES': 0,                      # total bytes received
             'TR_DATA_BYTES': 0,                 # total bytes transmitted (excluding the headers)
-            'RC_DATA_BYTES': 0,                 # total bytes received (excluding the headers)
             'RETRIES': 0                        # total number of retransmissions
         }
 

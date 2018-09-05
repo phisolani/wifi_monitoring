@@ -133,8 +133,11 @@ try:
 
                 # TODO: Calculate values on crr_wtp_data_stats
                 if str(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
-                    crr_wtp_data_stats.get()['PACKET_COUNTER'] += 1
                     wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)] = crr_wtp_data_stats.get()
+
+                wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['TR_BYTES'] += int(pkt.length)
+                wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['TR_DATA_BYTES'] += int(pkt.length) - int(pkt.radiotap.length)
+                crr_wtp_data_stats.get()['PACKET_COUNTER'] += 1
 
                 #print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
                 #                                    default=lambda o: o.__dict__['data']))
