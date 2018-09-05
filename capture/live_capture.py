@@ -57,7 +57,6 @@ try:
         for pkt in cap:
             pkt_counter += 1
             crr_wtp_data_stats_key_fields = []  # WTP array with key fields BSS_ID, SRC, DST, TR, RC (all optional)
-            crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type)
 
             # Packet necessary fields
             packet_fields = ['radiotap', 'wlan']
@@ -68,6 +67,8 @@ try:
                     pkt_type = PacketType(int(pkt.wlan.fc_type)).name
                 else:
                     pkt_type = 'OTHER'
+
+                crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type)
 
                 wtp_aggregated_packet_stats.get()[pkt_type] += 1  # Adding wtp aggregated packets in dictionary
 
