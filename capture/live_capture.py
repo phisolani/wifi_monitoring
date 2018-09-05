@@ -131,9 +131,8 @@ try:
                 packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
 
                 # TODO: Calculate values on crr_wtp_data_stats
-                concatenated_data_stats_key_fields = str(",".join(str(x) for x in crr_wtp_data_stats_key_fields))
-                if concatenated_data_stats_key_fields not in wtp_aggregated_data_stats:
-                    wtp_aggregated_data_stats[concatenated_data_stats_key_fields] = crr_wtp_data_stats.get()
+                if str(tuple(crr_wtp_data_stats_key_fields)) not in wtp_aggregated_data_stats:
+                    wtp_aggregated_data_stats[str(tuple(crr_wtp_data_stats_key_fields))] = crr_wtp_data_stats.get()
 
                 print 'dictionary: ' + str(wtp_aggregated_data_stats)
                 print 'dic json: ' + str(json.dumps(wtp_aggregated_data_stats,
