@@ -104,9 +104,6 @@ try:
                 # Getting WLAN info
                 packet_info = {'wlan': {}}
 
-                print pkt
-                print dir(pkt)
-
                 if 'wlan.bssid_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
                     crr_wtp_data_stats_key_fields['BSS_ID'] = pkt.wlan.bssid_resolved
@@ -127,6 +124,10 @@ try:
                 if 'wlan.ra_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
                     crr_wtp_data_stats_key_fields['RC_ADDR'] = pkt.wlan.ra_resolved
+
+                if 'wlan_mgt' in pkt.all_fields:
+                    print pkt.wlan_mgt
+                    print dir(pkt.wlan_mgt)
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
