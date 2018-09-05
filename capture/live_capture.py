@@ -143,8 +143,7 @@ try:
         # Creating aggregated statistics file
         #wtp_aggregated_packet_stats.get()['TIME'] = str(datetime.datetime.now().time())
         wtp_aggregated_stats.get()['MEASUREMENTS']['PACKETS'].append(wtp_aggregated_packet_stats.get())
-        print wtp_aggregated_data_stats
-        #wtp_aggregated_stats.get()['MEASUREMENTS']['DATA'].append(wtp_aggregated_data_stats)
+        wtp_aggregated_stats.get()['MEASUREMENTS']['DATA'].append(wtp_aggregated_data_stats)
         wtp_aggregated_stats.get()['MEASUREMENTS']['TIME'].append(str(datetime.datetime.now().time()))
         add_wtp_aggregated_stats_to_file(wtp_aggregated_stats=wtp_aggregated_stats)
 
