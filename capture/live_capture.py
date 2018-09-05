@@ -67,16 +67,15 @@ try:
                     pkt_type = PacketType(int(pkt.wlan.fc_type)).name
                 else:
                     pkt_type = 'OTHER'
-
-                crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type,
-                                                            packet_subtype=pkt_subtype)
-
                 wtp_aggregated_packet_stats.get()[pkt_type] += 1  # Adding wtp aggregated packets in dictionary
 
                 if PacketSubtype.has_value(int(pkt.wlan.fc_type_subtype)):
                     pkt_subtype = PacketSubtype(int(pkt.wlan.fc_type_subtype)).name
                 else:
                     pkt_subtype = 'UNKNOWN'
+
+                crr_wtp_data_stats = WTPAggregatedDataStats(packet_type=pkt_type,
+                                                            packet_subtype=pkt_subtype)
 
                 if pkt_type == 'OTHER' or pkt_subtype == 'UNKNOWN':
                     live_capture_logger.warning('Unknown packet arrived!' +
