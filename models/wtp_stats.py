@@ -36,7 +36,6 @@ class WTPRawStats:
         return self.data
 
 
-# TODO: Use this structure...
 class WTPAggregatedDataStats:
     def __init__(self):
         self.data = {
@@ -46,6 +45,9 @@ class WTPAggregatedDataStats:
             'RC_DATA_BYTES': 0,     # total bytes received (excluding the headers)
             'RETRIES': 0            # total number of retransmissions
         }
+
+    def get(self):
+        return self.data
 
 
 class WTPAggregatedStats:

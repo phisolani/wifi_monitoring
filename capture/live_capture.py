@@ -48,7 +48,7 @@ try:
 
         wtp_raw_stats = WTPRawStats()                           # WTP statistics dictionary
         wtp_aggregated_packet_stats = WTPPacketCounters()       # WTP packet counters dictionary
-        wtp_aggregated_data_stats = {}                          # WTP array with WTPAggregatedDataStats()
+        wtp_aggregated_data_stats = {}                          # WTP dictionary with WTPAggregatedDataStats()
 
         pkt_counter = 0
         print cap
@@ -56,6 +56,7 @@ try:
         for pkt in cap:
             pkt_counter += 1
             crr_wtp_data_stats_key_fields = []  # WTP array with key fields BSS_ID, SRC, DST, TR, RC (all optional)
+            crr_wtp_data_stats = WTPAggregatedDataStats()
 
             # Packet necessary fields
             packet_fields = ['radiotap', 'wlan']
@@ -128,8 +129,9 @@ try:
                 packet_info['wlan']['duration'] = int(pkt.wlan.duration)
                 packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
 
+                # TODO: Calculate values on crr_wtp_data_stats
                 if tuple(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
-                    wtp_aggregated_data_stats[tuple(crr_wtp_data_stats_key_fields)] = WTPAggregatedDataStats().get()
+                    wtp_aggregated_data_stats[tuple(crr_wtp_data_stats_key_fields)] = crr_wtp_data_stats.get()
 
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)  # Adding to WTP RAW stats
             else:
