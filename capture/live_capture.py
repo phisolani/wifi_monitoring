@@ -46,13 +46,16 @@ try:
         #  Changing channel for the next iteration...
         #  call('iw dev ' + options.interface + ' set freq ' + random.choice(channel_frequencies), shell=True)
 
-        wtp_raw_stats = WTPRawStats()  # Defining wtp statistics dictionary
-        crr_aggregated_packet_stats = WTPPacketCounters()  # Creating wtp packet counters dictionary
+        wtp_raw_stats = WTPRawStats()                           # WTP statistics dictionary
+        wtp_aggregated_packet_stats = WTPPacketCounters()       # WTP packet counters dictionary
+        wtp_aggregated_data_stats = {}                          # WTP array with WTPAggregatedDataStats()
+
         pkt_counter = 0
         print cap
 
         for pkt in cap:
             pkt_counter += 1
+            crr_wtp_data_stats_key_fields = []  # WTP array with key fields BSS_ID, SRC, DST, TR, RC (all optional)
 
             # Packet necessary fields
             packet_fields = ['radiotap', 'wlan']
@@ -64,7 +67,7 @@ try:
                 else:
                     pkt_type = 'OTHER'
 
-                crr_aggregated_packet_stats.get()[pkt_type] += 1  # Adding wtp aggregated packets in dictionary
+                wtp_aggregated_packet_stats.get()[pkt_type] += 1  # Adding wtp aggregated packets in dictionary
 
                 if PacketSubtype.has_value(int(pkt.wlan.fc_type_subtype)):
                     pkt_subtype = PacketSubtype(int(pkt.wlan.fc_type_subtype)).name
@@ -97,27 +100,36 @@ try:
 
                 # Getting WLAN info
                 packet_info = {'wlan': {}}
-                # Retrieving MAC Addresses
-                if 'wlan.sa_resolved' in pkt.wlan._all_fields:
-                    packet_info['wlan']['source_address'] = pkt.wlan.sa_resolved
-
-                if 'wlan.da_resolved' in pkt.wlan._all_fields:
-                    packet_info['wlan']['destination_address'] = pkt.wlan.da_resolved
-
-                if 'wlan.ta_resolved' in pkt.wlan._all_fields:
-                    packet_info['wlan']['transmitter_address'] = pkt.wlan.ta_resolved
-
-                if 'wlan.ra_resolved' in pkt.wlan._all_fields:
-                    packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
 
                 if 'wlan.bssid_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
+                    crr_wtp_data_stats_key_fields.append(pkt.wlan.bssid_resolved)
+
+                # Retrieving MAC Addresses
+                if 'wlan.sa_resolved' in pkt.wlan._all_fields:
+                    packet_info['wlan']['source_address'] = pkt.wlan.sa_resolved
+                    crr_wtp_data_stats_key_fields.append(pkt.wlan.sa_resolved)
+
+                if 'wlan.da_resolved' in pkt.wlan._all_fields:
+                    packet_info['wlan']['destination_address'] = pkt.wlan.da_resolved
+                    crr_wtp_data_stats_key_fields.append(pkt.wlan.da_resolved)
+
+                if 'wlan.ta_resolved' in pkt.wlan._all_fields:
+                    packet_info['wlan']['transmitter_address'] = pkt.wlan.ta_resolved
+                    crr_wtp_data_stats_key_fields.append(pkt.wlan.ta_resolved)
+
+                if 'wlan.ra_resolved' in pkt.wlan._all_fields:
+                    packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
+                    crr_wtp_data_stats_key_fields.append(pkt.wlan.ra_resolved)
 
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
 
                 packet_info['wlan']['duration'] = int(pkt.wlan.duration)
                 packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
+
+                if tuple(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
+                    wtp_aggregated_data_stats[tuple(crr_wtp_data_stats_key_fields)] = WTPAggregatedDataStats()
 
                 wtp_raw_stats.get()[pkt_type][pkt_subtype].append(packet_info)  # Adding to WTP RAW stats
             else:
@@ -127,8 +139,10 @@ try:
         add_wtp_raw_stats_to_file(wtp_raw_stats=wtp_raw_stats)
 
         # Creating aggregated statistics file
-        crr_aggregated_packet_stats.get()['TIME'] = str(datetime.datetime.now().time())
-        wtp_aggregated_stats.get()['MEASUREMENTS']['PACKETS'].append(crr_aggregated_packet_stats.get())
+        #wtp_aggregated_packet_stats.get()['TIME'] = str(datetime.datetime.now().time())
+        wtp_aggregated_stats.get()['MEASUREMENTS']['PACKETS'].append(wtp_aggregated_packet_stats.get())
+        wtp_aggregated_stats.get()['MEASUREMENTS']['DATA'].append(wtp_aggregated_data_stats)
+        wtp_aggregated_stats.get()['MEASUREMENTS']['TIME'].append(str(datetime.datetime.now().time()))
         add_wtp_aggregated_stats_to_file(wtp_aggregated_stats=wtp_aggregated_stats)
 
         # Change channel frequency

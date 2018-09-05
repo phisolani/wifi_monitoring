@@ -4,34 +4,56 @@ import dash_core_components as dcc
 import dash_html_components as html
 import plotly
 import json
-
-from configs.wtp_settings import *
-
+import glob
 
 # TODO: read list of WTPs statistics
-wtps_stats_files = ['../stats/wtp1_aggregated_stats.json']
+wtps_stats_files = glob.glob("../stats/*.aggr.json")
 
 app = dash.Dash(__name__)
 
-app.layout = html.Div(
-    html.Div([
-        html.H4('SDW Manager'),
-        html.Div(id='live-update-text'),
-        dcc.Graph(id='live-update-graph'),
-        dcc.Interval(
-            id='interval-component',
-            interval=1*2000  # in milliseconds
-        )
-    ]), id='div_layout'
+# WTPs information
+wtps_options = []
+for wtp_stats in wtps_stats_files:
+    with open(wtp_stats) as f:
+        wtp_aggregated_stats = json.load(f)
+    wtps_options.append({'name': wtp_aggregated_stats['NAME'], 'filename': wtp_stats})
+
+# Creating an array of Divs
+all_divs = []
+
+div_header = html.Div(id='header',
+                      children=[
+    html.H4('WiFi Monitoring Framework'),
+    dcc.Interval(
+        id='graph-update',
+        interval=1*5000  # in milliseconds
+    )
+])
+all_divs.append(div_header)
+
+dcc_wpts_selecter = dcc.Dropdown(
+    id='wtps-dropdown',
+    options=[{'label': i['name'], 'value': i['filename']} for i in wtps_options],
+    value=[]
 )
+all_divs.append(dcc_wpts_selecter)
+
+dcc_another_graph_packets = dcc_graph_packets = dcc.Graph(id='another-live-update-graph')
+all_divs.append(dcc_another_graph_packets)
+
+app.layout = html.Div(id='content', children=all_divs)
 
 
 # Multiple components can update everytime interval gets fired.
-@app.callback(Output('live-update-graph', 'figure'),
-              events=[Event('interval-component', 'interval')])
-def update_graph_live():
-    for wtp_stats in wtps_stats_files:
-        with open(wtp_stats) as f:
+
+@app.callback(
+    dash.dependencies.Output('another-live-update-graph','figure'),
+    [dash.dependencies.Input('wtps-dropdown', 'value')],
+    events=[dash.dependencies.Event('graph-update', 'interval')]
+    )
+def update_mcdm_graph(wtp_file):
+    if wtp_file:
+        with open(wtp_file) as f:
             wtp_aggregated_stats = json.load(f)
 
         data = {'TIME': [],
@@ -49,7 +71,7 @@ def update_graph_live():
                 data['TIME'].append(packets['TIME'])
 
         # Create the graph with subplots
-        fig = plotly.tools.make_subplots(rows=2, cols=1, vertical_spacing=0.2)
+        fig = plotly.tools.make_subplots(rows=2, cols=1, vertical_spacing=0.2, print_grid=False)
         fig['layout']['margin'] = {
             'l': 30, 'r': 10, 'b': 30, 't': 10
         }
@@ -83,17 +105,15 @@ def update_graph_live():
             'mode': 'lines+markers',
             'type': 'scatter'
         }, 1, 1)
-        # fig.append_trace({
-        #     'x': data['MANAGEMENT'],
-        #     'y': data['CONTROL'],
-        #     'text': data['TIME'],
-        #     'name': 'Management vs Control',
-        #     'mode': 'lines+markers',
-        #     'type': 'scatter'
-        # }, 2, 1)
+        return fig
 
-    return fig
+external_css = ["https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"]
+for css in external_css:
+    app.css.append_css({"external_url": css})
 
+#external_js = ['https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js']
+#for js in external_js:
+#    app.scripts.append_script({'external_url': js})
 
 if __name__ == '__main__':
     # TODO read the output from WTP list to create the list of stations that have to be monitored...

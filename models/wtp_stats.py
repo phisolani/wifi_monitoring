@@ -36,6 +36,18 @@ class WTPRawStats:
         return self.data
 
 
+# TODO: Use this structure...
+class WTPAggregatedDataStats:
+    def __init__(self):
+        self.data = {
+            'TR_BYTES': 0,          # total bytes transmitted
+            'RC_BYTES': 0,          # total bytes received
+            'TR_DATA_BYTES': 0,     # total bytes transmitted (excluding the headers)
+            'RC_DATA_BYTES': 0,     # total bytes received (excluding the headers)
+            'RETRIES': 0            # total number of retransmissions
+        }
+
+
 class WTPAggregatedStats:
     def __init__(self):
         self.data = {
@@ -48,7 +60,9 @@ class WTPAggregatedStats:
                         'FILENAME': monitoring_file,
                         'BUFFER_SIZE': monitoring_ring_buffer_size},
             'MEASUREMENTS':
-                {'PACKETS': RingBuffer(monitoring_ring_buffer_size)}
+                {'PACKETS': RingBuffer(monitoring_ring_buffer_size),
+                 'DATA': RingBuffer(monitoring_ring_buffer_size),  # filled with WTPAggregatedDataStats structure
+                 'TIME': RingBuffer(monitoring_ring_buffer_size)}
         }
 
     def __str__(self):
@@ -65,6 +79,10 @@ class WTPPacketCounters:
             'CONTROL': 0,
             'DATA': 0,
             'OTHER': 0
+            # TODO: Include more packet counters!
+            # Number of malformed packets
+            # Number of dropped packets
+            # Out of order?
         }
 
     def get(self):
