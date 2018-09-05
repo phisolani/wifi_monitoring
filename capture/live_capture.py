@@ -104,6 +104,9 @@ try:
                 # Getting WLAN info
                 packet_info = {'wlan': {}}
 
+                print pkt.wlan
+                print dir(pkt.wlan)
+                
                 if 'wlan.bssid_resolved' in pkt.wlan._all_fields:
                     packet_info['wlan']['bss_id'] = pkt.wlan.bssid_resolved
                     crr_wtp_data_stats_key_fields['BSS_ID'] = pkt.wlan.bssid_resolved
