@@ -109,9 +109,11 @@ try:
                     crr_wtp_data_stats_key_fields['BSSID'] = pkt.wlan.bssid_resolved
 
                 if set(['wlan_mgt']).issubset(set(dir(pkt))):
-                    print pkt.wlan_mgt # Debug
-                    packet_info['wlan']['ss_id'] = pkt.wlan_mgt.ssid
-                    crr_wtp_data_stats_key_fields['SSID'] = pkt.wlan_mgt.ssid
+                    if 'wlan_mgt.ssid' in pkt.wlan_mgt._all_fields:
+                        packet_info['wlan']['ss_id'] = pkt.wlan_mgt.ssid
+                        crr_wtp_data_stats_key_fields['SSID'] = pkt.wlan_mgt.ssid
+                    else:
+                        live_capture_logger.debug('wlan_mgt without SSID=' + str(pkt.wlan_mgt))
 
                 # Retrieving MAC Addresses
                 if 'wlan.sa_resolved' in pkt.wlan._all_fields:
