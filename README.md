@@ -14,6 +14,11 @@ Go to the folder:
 cd wifi_monitoring
 ```
 
+Change permissions to execute the installation script:
+```
+chmod a+x intall.sh
+```
+
 Run the installation bash script:
 ```
 sudo ./install.sh
@@ -24,7 +29,7 @@ sudo ./install.sh
 Edit configs/wtp_settings.ini to configure your wireless interface to be monitored and other parameters. 
 Then, run the live capture application and start collecting WiFi statistics:
 ```
-run sudo python capture/live_capture.py
+sudo python capture/live_capture.py
 ```
 
 ## On the ACs
