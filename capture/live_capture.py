@@ -153,8 +153,6 @@ try:
                 # Checking if retry field is present
                 if 'wlan.fc_retry' in pkt.wlan._all_fields:
                     wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['RETRIES'] = int(pkt.wlan.fc_retry)
-                else:
-                    wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['RETRIES'] = None
 
                 #print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
                 #                                    default=lambda o: o.__dict__['data']))
