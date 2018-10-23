@@ -132,11 +132,15 @@ try:
                     packet_info['wlan']['receiver_address'] = pkt.wlan.ra_resolved
                     crr_wtp_data_stats_key_fields['RC_ADDR'] = pkt.wlan.ra_resolved
 
+                # Retrieving other information
                 if 'wlan.seq' in pkt.wlan._all_fields:
                     packet_info['wlan']['sequence_number'] = int(pkt.wlan.seq)
 
-                packet_info['wlan']['duration'] = int(pkt.wlan.duration)
-                packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
+                if 'wlan.duration' in pkt.wlan._all_fields:
+                    packet_info['wlan']['duration'] = int(pkt.wlan.duration)
+
+                if 'wlan.fc_retry' in pkt.wlan._all_fields:
+                    packet_info['wlan']['retry'] = int(pkt.wlan.fc_retry)
 
                 # TODO: Calculate values on crr_wtp_data_stats
                 if str(crr_wtp_data_stats_key_fields) not in wtp_aggregated_data_stats:
@@ -145,7 +149,12 @@ try:
                 wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['TR_BYTES'] += int(pkt.length)
                 wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['TR_DATA_BYTES'] += int(pkt.length) - int(pkt.radiotap.length)
                 wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['PACKET_COUNTER'] += 1
-                wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['RETRIES'] = int(pkt.wlan.fc_retry)
+
+                # Checking if retry field is present
+                if 'wlan.fc_retry' in pkt.wlan._all_fields:
+                    wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['RETRIES'] = int(pkt.wlan.fc_retry)
+                else:
+                    wtp_aggregated_data_stats[str(crr_wtp_data_stats_key_fields)]['RETRIES'] = None
 
                 #print '\tdic json: ' + str(json.dumps(wtp_aggregated_data_stats,
                 #                                    default=lambda o: o.__dict__['data']))
