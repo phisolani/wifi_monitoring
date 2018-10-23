@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 __author__ = "Pedro Heleno Isolani"
 __credits__ = "Carlos Donato"
-__copyright__ = "Copyright 2018, The SDW Manager"
+__copyright__ = "Copyright 2018, The SDN WiFi MAC Manager"
 __license__ = "GPL"
 __version__ = "1.0"
 __maintainer__ = "Pedro Heleno Isolani"
@@ -155,7 +155,6 @@ try:
         add_wtp_raw_stats_to_file(wtp_raw_stats=wtp_raw_stats)
 
         # Creating aggregated statistics file
-        #wtp_aggregated_packet_stats.get()['TIME'] = str(datetime.datetime.now().time())
         wtp_aggregated_stats.get()['MEASUREMENTS']['PACKETS'].append(wtp_aggregated_packet_stats.get())
         wtp_aggregated_stats.get()['MEASUREMENTS']['DATA'].append(wtp_aggregated_data_stats)
         wtp_aggregated_stats.get()['MEASUREMENTS']['TIME'].append(str(datetime.datetime.now().time()))

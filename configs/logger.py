@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 __author__ = "Pedro Heleno Isolani"
 __credits__ = "Carlos Donato"
-__copyright__ = "Copyright 2018, The SDW Manager"
+__copyright__ = "Copyright 2018, The SDN WiFi MAC Manager"
 __license__ = "GPL"
 __version__ = "1.0"
 __maintainer__ = "Pedro Heleno Isolani"
