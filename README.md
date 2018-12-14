@@ -16,7 +16,7 @@ cd wifi_monitoring
 
 Change permissions to execute the installation script:
 ```
-chmod a+x intall.sh
+chmod a+x install.sh
 ```
 
 Run the installation bash script:
