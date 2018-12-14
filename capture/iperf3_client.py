@@ -17,19 +17,22 @@ Ex: iperf3 -s -i 0.5
 import datetime
 from subprocess import call
 
-number_of_measurements = 5
-filename = "iperf3_"
+# Experimentation parameters and values
+number_of_measurements = 1
+filename = "experiment_name"
 date_and_time = datetime.datetime.now().strftime("%Y-%m-%d-%Hh-%Mm-%Ss")
-location = 'near'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
+location = 'workstation'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
 path = '../measurements/iperf3/measurement_' + str(location) + '_' + str(date_and_time)
-duration = '120'
+duration = '60'
+port = '5004'
 
-print "Initializing iperf3 measurement!"
+print('Initializing iperf3 measurement!')
 
 call('mkdir ' + str(path), shell=True)
 
 for i in range(0, number_of_measurements):
-    call('iperf3 -c 192.168.2.1 ' + '-t ' + str(duration) + ' -J >> ' +
+    print('Running experiment number: ' + str(i+1))
+    call('iperf3 -c 192.168.2.1 ' + '-t ' + str(duration) + ' -p ' + str(port) + ' -J >> ' +
          str(path) +
          '/' +
          str(filename) +
@@ -39,5 +42,5 @@ for i in range(0, number_of_measurements):
          str(location) +
          '.json',
          shell=True)
-
-print "Iperf3 measurement done!"
+    print('done!')
+print('Iperf3 measurement done!')
