@@ -22,7 +22,7 @@ filename = "experiment_name"
 date_and_time = datetime.datetime.now().strftime("%Y-%m-%d-%Hh-%Mm-%Ss")
 location = 'workstation'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
 path = '../measurements/iperf3/measurement_' + str(location) + '_' + str(date_and_time)
-duration = '60'  # type: str
+duration = '60'
 port = '5003'
 
 print('Initializing iperf3 measurement!')
