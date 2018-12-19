@@ -18,7 +18,7 @@ from subprocess import call
 
 # Experimentation parameters and values
 number_of_measurements = 1
-filename = "pedro_laptop"
+filename = "experiment_name"
 date_and_time = datetime.datetime.now().strftime("%Y-%m-%d-%Hh-%Mm-%Ss")
 location = 'workstation'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
 path = '../measurements/iperf3/measurement_' + str(location) + '_' + str(date_and_time)
