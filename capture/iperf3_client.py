@@ -22,7 +22,7 @@ filename = "experiment_name"
 date_and_time = datetime.datetime.now().strftime("%Y-%m-%d-%Hh-%Mm-%Ss")
 location = 'workstation'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
 path = '../measurements/iperf3/measurement_' + str(location) + '_' + str(date_and_time)
-duration = '60'
+duration = '60'  # type: str
 port = '5003'
 
 print('Initializing iperf3 measurement!')
@@ -35,8 +35,10 @@ for i in range(0, number_of_measurements):
          str(path) +
          '/' +
          str(filename) +
+         '_' +
          str(i) +
-         '_' + str(duration) +
+         '_' +
+         str(duration) +
          's_' +
          str(location) +
          '.json',
