@@ -10,7 +10,7 @@ __status__ = "Prototype"
 
 '''Python script for monitoring IEEE 802.11 networks using iperf3
 Please make sure the server is running using iperf3 before running this script!
-Ex: iperf3 -s -i 0.5
+Ex: iperf3 -s -i 1
 '''
 
 import datetime
@@ -18,12 +18,12 @@ from subprocess import call
 
 # Experimentation parameters and values
 number_of_measurements = 1
-filename = "experiment_name"
+filename = "phisolani_best_effort_combined"
 date_and_time = datetime.datetime.now().strftime("%Y-%m-%d-%Hh-%Mm-%Ss")
 location = 'workstation'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
-path = '../measurements/iperf3/' + str(location) + '_' + str(date_and_time)
-duration = '60'
-port = '5004'
+path = str(location) + '_' + str(date_and_time)
+duration = '120'
+port = '5003'
 
 print('Initializing iperf3 measurement!')
 
