@@ -23,7 +23,7 @@ date_and_time = datetime.datetime.now().strftime("%Y-%m-%d-%Hh-%Mm-%Ss")
 location = 'workstation'  # 'near' is just next to the WTP and 'workstation' experimenting from my desk
 path = str(location) + '_' + str(date_and_time)
 duration = '120'
-port = '5004'
+port = '5003'
 
 print('Initializing iperf3 measurement!')
 
@@ -31,7 +31,7 @@ call('mkdir ' + str(path), shell=True)
 
 for i in range(0, number_of_measurements):
     print('Running experiment number: ' + str(i+1))
-    call('iperf3 -c 192.168.2.1 ' + '-t ' + str(duration) + ' -p ' + str(port) + ' -J >> ' +
+    call('iperf3 -c 192.168.2.1 -u ' + '-t ' + str(duration) + ' -p ' + str(port) + ' -J >> ' +
          str(path) +
          '/' +
          str(filename) +
