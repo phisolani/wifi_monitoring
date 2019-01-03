@@ -3,7 +3,7 @@
 """
 Plot iperf data
 
-How to: run python3 iperf3_plot.py -f ./testTarball -o graph/all.png
+How to: run python3 iperf3_json_plotter.py -f ./testTarball -o graph/all.png
 """
 
 import json
@@ -223,7 +223,7 @@ class iperf3_dataParser(object):
             for ii in i.get('streams'):
                 if (round(float(ii.get('start')), 0)) <= duration:
                     idx.append(round(float(ii.get('start')), 0))
-                    value.append(round(float(ii.get('bits_per_second')) / (1024*1024), 3))
+                    value.append(round(float(ii.get('bits_per_second')) / (10*1024*1024), 3))
         return pd.Series(value, index=idx)
 
     def get_plotFiles(self,foldername, plotFiles, noPlotFiles):

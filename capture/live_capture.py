@@ -51,7 +51,7 @@ try:
         wtp_aggregated_data_stats = {}                          # WTP dictionary with WTPAggregatedDataStats()
 
         pkt_counter = 0
-        print cap
+        print(cap)
 
         for pkt in cap:
             pkt_counter += 1

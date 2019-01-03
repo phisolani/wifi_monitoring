@@ -14,18 +14,22 @@ import logging
 # Creating logs for apps and scripts
 live_capture_logger = logging.getLogger('Live Capture')
 wifi_monitoring_logger = logging.getLogger('WiFi Monitoring')
+iperf3_monitoring_logger = logging.getLogger('Iperf3 Monitoring')
 
 # Logging levels
 live_capture_logger.setLevel(logging.INFO)
 wifi_monitoring_logger.setLevel(logging.INFO)
+iperf3_monitoring_logger.setLevel(logging.INFO)
 
 # Creating file handlers
 live_capture_file_handler = logging.FileHandler('logs/live_capture.log')
 wifi_monitoring_file_handler = logging.FileHandler('logs/wifi_monitoring.log')
+iperf3_monitoring_file_handler = logging.FileHandler('logs/iperf3_monitoring.log')
 
 # Setting the log levels
 live_capture_file_handler.setLevel(logging.DEBUG)
 wifi_monitoring_file_handler.setLevel(logging.DEBUG)
+iperf3_monitoring_file_handler.setLevel(logging.DEBUG)
 
 # Creating console handlers with a higher log levels
 console_handler = logging.StreamHandler()
@@ -37,6 +41,7 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 # Assigning to the file and console handlers
 live_capture_file_handler.setFormatter(formatter)
 wifi_monitoring_file_handler.setFormatter(formatter)
+iperf3_monitoring_file_handler.setFormatter(formatter)
 console_handler.setFormatter(formatter)
 
 # Adding the handlers to the loggers
@@ -45,3 +50,6 @@ live_capture_logger.addHandler(console_handler)
 
 wifi_monitoring_logger.addHandler(wifi_monitoring_file_handler)
 wifi_monitoring_logger.addHandler(console_handler)
+
+iperf3_monitoring_logger.addHandler(iperf3_monitoring_file_handler)
+iperf3_monitoring_logger.addHandler(console_handler)
