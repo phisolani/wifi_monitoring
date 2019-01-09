@@ -19,7 +19,7 @@ iperf3_monitoring_logger = logging.getLogger('Iperf3 Monitoring')
 # Logging levels
 live_capture_logger.setLevel(logging.INFO)
 wifi_monitoring_logger.setLevel(logging.INFO)
-iperf3_monitoring_logger.setLevel(logging.INFO)
+iperf3_monitoring_logger.setLevel(logging.DEBUG)
 
 # Creating file handlers
 live_capture_file_handler = logging.FileHandler('logs/live_capture.log')
