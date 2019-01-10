@@ -1,3 +1,14 @@
+#!/usr/bin/env python
+__author__ = "Pedro Heleno Isolani"
+__copyright__ = "Copyright 2018, The SDN WiFi MAC Manager"
+__license__ = "GPL"
+__version__ = "1.0"
+__maintainer__ = "Pedro Heleno Isolani"
+__email__ = "pedro.isolani@uantwerpen.be"
+__status__ = "Prototype"
+
+" Python script for making graphs with iperf3 CSV output"
+
 import matplotlib.pyplot as plt
 from configs.logger import *
 import pandas as pd
@@ -6,8 +17,8 @@ import seaborn as sns
 
 def make_four_axis_graph(experiment_path, options):
     #sns.set(style="whitegrid")
-    data_dict = read_server_results(experiment_path=experiment_path,
-                                    options=options)
+    data_dict = read_iperf3_server_results(experiment_path=experiment_path,
+                                           options=options)
     fig, host = plt.subplots()
     fig.subplots_adjust(right=0.75)
 
@@ -35,16 +46,16 @@ def make_four_axis_graph(experiment_path, options):
                     label=data_dict['y3_axis']['label'])
 
 
-    scale_padding = 0.1  # percentage
+    axis_padding = 0.1  # percentage
 
     host.set_xlim(min(data_dict['x_axis']['values']),
                   max(data_dict['x_axis']['values']))
     host.set_ylim(0,
-                  max(data_dict['y1_axis']['values']) + (max(data_dict['y1_axis']['values'])*scale_padding))
+                  max(data_dict['y1_axis']['values']) + (max(data_dict['y1_axis']['values'])*axis_padding))
     par1.set_ylim(0,
-                  max(data_dict['y2_axis']['values']) + (max(data_dict['y2_axis']['values'])*scale_padding))
+                  max(data_dict['y2_axis']['values']) + (max(data_dict['y2_axis']['values'])*axis_padding))
     par2.set_ylim(0,
-                  max(data_dict['y3_axis']['values']) + (max(data_dict['y3_axis']['values'])*scale_padding))
+                  max(data_dict['y3_axis']['values']) + (max(data_dict['y3_axis']['values'])*axis_padding))
 
     # Not formatting scales right now
     #par2.yaxis.set_major_formatter(plt.FormatStrFormatter('%.2f'))
@@ -79,13 +90,13 @@ def make_patch_spines_invisible(ax):
         sp.set_visible(False)
 
 
-def read_server_results(experiment_path, options):
+def read_iperf3_server_results(experiment_path, options):
     data_dict = {'x_axis': {'label': '', 'values': []},
                  'y1_axis': {'label': '', 'values': []},
                  'y2_axis': {'label': '', 'values': []},
                  'y3_axis': {'label': '', 'values': []}}
 
-    df = pd.read_csv(experiment_path + '/' + options.hostname + '_server_results.csv', sep=',', header=0)
+    df = pd.read_csv(experiment_path + '/' + options.hostname + '_iperf3_server_results.csv', sep=',', header=0)
     header_names = {'x_axis': 'Interval Until',
                     'y1_axis': 'Bandwidth',
                     'y2_axis': 'Jitter',

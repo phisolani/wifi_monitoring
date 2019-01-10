@@ -15,17 +15,18 @@ __status__ = "Prototype"
 
 import datetime
 import os
-from subprocess import call
+from subprocess import call, Popen
 from optparse import OptionParser
 from iperf3.iperf3_csv_parser import *
-from iperf3.iperf_graphs import *
+from iperf3.iperf3_graphs import *
+from iperf3.icmp_csv_parser import *
 from configs.logger import *
 
 # Experimentation parameters and values
 parser = OptionParser()
 parser.add_option("", "--hostname", type="string", default="hostname")
 parser.add_option("", "--host_ip", type="string", default="192.168.2.51")
-parser.add_option("", "--timeout", type="int", default=30)  # e.g., 30 sec
+parser.add_option("", "--timeout", type="int", default=5)  # e.g., 30 sec
 parser.add_option("", "--measurements", type="int", default=1)
 parser.add_option("", "--server_ip", type="string", default="192.168.2.1")  # e.g., the DHCP server
 parser.add_option("", "--server_port", type="int", default=5003)  # e.g., 5003, 5004
@@ -53,28 +54,35 @@ protocol_parameter = "-u" if options.protocol == "UDP" else ""
 output_parameter = "--get-server-output" if options.output == "CMD" else \
     "-J >> " + options.protocol + "/" + options.hostname + ".json"
 
-raw_results_filename = '/raw_result.txt'
+iperf3_raw_results_filename = '/' + str(options.hostname) + '_iperf3_raw_result.txt'
+icmp_raw_results_filename = '/' + str(options.hostname) + '_icmp_raw_result.txt'
 
-terminal_command = ['iperf3', '-c', str(options.server_ip), protocol_parameter, '-p', str(options.server_port),
-                    '-t', str(options.timeout), '-b', str(options.bandwidth), output_parameter, '-V', '--bind',
-                    options.host_ip, '--logfile', experiment_path + raw_results_filename]
+# Iperf3 terminal command
+iperf3_terminal_command = ['iperf3', '-c', str(options.server_ip), protocol_parameter, '-p', str(options.server_port),
+                           '-t', str(options.timeout), '-b', str(options.bandwidth), output_parameter, '-V', '--bind',
+                           options.host_ip, '--logfile', experiment_path + iperf3_raw_results_filename]
 
-# TODO: measure latency with ping at the same time
-# ex: ping -S 192.168.2.51 192.168.2.1
+# Ping terminal command for latency measurements
+ping_terminal_command = ['ping', '-S', str(options.host_ip), '-c', str(options.timeout), str(options.server_ip)]
 
-
-iperf3_monitoring_logger.info('Initializing iperf3 measurement!')
+iperf3_monitoring_logger.info('Initializing iperf3 and ICMP measurements!')
 for i in range(0, options.measurements):
     iperf3_monitoring_logger.debug('Running experiment number: ' + str(i+1))
+    with open(experiment_path + icmp_raw_results_filename, 'w') as output:
+        Popen(ping_terminal_command, stdout=output)
     with open(os.devnull, "w") as f:
-        call(terminal_command, stdout=f)
+        call(iperf3_terminal_command, stdout=f)
+iperf3_monitoring_logger.info('Iperf3 and ICMP measurements done!')
 
-iperf3_monitoring_logger.info('Iperf3 measurement done!')
+# Parsing ICMP raw results
+format_icmp_raw_results(experiment_path=experiment_path,
+                        raw_results_filename=icmp_raw_results_filename,
+                        options=options)
 
-# Parsing raw results
-format_raw_results(experiment_path=experiment_path,
-                   raw_results_filename=raw_results_filename,
-                   options=options)
+# Parsing iperf3 raw results
+format_iperf3_raw_results(experiment_path=experiment_path,
+                          raw_results_filename=iperf3_raw_results_filename,
+                          options=options)
 
 # Plotting graph results
 make_iperf3_graphs(experiment_path=experiment_path,

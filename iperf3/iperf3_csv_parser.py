@@ -14,9 +14,8 @@ import csv
 import re
 
 
-# Function to initialize WTPs aggregated stats file
-def format_raw_results(experiment_path, raw_results_filename, options):
-    iperf3_monitoring_logger.debug('Parsing raw results on:' + str(experiment_path + raw_results_filename))
+def format_iperf3_raw_results(experiment_path, raw_results_filename, options):
+    iperf3_monitoring_logger.debug('Parsing Iperf3 raw results on:' + str(experiment_path + raw_results_filename))
     # Reading raw results file
     with open(str(experiment_path + raw_results_filename), 'r') as file:
         # Instantiating auxiliary fields for client and server-side results
@@ -25,17 +24,17 @@ def format_raw_results(experiment_path, raw_results_filename, options):
         serv_header_section_flag = serv_values_section_flag = serv_summary_section_flag = False
 
         # Opening result CSV files
-        csv_cli_file = open(experiment_path + '/' + options.hostname + '_client_results.csv', 'w')
-        csv_cli_summary_file = open(experiment_path + '/' + options.hostname + '_client_summary_results.csv', 'w')
-        csv_serv_file = open(experiment_path + '/' + options.hostname + '_server_results.csv', 'w')
-        csv_serv_summary_file = open(experiment_path + '/' + options.hostname + '_server_summary_results.csv', 'w')
+        csv_cli_file = open(experiment_path + '/' + options.hostname + '_iperf3_client_results.csv', 'w')
+        csv_cli_summary_file = open(experiment_path + '/' + options.hostname + '_iperf3_client_summary_results.csv', 'w')
+        csv_serv_file = open(experiment_path + '/' + options.hostname + '_iperf3_server_results.csv', 'w')
+        csv_serv_summary_file = open(experiment_path + '/' + options.hostname + '_iperf3_server_summary_results.csv', 'w')
 
         summaries = []
         units = {'time': '', 'transfer': '', 'rate': '', 'jitter':''}
 
         # Iterating over raw results file
         for line in file:
-            line = line.replace('\n', ' ')
+            line = line.replace('\n', '')
             if "Starting Test" in line:
                 cli_header_section_flag = True
 
@@ -239,11 +238,11 @@ def format_raw_results(experiment_path, raw_results_filename, options):
     csv_cli_summary_file.close()
     csv_serv_file.close()
     csv_serv_summary_file.close()
-    iperf3_monitoring_logger.debug('Parsing results done!')
+    iperf3_monitoring_logger.debug('Parsing Iperf3 results done!')
 
 
 def skip_file_lines(file, number_of_lines):
     line = ''
     for _ in range(number_of_lines):
         line = next(file)
-    return line.replace('\n', ' ')
+    return line.replace('\n', '')
