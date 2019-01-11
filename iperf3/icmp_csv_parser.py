@@ -15,11 +15,11 @@ import re
 
 
 def format_icmp_raw_results(experiment_path, raw_results_filename, options):
-    wifi_monitoring_logger.debug('Parsing ICMP raw results on:' + str(experiment_path + raw_results_filename))
+    icmp_monitoring_logger.debug('Parsing ICMP raw results on:' + str(experiment_path + raw_results_filename))
     # Reading raw results file
     with open(str(experiment_path + raw_results_filename), 'r') as file:
         # Instantiating auxiliary fields for ICMP results
-        fieldnames = []
+        fieldnames = ['ICMP Sequence']
         values_section_flag = summary_section_flag = False
 
         # Opening result CSV file
@@ -57,7 +57,14 @@ def format_icmp_raw_results(experiment_path, raw_results_filename, options):
                     summary_section_flag = True
                 else:
                     row_dict_values = dict((k, '') for k in fieldnames)
-                    row_dict_values[fieldnames[0]] = line.split(' ')[-2].split('=')[1]  # Latency value
+                    if 'Request timeout' in line:
+                        icmp_monitoring_logger.warning(line)
+                        # Assigning -1 for ICMP timeout
+                        row_dict_values[fieldnames[0]] = int(line.split(' ')[-1]) + 1  # ICMP Sequence
+                        row_dict_values[fieldnames[1]] = -1  # Latency
+                    else:
+                        row_dict_values[fieldnames[0]] = int(line.split(' ')[4].split('=')[1]) + 1  # ICMP Sequence
+                        row_dict_values[fieldnames[1]] = line.split(' ')[-2].split('=')[1]  # Latency
                     # Write row values to file
                     writer.writerow(row_dict_values)
 
@@ -96,7 +103,7 @@ def format_icmp_raw_results(experiment_path, raw_results_filename, options):
     # Closing CSV files
     icmp_results_file.close()
     icmp_summary_results_file.close()
-    iperf3_monitoring_logger.debug('Parsing ICMP results done!')
+    icmp_monitoring_logger.debug('Parsing ICMP results done!')
 
 
 def skip_file_lines(file, number_of_lines):

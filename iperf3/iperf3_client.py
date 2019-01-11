@@ -26,7 +26,7 @@ from configs.logger import *
 parser = OptionParser()
 parser.add_option("", "--hostname", type="string", default="hostname")
 parser.add_option("", "--host_ip", type="string", default="192.168.2.51")
-parser.add_option("", "--timeout", type="int", default=5)  # e.g., 30 sec
+parser.add_option("", "--timeout", type="int", default=30)  # e.g., 30, 60 sec
 parser.add_option("", "--measurements", type="int", default=1)
 parser.add_option("", "--server_ip", type="string", default="192.168.2.1")  # e.g., the DHCP server
 parser.add_option("", "--server_port", type="int", default=5003)  # e.g., 5003, 5004
