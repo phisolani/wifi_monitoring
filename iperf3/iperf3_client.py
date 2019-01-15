@@ -30,7 +30,7 @@ parser.add_option("", "--timeout", type="int", default=30)  # e.g., 30, 60 sec
 parser.add_option("", "--measurements", type="int", default=1)
 parser.add_option("", "--server_ip", type="string", default="192.168.2.1")  # e.g., the DHCP server
 parser.add_option("", "--server_port", type="int", default=5003)  # e.g., 5003, 5004
-parser.add_option("", "--protocol", type="string", default="UDP")  # e.g., TCP, UDP
+parser.add_option("", "--protocol", type="string", default="TCP")  # e.g., TCP, UDP
 parser.add_option("", "--output", type="string", default="CMD")  # e.g., JSON, CMD
 parser.add_option("", "--bandwidth", type="string", default="30Mbps")  # e.g., 0, 20Mbps, 40Mbps, 10GB
 
@@ -47,6 +47,9 @@ experiment_path = 'measurements/iperf3/' + \
 
 # Creating experiment folder
 os.mkdir(experiment_path)
+f = open(experiment_path + "/experiment_parameters.txt", "w")
+f.write(str(options))
+f.close()
 
 # Iperf3 command formatting
 protocol_parameter = "-u" if options.protocol == "UDP" else ""

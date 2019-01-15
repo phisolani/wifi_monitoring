@@ -27,14 +27,14 @@ def make_graph(experiment_path, options):
     icmp_data_dict = read_icmp_server_results(experiment_path=experiment_path,
                                               options=options)
     # Plotting just the first values of the experiment
-    while len(iperf3_data_dict['x_axis']['values']) > options.timeout:
+    while len(iperf3_data_dict['x_axis']['values']) > int(options.timeout):
         iperf3_data_dict['x_axis']['values'].pop()
         iperf3_data_dict['y1_axis']['values'].pop()
         if options.protocol == 'UDP':
             iperf3_data_dict['y2_axis']['values'].pop()
             iperf3_data_dict['y3_axis']['values'].pop()
 
-    while len(icmp_data_dict['x_axis']['values']) > options.timeout:
+    while len(icmp_data_dict['x_axis']['values']) > int(options.timeout):
         icmp_data_dict['x_axis']['values'].pop()
         icmp_data_dict['y1_axis']['values'].pop()
 
