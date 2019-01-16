@@ -125,7 +125,7 @@ def make_graph(experiment_path, options):
         lines.extend([p3, p4])
 
     # Title of the graph
-    plt.title(options.hostname + ': Performance using ' + options.protocol + ', ' +
+    plt.title(options.hostname + ' -> ' + options.server_name + ': Performance using ' + options.protocol + ', ' +
               options.bandwidth + ', over ' + str(options.timeout) + ' seconds')
     plt.legend(lines, [l.get_label() for l in lines])
     plt.savefig(experiment_path + '/' + options.hostname + '_results.png', format="png")
