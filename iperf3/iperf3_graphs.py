@@ -128,7 +128,8 @@ def make_graph(experiment_path, options):
     plt.title(options.hostname + ' -> ' + options.server_name + ': Performance using ' + options.protocol + ', ' +
               options.bandwidth + ', over ' + str(options.timeout) + ' seconds')
     plt.legend(lines, [l.get_label() for l in lines])
-    plt.savefig(experiment_path + '/' + options.hostname + '_results.png', format="png")
+    plt.savefig(experiment_path + '/' + options.hostname + '_' + str(options.timeout) + '_' + str(options.protocol) +
+                '_' + str(options.bandwidth) + '_results.png', format="png")
     plt.show()
 
 
