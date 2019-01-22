@@ -131,8 +131,6 @@ def format_iperf3_raw_results(experiment_path, raw_results_filename, options):
                     writer.writerow(summaries['sender'])
                     writer.writerow(summaries['receiver'])
 
-                    line = skip_file_lines(file=file, number_of_lines=9)
-
                     cli_summary_section_flag = False
                     serv_header_section_flag = True
                 else:
@@ -156,21 +154,25 @@ def format_iperf3_raw_results(experiment_path, raw_results_filename, options):
                     summaries[tmp_line[tmp_sender_or_receiver_column]][fieldnames[3]] = tmp_line[6]  # Bitrate
 
             if serv_header_section_flag:
-                fieldnames = [fieldnames[0], fieldnames[1], fieldnames[2], 'Bandwidth (' + units['rate'] + ')']
-                if options.protocol == 'UDP':
-                    fieldnames.extend(['Jitter (' + units['jitter'] + ')',
-                                       'Lost Datagrams',
-                                       'Total Datagrams',
-                                       'Loss Percentage (%)',
-                                       'Out-of-order (datagrams)',
-                                       'Out-of-order From (' + units['time'] + ')',
-                                       'Out-of-order Until (' + units['time'] + ')'])
+                if "Server output" in line:
+                    # Fist get to the values line
+                    line = skip_file_lines(file=file, number_of_lines=7)
 
-                writer = csv.DictWriter(csv_serv_file, fieldnames=fieldnames)
-                writer.writeheader()
+                    fieldnames = [fieldnames[0], fieldnames[1], fieldnames[2], 'Bandwidth (' + units['rate'] + ')']
+                    if options.protocol == 'UDP':
+                        fieldnames.extend(['Jitter (' + units['jitter'] + ')',
+                                           'Lost Datagrams',
+                                           'Total Datagrams',
+                                           'Loss Percentage (%)',
+                                           'Out-of-order (datagrams)',
+                                           'Out-of-order From (' + units['time'] + ')',
+                                           'Out-of-order Until (' + units['time'] + ')'])
 
-                serv_header_section_flag = False
-                serv_values_section_flag = True
+                    writer = csv.DictWriter(csv_serv_file, fieldnames=fieldnames)
+                    writer.writeheader()
+
+                    serv_header_section_flag = False
+                    serv_values_section_flag = True
 
             if serv_values_section_flag:
                 if "- - - - - - - - - - - - - - - - - -" in line:
