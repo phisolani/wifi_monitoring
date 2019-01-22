@@ -26,6 +26,7 @@ parser.add_option("", "--server_port", type="int", default=5003)  # e.g., 5003, 
 parser.add_option("", "--protocol", type="string", default="UDP")  # e.g., TCP, UDP
 parser.add_option("", "--output", type="string", default="CMD")  # e.g., JSON, CMD
 parser.add_option("", "--bandwidth", type="string", default="30Mbps")  # e.g., 0, 20Mbps, 40Mbps, 10GB
+parser.add_option("", "--reverse_mode", default=True)  # e.g., True or False
 parser.add_option("", "--experiment_path", type="string",
                   default="/Users/.../wifi_monitoring/measurements/iperf3/UDP/<experiment_folder>")  # results folder
 
