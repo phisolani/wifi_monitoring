@@ -21,8 +21,8 @@ def make_graph(experiment_path, options):
     sns.set(style="whitegrid")
 
     # Reading iperf3 CSV results
-    iperf3_data_dict = read_iperf3_server_results(experiment_path=experiment_path,
-                                                  options=options)
+    iperf3_data_dict = read_iperf3_results(experiment_path=experiment_path,
+                                           options=options)
     # Reading ICMP CSV results
     icmp_data_dict = read_icmp_server_results(experiment_path=experiment_path,
                                               options=options)
@@ -125,7 +125,12 @@ def make_graph(experiment_path, options):
         lines.extend([p3, p4])
 
     # Title of the graph
-    plt.title(options.hostname + ' -> ' + options.server_name + ': Performance using ' + options.protocol + ', ' +
+    if options.reverse_mode:
+        direction = options.server_name + ' -> ' + options.hostname
+    else:
+        direction = options.hostname + ' -> ' + options.server_name
+
+    plt.title(direction + ': Performance using ' + options.protocol + ', ' +
               options.bandwidth + ', over ' + str(options.timeout) + ' seconds')
     plt.legend(lines, [l.get_label() for l in lines])
     plt.savefig(experiment_path + '/' + options.hostname + '_' + str(options.timeout) + '_' + str(options.protocol) +
@@ -140,7 +145,7 @@ def make_patch_spines_invisible(ax):
         sp.set_visible(False)
 
 
-def read_iperf3_server_results(experiment_path, options):
+def read_iperf3_results(experiment_path, options):
     # Common dict structure
     data_dict = {'x_axis': {'label': '', 'values': []},
                  'y1_axis': {'label': '', 'values': []}}
@@ -148,9 +153,20 @@ def read_iperf3_server_results(experiment_path, options):
         data_dict['y2_axis'] = {'label': '', 'values': []}
         data_dict['y3_axis'] = {'label': '', 'values': []}
 
-    df = pd.read_csv(experiment_path + '/' + options.hostname + '_iperf3_server_results.csv', sep=',', header=0)
+    # Filename definition
+    if options.reverse_mode:
+        results_filename = 'iperf3_client_results.csv'
+    else:
+        results_filename = 'iperf3_server_results.csv'
 
-    header_names = {'x_axis': 'Interval Until',
+    df = pd.read_csv(experiment_path + '/' + options.hostname + '_' + results_filename, sep=',', header=0)
+
+    # Headers definition
+    if options.reverse_mode:
+        header_names = {'x_axis': 'Interval Until',
+                        'y1_axis': 'Bitrate'}
+    else:
+        header_names = {'x_axis': 'Interval Until',
                     'y1_axis': 'Bandwidth'}
 
     if options.protocol == "UDP":
