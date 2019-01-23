@@ -14,6 +14,11 @@ from configs.logger import *
 import pandas as pd
 import seaborn as sns
 
+" General TODO list: "
+" TODO: Manage iperf3 and icmp results to have the same array length "
+" TODO: Make graphs of the summaries "
+" TODO: Make graphs to be plotted in real-time "
+
 
 def make_graph(experiment_path, options):
 
@@ -126,9 +131,9 @@ def make_graph(experiment_path, options):
 
     # Title of the graph
     if options.reverse_mode:
-        direction = options.server_name + ' -> ' + options.hostname
+        direction = 'Downlink: from ' + options.server_name + ' to ' + options.hostname
     else:
-        direction = options.hostname + ' -> ' + options.server_name
+        direction = 'Uplink: from ' + options.hostname + ' to ' + options.server_name
 
     plt.title(direction + ': Performance using ' + options.protocol + ', ' +
               options.bandwidth + ', over ' + str(options.timeout) + ' seconds')
