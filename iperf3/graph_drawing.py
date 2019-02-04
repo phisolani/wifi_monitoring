@@ -21,14 +21,16 @@ parser.add_option("", "--hostname", type="string", default="hostname")
 parser.add_option("", "--host_ip", type="string", default="192.168.2.51")
 parser.add_option("", "--timeout", type="int", default=30)  # e.g., 30, 60 sec
 parser.add_option("", "--measurements", type="int", default=1)
+parser.add_option("", "--server_name", type="string", default="server")
 parser.add_option("", "--server_ip", type="string", default="192.168.2.1")  # e.g., the DHCP server
 parser.add_option("", "--server_port", type="int", default=5003)  # e.g., 5003, 5004
 parser.add_option("", "--protocol", type="string", default="UDP")  # e.g., TCP, UDP
 parser.add_option("", "--output", type="string", default="CMD")  # e.g., JSON, CMD
 parser.add_option("", "--bandwidth", type="string", default="30Mbps")  # e.g., 0, 20Mbps, 40Mbps, 10GB
 parser.add_option("", "--reverse_mode", default=True)  # e.g., True or False
+parser.add_option("", "--show_results", default=True)  # e.g., True or False
 parser.add_option("", "--experiment_path", type="string",
-                  default="/Users/.../wifi_monitoring/measurements/iperf3/UDP/<experiment_folder>")  # results folder
+                  default="/Users/.../wifi_monitoring/measurements/iperf3/<UDP>/<experiment_folder>")  # results folder
 
 (options, args) = parser.parse_args()
 

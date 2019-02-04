@@ -140,7 +140,9 @@ def make_graph(experiment_path, options):
     plt.legend(lines, [l.get_label() for l in lines])
     plt.savefig(experiment_path + '/' + options.hostname + '_' + str(options.timeout) + '_' + str(options.protocol) +
                 '_' + str(options.bandwidth) + '_results.png', format="png")
-    plt.show()
+
+    if options.show_results:
+        plt.show()
 
 
 def make_patch_spines_invisible(ax):
