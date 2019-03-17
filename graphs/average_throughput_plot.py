@@ -18,7 +18,7 @@ def make_graph(experiment_path, filename):
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
-    sns.set(style="whitegrid", font_scale=10, font='Times New Roman')
+    sns.set(style="whitegrid", font_scale=2, font='Times New Roman')
 
     # Reading ICMP CSV results
     icmp_data_dict = read_icmp_results(experiment_path=experiment_path,
@@ -48,7 +48,7 @@ def make_graph(experiment_path, filename):
                   (max(icmp_data_dict['y_axis']['values']+icmp_data_dict['y1_axis']['values'])*axis_padding))
 
     host.set_xlabel("Time (sec)")
-    host.set_ylabel("Average Throughput (ms)")
+    host.set_ylabel("Average Throughput (Mbps)")
 
     lines = [p1, p2, p3]
     plt.errorbar(icmp_data_dict['x_axis']['values'], icmp_data_dict['y_axis']['values'],
