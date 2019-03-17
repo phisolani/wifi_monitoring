@@ -18,14 +18,17 @@ def make_graph(experiment_path, filename):
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
-    sns.set(style="whitegrid", font_scale=10, font='Times New Roman')
+    sns.set(style="whitegrid", font_scale=2, font='Times New Roman')
 
     # Reading ICMP CSV results
     icmp_data_dict = read_icmp_results(experiment_path=experiment_path,
                                        filename=filename)
 
     #print(icmp_data_dict)
-    fig, host = plt.subplots(figsize=(18, 6), dpi=144)
+    fig, host = plt.subplots(figsize=(20, 6), dpi=144)
+
+    #ax1 = plt.subplot(311)
+    #plt.setp(host.get_xticklabels())
 
     # Adjust x Axis
     plt.tight_layout()
@@ -48,19 +51,13 @@ def make_graph(experiment_path, filename):
                   (max(icmp_data_dict['y_axis']['values']+icmp_data_dict['y1_axis']['values'])*axis_padding))
 
     host.set_xlabel("Time (sec)")
-    host.set_ylabel("Average Throughput (ms)")
+    host.set_ylabel("Median Latency (ms)")
 
     lines = [p1, p2, p3]
-    plt.errorbar(icmp_data_dict['x_axis']['values'], icmp_data_dict['y_axis']['values'],
-                 yerr=icmp_data_dict['stdev']['values'], fmt='none', ecolor='b', capthick=2, capsize=2)
-    plt.errorbar(icmp_data_dict['x_axis']['values'], icmp_data_dict['y1_axis']['values'],
-                 yerr=icmp_data_dict['stdev1']['values'], fmt='none', ecolor='y', capthick=2, capsize=2)
-    plt.errorbar(icmp_data_dict['x_axis']['values'], icmp_data_dict['y2_axis']['values'],
-                 yerr=icmp_data_dict['stdev2']['values'], fmt='none', ecolor='g', capthick=2, capsize=2)
 
     #plt.title("TESTE")
     plt.legend(lines, [l.get_label() for l in lines], loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=3) #shadow=True)
-    plt.savefig(experiment_path + 'throughput_results.pdf', format="pdf")
+    plt.savefig(experiment_path + 'latency_results.pdf', format="pdf")
 
     plt.show()
     print('Done!')
@@ -70,19 +67,13 @@ def read_icmp_results(experiment_path, filename):
     data_dict = {'x_axis': {'label': '', 'values': []},
                  'y_axis': {'label': '', 'values': []},
                  'y1_axis': {'label': '', 'values': []},
-                 'y2_axis': {'label': '', 'values': []},
-                 'stdev': {'label': '', 'values': []},
-                 'stdev1': {'label': '', 'values': []},
-                 'stdev2': {'label': '', 'values': []}}
+                 'y2_axis': {'label': '', 'values': []}}
 
     df = pd.read_csv(experiment_path + filename, sep=',', header=0)
     header_names = {'x_axis': 'Time (sec)',
-                    'y_axis': 'Single Slice Throughput (ms)',
-                    'y1_axis': 'Static Slices Throughput (ms)',
-                    'y2_axis': 'Adaptive Slices Throughput (ms)',
-                    'stdev': 'Single Slice Stdev',
-                    'stdev1': 'Static Slices Stdev',
-                    'stdev2': 'Adaptive Slices Stdev'}
+                    'y_axis': 'Single Slice Latency (ms)',
+                    'y1_axis': 'Static Slices Latency (ms)',
+                    'y2_axis': 'Adaptive Slices Latency (ms)'}
 
     # Populating with the header fields
     for header_value in df.columns.values:
@@ -94,12 +85,11 @@ def read_icmp_results(experiment_path, filename):
     # Populating with the values
     for index, row in df.iterrows():
         for key, value in data_dict.items():
-            print(row[value['label']])
             data_dict[key]['values'].append(row[value['label']])
 
     return data_dict
 
 
-make_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/throughput_results/",
-           filename="throughput_overall_plot.csv")
+make_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/latency_results/",
+           filename="latency_overall_plot.csv")
 
