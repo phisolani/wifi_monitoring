@@ -1,6 +1,6 @@
 {"version":
 	"1.0",
 	"params": {
-		"every": 500
+		"every": 1000
 	}
 }

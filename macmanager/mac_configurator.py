@@ -18,8 +18,8 @@ from optparse import OptionParser
 # Experimentation parameters and values
 parser = OptionParser()
 parser.add_option("", "--json_config_file", type="string", default="mac_config.json")  # filename
-parser.add_option("", "--controller_ip", type="string", default="146.175.219.40")  # e.g., the Empower controller
-parser.add_option("", "--tenant_id", type="string", default="d147b6e0-499a-4063-8b5b-4f1772b39a0c")  # e.g., c405025a-32cd-47c0-aafe-1cb1e425ae1d
+parser.add_option("", "--controller_ip", type="string", default="10.1.68.209")  # e.g., the Empower controller
+parser.add_option("", "--tenant_id", type="string", default="e536c433-d843-45e7-9b89-56bf50f7b928")  # e.g., c405025a-32cd-47c0-aafe-1cb1e425ae1d
 parser.add_option("", "--user", type="string", default="root")  # e.g., root, user
 parser.add_option("", "--password", type="string", default="root")  # e.g., root, password
 
