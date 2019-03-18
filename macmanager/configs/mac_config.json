@@ -1,7 +1,7 @@
 {"version":
 	"1.0",
 	"params": {
-		"mac_address": "1C:36:BB:1D:0F:12",
-		"no_ack": "true"
+		"mac_address": "28:37:37:24:A7:F2",
+		"ht_mcs": [0]
 	}
 }
