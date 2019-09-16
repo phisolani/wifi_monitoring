@@ -63,7 +63,7 @@ def make_graph(experiment_path, filename):
 
     #plt.title("TESTE")
     plt.legend(lines, [l.get_label() for l in lines], loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=3) #shadow=True)
-    plt.savefig(experiment_path + 'latency_results.pdf', format="pdf")
+    plt.savefig(experiment_path + 'latency_results.pdf', format="pdf", bbox_inches="tight")
 
     plt.show()
     print('Done!')
