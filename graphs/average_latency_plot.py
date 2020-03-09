@@ -25,7 +25,7 @@ def make_graph(experiment_path, filename):
                                        filename=filename)
 
     #print(icmp_data_dict)
-    fig, host = plt.subplots(figsize=(20, 6), dpi=144)
+    fig, host = plt.subplots(figsize=(12, 6), dpi=144)
 
     #ax1 = plt.subplot(311)
     #plt.setp(host.get_xticklabels())

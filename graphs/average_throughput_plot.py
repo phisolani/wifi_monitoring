@@ -25,7 +25,7 @@ def make_graph(experiment_path, filename):
                                        filename=filename)
 
     #print(icmp_data_dict)
-    fig, host = plt.subplots(figsize=(20, 6), dpi=144)
+    fig, host = plt.subplots(figsize=(12, 6), dpi=144)
 
     # Adjust x Axis
     plt.tight_layout()
