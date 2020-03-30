@@ -133,6 +133,6 @@ def read_memory_results(filename):
 
 iperf3_monitoring_logger.info('Making Iperf3 graphs!')
 # Making graph with UDP server results
-make_graph(filename="graphs/cpu_and_memory_results/cpu_memory_output.csv",
+make_graph(filename="graphs/sdn_based_slicing/cpu_and_memory_results/cpu_memory_output.csv",
            title="Empower Controller withouth APs")
 iperf3_monitoring_logger.info('Done!')
