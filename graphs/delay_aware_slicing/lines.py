@@ -12,6 +12,7 @@ __status__ = "Prototype"
 import matplotlib.pyplot as plt
 import pandas as pd
 import seaborn as sns
+import numpy as np
 
 
 def make_line_graph(experiment_path, filename, x_axis, y_axes,
@@ -89,6 +90,7 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
         host.set_ylim(y_axis_min_max['min'],
                       y_axis_min_max['max'])
 
+    plt.xticks(np.arange(0, 330, step=50))
     host.set_xlabel(x_axis_label)
     host.set_ylabel(y_axis_label)
 
