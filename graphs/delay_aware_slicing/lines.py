@@ -48,8 +48,10 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
     # Adjust x Axis
     plt.tight_layout()
 
-    colors = ['darkblue', 'darkviolet', 'mediumblue', 'deeppink', 'dodgerblue', 'magenta']
-    line_styles = ['-', '--', '-.', ':', '-', '--', '-.', ':']
+    #colors = ['darkblue', 'darkviolet', 'mediumblue', 'deeppink', 'dodgerblue', 'magenta']
+    colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
+    line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
+    markers = ['o', '^', '+', 'x', '*', 'D']
 
     if stacked:
         y_values = []
@@ -58,7 +60,8 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                 y_values.append(data_dict[axis]['values'])
 
         # original
-        pal = ["#9b59b6", "#e74c3c", "#34495e", "#2ecc71"]
+        # pal = ["#9b59b6", "#e74c3c", "#34495e", "#2ecc71"]
+        pal = ["darkolivegreen", "darkblue", "darkmagenta", "goldenrod"]
 
         stacks = host.stackplot(data_dict['x_axis']['values'], y_values, labels=y_axes, colors=pal, alpha=0.6)
         hatches = ['+', 'x', '.', '*', '\\', 'O', 'o', '-']
@@ -72,6 +75,10 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
         for y in range(len(y_axes)):
             p, = host.plot(data_dict['x_axis']['values'], data_dict['y' + str(y) + '_axis']['values'],
                            color=colors[y],
+                           # marker=markers[y],
+                           # mfc='none',
+                           # markersize=6,
+                           # markevery=2,
                            linestyle=line_styles[y],
                            linewidth=2,
                            label=str(y_axes[y]))
@@ -95,6 +102,10 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
     host.set_ylabel(y_axis_label)
 
     plt.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=len(y_axes))  # shadow=True)
+
+    xcoords = [10, 40, 70, 100, 130, 160, 190]
+    for xc in xcoords:
+        plt.axvline(x=xc, linestyle='--', color='dimgray')
 
     if title is not None:
         plt.title(title)
