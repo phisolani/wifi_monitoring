@@ -29,5 +29,5 @@ parser.add_option("", "--password", type="string", default="root")  # e.g., root
 curl_terminal_command = ['curl', '-X', 'PUT', '-d', '@configs/' + str(options.json_config_file),
                          'http://' + str(options.user) + ':' + str(options.password) + '@' +
                          str(options.controller_ip) + ':8888/api/v1/tenants/' + str(options.tenant_id) +
-                         '/components/empower.apps.macmanager.macmanager']
+                         '/components/empower.apps.managers.macmanager']
 call(curl_terminal_command)
