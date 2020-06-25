@@ -10,33 +10,30 @@ import seaborn as sns
 # Applying Seaborn style
 # whitegrid, darkgrid, whitegrid, dark, white, and ticks
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-
+plt.rcParams['mathtext.fontset'] = 'stix'
 hatches = ['+', 'x', '.', '*', 'o', '\\', 'O', '-']
 colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
 n_groups = 2
 
-qos1_mean = (0, 31.12278179)
-qos1_std = (0, 10.43376985)
+qos1_mean = (89.35267431, 32.08246915)
+qos1_std = (14.92014623, 9.392062956)
 
-be1_mean = (0, 400.0834762)
-be1_std = (0, 92.57623547)
+be1_mean = (339.8431904, 374.2717947)
+be1_std = (45.55786637, 35.37021373)
 
-be2_mean = (0, 434.3685752)
-be2_std = (0, 143.2393553)
+be2_mean = (386.1869306, 428.4269307)
+be2_std = (52.37109333, 37.68279283)
 
-be3_mean = (0, 421.4078708)
-be3_std = (0, 73.85813126)
+be3_mean = (240.2109028, 407.4070388)
+be3_std = (92.14260111, 78.79840639)
 
-qos2_mean = (0, 96.43668043)
-qos2_std = (0, 28.51906525)
-
-means_throughput = (6.78, 6.53)
-std_throughput = (1.51, 2.11)
+qos2_mean = (179.6930408, 96.54814037)
+qos2_std = (29.79027939, 28.48412061)
 
 fig, ax = plt.subplots(figsize=(10, 3.6))
 
 index = np.arange(n_groups)
-bar_width = 0.15
+bar_width = 0.14
 
 opacity = 0.6
 error_config = {'ecolor': '0.3', 'capthick': 4, 'capsize': 4}
@@ -73,6 +70,20 @@ ax.set_yscale('log')
 ax.set_yticks([1, 10, 100, 1000, 10000])
 ax.set_ylabel('Queueing delay (ms)')
 
+ax.annotate(r'$D^{QoS1}_{QoS}$ (30ms)',
+            xy=(0.78, 30),
+            xytext=(0.78, 5),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='center', verticalalignment='top')
+
+ax.annotate(r'$D^{QoS2}_{QoS}$ (50ms)',
+            xy=(0.78, 50),
+            xytext=(0.78, 1000),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='center', verticalalignment='top')
+
+plt.axhline(y=50, color='r', linestyle='--', linewidth=2)
+plt.axhline(y=30, color='r', linestyle='--', linewidth=2)
 
 ax.set_xticks(index + bar_width * 2)
 print(index + bar_width / 2)
@@ -83,8 +94,8 @@ ax.grid(True)
 
 fig.tight_layout()
 
-plt.savefig("overall_results_throughput.eps", format="eps")
-plt.savefig("overall_results_throughput.pdf", format="pdf")
-plt.savefig("overall_results_throughput.png", format="png")
+plt.savefig("overall_results_delay.eps", format="eps")
+plt.savefig("overall_results_delay.pdf", format="pdf")
+plt.savefig("overall_results_delay.png", format="png")
 
 plt.show()

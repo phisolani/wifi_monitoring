@@ -10,33 +10,30 @@ import seaborn as sns
 # Applying Seaborn style
 # whitegrid, darkgrid, whitegrid, dark, white, and ticks
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-
+plt.rcParams['mathtext.fontset'] = 'stix'
 hatches = ['+', 'x', '.', '*', 'o', '\\', 'O', '-']
 colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
 n_groups = 2
 
-qos1_mean = (0, 2.074)
-qos1_std = (0, 0.00843274)
+qos1_mean = (1.975758939, 2.07560512)
+qos1_std = (0.171415301, 0.008662744)
 
-be1_mean = (0, 5.511)
-be1_std = (0, 0.563115342)
+be1_mean = (3.985007752, 5.230245371)
+be1_std = (0.298013831, 0.535378484)
 
-be2_mean = (0, 5.706)
-be2_std = (0, 0.657287355)
+be2_mean = (3.986751672, 5.386185946)
+be2_std = (0.337032262, 0.613370964)
 
-be3_mean = (0, 6.614)
-be3_std = (0, 1.391156194)
+be3_mean = (6.442928888, 6.194488779)
+be3_std = (2.344181848, 1.358109561)
 
-qos2_mean = (0, 2.067)
-qos2_std = (0, 0.016363917)
-
-means_throughput = (6.78, 6.53)
-std_throughput = (1.51, 2.11)
+qos2_mean = (2.007656017, 2.066035894)
+qos2_std = (0.030178547, 0.013715413)
 
 fig, ax = plt.subplots(figsize=(10, 3.6))
 
 index = np.arange(n_groups)
-bar_width = 0.15
+bar_width = 0.14
 
 opacity = 0.6
 error_config = {'ecolor': '0.3', 'capthick': 4, 'capsize': 4}

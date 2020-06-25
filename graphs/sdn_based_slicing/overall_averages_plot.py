@@ -59,6 +59,6 @@ ax2.grid(False)
 
 fig.tight_layout()
 
-plt.savefig("/Users/phisolani/Github/wifi_monitoring/graphs/overall_results/sdn_based_slicing/overall_results.pdf", format="pdf")
+plt.savefig("overall_results.pdf", format="pdf")
 
 plt.show()
