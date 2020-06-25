@@ -26,11 +26,12 @@ width = 0.35  # the width of the bars
 
 fig, ax = plt.subplots(figsize=(10, 3.6))
 rects1 = ax.bar(x - width/2, gomez_means, width,
-                hatch=hatches[0], color='k',
+                hatch=hatches[0], color='lightslategray',
                 yerr=gomez_stdev, error_kw=error_config,
                 label='Gómez et al. [14]')
 rects2 = ax.bar(x + width/2, ours_means, width,
-                hatch=hatches[3], yerr=ours_stdev, error_kw=error_config,
+                hatch=hatches[3], color='y',
+                yerr=ours_stdev, error_kw=error_config,
                 label='Proposed')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
