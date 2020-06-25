@@ -49,7 +49,8 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
     plt.tight_layout()
 
     #colors = ['darkblue', 'darkviolet', 'mediumblue', 'deeppink', 'dodgerblue', 'magenta']
-    colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
+    # colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
+    colors = ['g', 'b', 'c', 'm', 'y']
     line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
     markers = ['o', '^', '+', 'x', '*', 'D']
 
@@ -61,9 +62,11 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
 
         # original
         # pal = ["#9b59b6", "#e74c3c", "#34495e", "#2ecc71"]
-        pal = ["darkolivegreen", "darkblue", "darkmagenta", "goldenrod"]
+        # pal = ["darkolivegreen", "darkblue", "darkmagenta", "goldenrod"]
+        pal = ["g", "b", "m", "y"]
 
-        stacks = host.stackplot(data_dict['x_axis']['values'], y_values, labels=y_axes, colors=pal, alpha=0.6)
+        stacks = host.stackplot(data_dict['x_axis']['values'], y_values, labels=y_axes, colors=pal)
+                                # colors=pal, alpha=0.6)
         hatches = ['+', 'x', '.', '*', '\\', 'O', 'o', '-']
         for stack, hatch in zip(stacks, hatches):
             stack.set_hatch(hatch)

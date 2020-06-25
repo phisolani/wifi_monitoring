@@ -86,7 +86,6 @@ plt.axhline(y=50, color='r', linestyle='--', linewidth=2)
 plt.axhline(y=30, color='r', linestyle='--', linewidth=2)
 
 ax.set_xticks(index + bar_width * 2)
-print(index + bar_width / 2)
 ax.set_xticklabels(('Gómez et al. [14]', 'Proposed'))
 
 ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=5)

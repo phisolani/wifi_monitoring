@@ -71,7 +71,6 @@ ax.set_ylabel('Throughput (Mbps)')
 
 
 ax.set_xticks(index + bar_width * 2)
-print(index + bar_width / 2)
 ax.set_xticklabels(('Gómez et al. [14]', 'Proposed'))
 
 ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=5)
