@@ -15,7 +15,8 @@ from matplotlib.ticker import PercentFormatter
 
 n_bins = 50
 
-colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
+# colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
+colors = ['g', 'b', 'c', 'm', 'y']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ["QoS 1", "BE 1", "BE 2", "BE 3", "QoS 2"]
 cdf_delay_mcda = pd.read_csv("cdf_results/delay_mcda/delay_results/cdf_queueing_delay_delay_mcda.csv",
