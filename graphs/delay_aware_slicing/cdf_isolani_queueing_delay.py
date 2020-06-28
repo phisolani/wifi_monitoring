@@ -81,15 +81,15 @@ ax.hist(cdf_delay_mcda['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-ax.annotate('50ms (76%)',
+ax.annotate(r'$D^{QoS2}_{QoS}$ (76%)',
             xy=(50, 0.76),
-            xytext=(250, 0.6),
+            xytext=(300, 0.7),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
-ax.annotate('30ms (95%)',
+ax.annotate(r'$D^{QoS1}_{QoS}$ (95%)',
             xy=(30, 0.95),
-            xytext=(350, 0.8),
+            xytext=(350, 0.9),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
