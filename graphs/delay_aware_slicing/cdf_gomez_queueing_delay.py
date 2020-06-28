@@ -19,7 +19,7 @@ n_bins = 50
 colors = ['g', 'b', 'c', 'm', 'y']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ["QoS 1", "BE 1", "BE 2", "BE 3", "QoS 2"]
-cdf_delay_mcda = pd.read_csv("cdf_results/gomez/throughput_results/cdf_throughput_gomez.csv",
+cdf_delay_mcda = pd.read_csv("results/gomez/main/cdf_gomez_queueing_delay.csv",
                              usecols=col_list, sep=';')
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
@@ -81,29 +81,35 @@ ax.hist(cdf_delay_mcda['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-ax.annotate('0Mbps (27%)',
-            xy=(0, 0.27),
-            xytext=(1.9, 0.7),
+ax.annotate('50ms (87%)',
+            xy=(50, 0.87),
+            xytext=(250, 0.65),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='right', verticalalignment='top')
+
+ax.annotate('30ms (95%)',
+            xy=(30, 0.95),
+            xytext=(300, 0.8),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 # tidy up the figure
 ax.grid(True)
 ax.legend(loc='right')
+# ax.set_xscale('log')
 # ax.set_title('Cumulative step histograms')
-ax.set_xlabel('Throughput (Mbps)')
+ax.set_xlabel('Queueing delay (ms)')
 ax.set_ylabel('Likelihood (%)')
+# plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
 plt.yticks(np.arange(0, 1.01, 0.2))
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+ax.set_xticks([0, 50, 100, 200, 300, 400, 500, 600,  700, 800, 900, 1000])
+# ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 plt.tight_layout()
-filename = "cdf_throughput_gomez"
+filename = "results/gomez/main/cdf_gomez_queueing_delay"
 plt.savefig(str(filename) + '.pdf', format="pdf", bbox_inches="tight")
 plt.savefig(str(filename) + '.png', format="png", bbox_inches="tight")
 plt.savefig(str(filename) + '.eps', format="eps", bbox_inches="tight")
 
 plt.show()
-
-
-

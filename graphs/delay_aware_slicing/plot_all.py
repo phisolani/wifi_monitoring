@@ -11,7 +11,7 @@ __status__ = "Prototype"
 
 from graphs.delay_aware_slicing.lines import *
 
-# Throughput graph
+# Throughput graph (Isolani)
 make_line_graph(
     experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
     filename="wtp1_throughput",
@@ -42,7 +42,7 @@ make_line_graph(
 #     y_axis_min_max={'min': 0, 'max': 0.002},
 #     fig_size=[10, 3.4])
 
-# Queueing delay graphs
+# Queueing delay graphs (Isolani)
 make_line_graph(
     experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
     filename="wtp1_queueing_delay",
@@ -95,7 +95,7 @@ make_line_graph(
 # #                 y_axis_min_max={'min': 0, 'max': 16000},
 # #                 fig_size=[10, 3.4])
 #
-# MCDA results
+# Association results (Isolani)
 make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
                 filename="wtp1_association",
                 x_axis='Time',
@@ -117,3 +117,71 @@ make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/
                 y_axis_min_max={'min': 0, 'max': 6},
                 fig_size=[10, 3.4],
                 stacked=True)
+
+# Association results (Gomez)
+make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
+                filename="wtp1_association",
+                x_axis='Time',
+                x_axis_label='Time (sec)',
+                x_axis_min_max={'min': 0, 'max': 300},
+                y_axes=['STA 1', 'STA 2', 'STA 3', 'STA 4'],
+                y_axis_label='Assigned STAs',
+                y_axis_min_max={'min': 0, 'max': 6},
+                fig_size=[10, 3.4],
+                stacked=True)
+
+make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
+                filename="wtp4_association",
+                x_axis='Time',
+                x_axis_label='Time (sec)',
+                x_axis_min_max={'min': 0, 'max': 300},
+                y_axes=['STA 1', 'STA 2', 'STA 3', 'STA 4'],
+                y_axis_label='Assigned STAs',
+                y_axis_min_max={'min': 0, 'max': 6},
+                fig_size=[10, 3.4],
+                stacked=True)
+
+# Throughput graph (Gomez)
+make_line_graph(
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
+    filename="wtp1_throughput",
+    x_axis='Time',
+    x_axis_label='Time (sec)',
+    y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
+    y_axis_label='Throughput (Mbps)',
+    y_axis_min_max={'min': 0, 'max': 20},
+    fig_size=[10, 3.4])
+
+make_line_graph(
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
+    filename="wtp4_throughput",
+    x_axis='Time',
+    x_axis_label='Time (sec)',
+    y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
+    y_axis_label='Throughput (Mbps)',
+    y_axis_min_max={'min': 0, 'max': 20},
+    fig_size=[10, 3.4])
+
+
+# Queueing delay graphs (Gomez)
+make_line_graph(
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
+    filename="wtp1_queueing_delay",
+    x_axis='Time',
+    x_axis_label='Time (sec)',
+    y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
+    y_axis_label='Queueing delay (ms)',
+    y_axis_min_max={'min': 0, 'max': 100000},
+    y_log_scale=True,
+    fig_size=[10, 3.4])
+
+make_line_graph(
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
+    filename="wtp4_queueing_delay",
+    x_axis='Time',
+    x_axis_label='Time (sec)',
+    y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
+    y_axis_label='Queueing delay (ms)',
+    y_axis_min_max={'min': 0, 'max': 100000},
+    y_log_scale=True,
+    fig_size=[10, 3.4])
