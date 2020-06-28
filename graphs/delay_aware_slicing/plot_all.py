@@ -13,8 +13,8 @@ from graphs.delay_aware_slicing.lines import *
 
 # Throughput graph
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/throughput_results/",
-    filename="throughput_wtp_1",
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+    filename="wtp1_throughput",
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
@@ -23,8 +23,8 @@ make_line_graph(
     fig_size=[10, 3.4])
 
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/throughput_results/",
-    filename="throughput_wtp_4",
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+    filename="wtp4_throughput",
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
@@ -32,20 +32,20 @@ make_line_graph(
     y_axis_min_max={'min': 0, 'max': 15},
     fig_size=[10, 3.4])
 
-make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/throughput_results/",
-    filename="channel_utilization",
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    y_axes=['Resource Block 1', 'Resource Block 2'],
-    y_axis_label='Throughput (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 0.002},
-    fig_size=[10, 3.4])
+# make_line_graph(
+#     experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+#     filename="channel_utilization",
+#     x_axis='Time',
+#     x_axis_label='Time (sec)',
+#     y_axes=['Resource Block 1', 'Resource Block 2'],
+#     y_axis_label='Throughput (Mbps)',
+#     y_axis_min_max={'min': 0, 'max': 0.002},
+#     fig_size=[10, 3.4])
 
 # Queueing delay graphs
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
-    filename="queueing_delay_wtp_1",
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+    filename="wtp1_queueing_delay",
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
@@ -55,8 +55,8 @@ make_line_graph(
     fig_size=[10, 3.4])
 
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
-    filename="queueing_delay_wtp_4",
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+    filename="wtp4_queueing_delay",
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
@@ -67,8 +67,8 @@ make_line_graph(
 
 # Slices current quantum graph
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
-    filename="slice_current_quantum",
+    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+    filename="slices_current_quantum",
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
@@ -76,28 +76,28 @@ make_line_graph(
     y_axis_min_max={'min': 0, 'max': 16000},
     fig_size=[10, 3.4])
 
-# # Slices current deficit
-# make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
-#                 filename="slice_current_deficit_wtp_1",
-#                 x_axis='Time',
-#                 x_axis_label='Time (sec)',
-#                 y_axes=['QoS 1','BE 1','BE 2','BE 3','QoS 2'],
-#                 y_axis_label='Current deficit (us)',
-#                 y_axis_min_max={'min': 0, 'max': 16000},
-#                 fig_size=[10, 3.4])
+# # # Slices current deficit
+# # make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
+# #                 filename="slice_current_deficit_wtp_1",
+# #                 x_axis='Time',
+# #                 x_axis_label='Time (sec)',
+# #                 y_axes=['QoS 1','BE 1','BE 2','BE 3','QoS 2'],
+# #                 y_axis_label='Current deficit (us)',
+# #                 y_axis_min_max={'min': 0, 'max': 16000},
+# #                 fig_size=[10, 3.4])
+# #
+# # make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
+# #                 filename="slice_current_deficit_wtp_4",
+# #                 x_axis='Time',
+# #                 x_axis_label='Time (sec)',
+# #                 y_axes=['QoS 1','BE 1','BE 2','BE 3','QoS 2'],
+# #                 y_axis_label='Current deficit (us)',
+# #                 y_axis_min_max={'min': 0, 'max': 16000},
+# #                 fig_size=[10, 3.4])
 #
-# make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/queueing_delay_results/",
-#                 filename="slice_current_deficit_wtp_4",
-#                 x_axis='Time',
-#                 x_axis_label='Time (sec)',
-#                 y_axes=['QoS 1','BE 1','BE 2','BE 3','QoS 2'],
-#                 y_axis_label='Current deficit (us)',
-#                 y_axis_min_max={'min': 0, 'max': 16000},
-#                 fig_size=[10, 3.4])
-
 # MCDA results
-make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/mcda_results/",
-                filename="mcda_association_wtp_1",
+make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+                filename="wtp1_association",
                 x_axis='Time',
                 x_axis_label='Time (sec)',
                 x_axis_min_max={'min': 0, 'max': 300},
@@ -107,8 +107,8 @@ make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/
                 fig_size=[10, 3.4],
                 stacked=True)
 
-make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/mcda_results/",
-                filename="mcda_association_wtp_4",
+make_line_graph(experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
+                filename="wtp4_association",
                 x_axis='Time',
                 x_axis_label='Time (sec)',
                 x_axis_min_max={'min': 0, 'max': 300},
