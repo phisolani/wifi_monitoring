@@ -13,11 +13,11 @@ hatches = ['+', 'x', '.', '*', 'o', '\\', 'O', '-']
 colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
 
 labels = ['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2']
-gomez_means = [1.975758939, 3.985007752, 3.986751672, 6.442928888, 2.007656017]
-gomez_stdev = [0.171415301, 0.298013831, 0.337032262, 2.344181848, 0.030178547]
+gomez_means = [72.5155892, 104.3034556, 90.9691716, 122.3811068, 22.6695836]
+gomez_stdev = [4.891895451, 36.24370068, 32.55314513, 54.02524397, 8.982744464]
 
-ours_means = [2.07560512, 5.230245371, 5.386185946, 6.194488779, 2.066035894]
-ours_stdev = [0.008662744, 0.535378484, 0.613370964, 1.358109561, 0.013715413]
+ours_means = [75.6060732, 149.0562872, 133.3701568, 158.1043268, 27.7821612]
+ours_stdev = [0.286385811, 21.92071765, 21.97503862, 43.52921085, 1.130479717]
 
 error_config = {'ecolor': '0.3', 'capthick': 4, 'capsize': 4}
 
@@ -35,7 +35,7 @@ rects2 = ax.bar(x + width/2, ours_means, width,
                 label='Proposed')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.
-ax.set_ylabel('Throughput (Mbps)')
+ax.set_ylabel('Overall throughput (MBytes)')
 ax.set_xticks(x)
 ax.set_xticklabels(labels)
 ax.legend()
