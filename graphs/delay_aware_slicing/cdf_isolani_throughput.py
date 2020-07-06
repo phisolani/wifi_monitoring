@@ -85,10 +85,10 @@ ax.hist(cdf_delay_mcda['QoS 2'].values,
 ax.grid(True)
 ax.legend(loc='right')
 # ax.set_title('Cumulative step histograms')
-ax.set_xlabel('Throughput (Mbps)')
+ax.set_xlabel('Dequeueing rate (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 plt.yticks(np.arange(0, 1.01, 0.2))
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11])
+plt.xticks([0, 2, 4, 6, 8, 10, 12, 14, 16, 18])
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 plt.tight_layout()

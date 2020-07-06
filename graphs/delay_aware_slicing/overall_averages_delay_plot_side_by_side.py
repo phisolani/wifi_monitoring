@@ -15,9 +15,11 @@ colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
 labels = ['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2']
 gomez_means = [54.84658572, 372.9526555, 421.7590288, 364.51973, 102.0512335]
 gomez_stdev = [20.24722937, 103.6832567, 88.96223687, 90.9491147, 66.81342333]
+gomez_conf_t = [23.62393464, 120.97489657, 103.79879789, 106.11703467, 77.95614486]
 
 ours_means = [22.40822764, 351.6148371, 405.6261302, 345.0851194, 59.99260998]
 ours_stdev = [9.743400463, 51.91440248, 60.87969526, 86.7480696, 26.18149381]
+ours_conf_t = [11.36834337, 60.57235924, 71.03282703, 101.21536576, 30.54787829]
 
 error_config = {'ecolor': '0.3', 'capthick': 4, 'capsize': 4}
 
@@ -27,11 +29,11 @@ width = 0.35  # the width of the bars
 fig, ax = plt.subplots(figsize=(10, 3.6))
 rects1 = ax.bar(x - width/2, gomez_means, width,
                 hatch=hatches[0], color='lightslategray',
-                yerr=gomez_stdev, error_kw=error_config,
+                yerr=gomez_conf_t, error_kw=error_config,
                 label='Gómez et al. [14]')
 rects2 = ax.bar(x + width/2, ours_means, width,
                 hatch=hatches[3], color='y',
-                yerr=ours_stdev, error_kw=error_config,
+                yerr=ours_conf_t, error_kw=error_config,
                 label='Proposed')
 
 # Add some text for labels, title and custom x-axis tick labels, etc.

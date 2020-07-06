@@ -18,7 +18,7 @@ make_line_graph(
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
-    y_axis_label='Throughput (Mbps)',
+    y_axis_label='Dequeueing rate (Mbps)',
     y_axis_min_max={'min': 0, 'max': 15},
     fig_size=[10, 3.4])
 
@@ -28,7 +28,7 @@ make_line_graph(
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
-    y_axis_label='Throughput (Mbps)',
+    y_axis_label='Dequeueing rate (Mbps)',
     y_axis_min_max={'min': 0, 'max': 15},
     fig_size=[10, 3.4])
 
@@ -38,7 +38,7 @@ make_line_graph(
 #     x_axis='Time',
 #     x_axis_label='Time (sec)',
 #     y_axes=['Resource Block 1', 'Resource Block 2'],
-#     y_axis_label='Throughput (Mbps)',
+#     y_axis_label='Dequeueing rate (Mbps)',
 #     y_axis_min_max={'min': 0, 'max': 0.002},
 #     fig_size=[10, 3.4])
 
@@ -148,7 +148,7 @@ make_line_graph(
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
-    y_axis_label='Throughput (Mbps)',
+    y_axis_label='Dequeueing rate (Mbps)',
     y_axis_min_max={'min': 0, 'max': 20},
     fig_size=[10, 3.4])
 
@@ -158,7 +158,7 @@ make_line_graph(
     x_axis='Time',
     x_axis_label='Time (sec)',
     y_axes=['QoS 1', 'BE 1', 'BE 2', 'BE 3', 'QoS 2'],
-    y_axis_label='Throughput (Mbps)',
+    y_axis_label='Dequeueing rate (Mbps)',
     y_axis_min_max={'min': 0, 'max': 20},
     fig_size=[10, 3.4])
 
