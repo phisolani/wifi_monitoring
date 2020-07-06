@@ -9,11 +9,11 @@ sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.
 fig, ax = plt.subplots(figsize=(5, 6))
 
 data = pd.read_csv('averages_queueing_delay.csv', sep=';')
-print(data)
+print('data', data)
 
 def remove_outlier(df):
-    low = .05
-    high = .95
+    low = .01
+    high = .99
     quant_df = df.quantile([low, high])
     for name in list(df.columns):
         if is_numeric_dtype(df[name]):
@@ -21,7 +21,7 @@ def remove_outlier(df):
     return df
 
 new_data = remove_outlier(data)
-print(remove_outlier(data))
+print('new_data', new_data)
 
 my_pal = {"Gómez": "lightslategray", "Proposed": "y"}
 
