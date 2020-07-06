@@ -33,7 +33,7 @@ ax = sns.boxplot(y='throughput',
                  linewidth=2,
                  notch=True)
 
-hatches = cycle(['+', 'Ox'])
+hatches = cycle(['+', '.'])
 for i, patch in enumerate(ax.artists):
     # Boxes from left to right
     hatch = next(hatches)
@@ -41,9 +41,9 @@ for i, patch in enumerate(ax.artists):
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='upper right')
+ax.legend(loc='upper left')
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
-ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("Ox")
+ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch(".")
 ax.set(xlabel=None)
 ax.set_ylabel('Overall throughput (MBytes)')
 plt.tight_layout()

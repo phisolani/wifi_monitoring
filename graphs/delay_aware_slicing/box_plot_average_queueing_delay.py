@@ -6,7 +6,7 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 6))
+fig, ax = plt.subplots(figsize=(10, 3.6))
 
 data = pd.read_csv('averages_queueing_delay.csv', sep=';')
 print('data', data)
@@ -42,9 +42,21 @@ for i, patch in enumerate(ax.artists):
 plt.axhline(y=50, color='r', linestyle='--', linewidth=2)
 plt.axhline(y=30, color='r', linestyle='--', linewidth=2)
 
+ax.annotate(r'$D^{QoS1}_{QoS}$ (30ms)',
+            xy=(1, 30),
+            xytext=(1, 15),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='center', verticalalignment='top')
+
+ax.annotate(r'$D^{QoS2}_{QoS}$ (50ms)',
+            xy=(3, 50),
+            xytext=(3, 15),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='center', verticalalignment='top')
+
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=2)
+ax.legend(loc='upper left')
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
 ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch(".")
 ax.set(xlabel=None)
