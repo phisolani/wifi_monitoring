@@ -44,13 +44,13 @@ plt.axhline(y=30, color='r', linestyle='--', linewidth=2)
 
 ax.annotate(r'$D^{QoS1}_{QoS}$ (30ms)',
             xy=(1, 30),
-            xytext=(1, 15),
+            xytext=(1, 17),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 
 ax.annotate(r'$D^{QoS2}_{QoS}$ (50ms)',
             xy=(3, 50),
-            xytext=(3, 15),
+            xytext=(3, 17),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 
