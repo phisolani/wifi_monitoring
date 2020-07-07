@@ -33,7 +33,7 @@ ax = sns.boxplot(y='queueing delay',
                  linewidth=2,
                  notch=True)
 
-hatches = cycle(['+', '.'])
+hatches = cycle(['+', '*'])
 for i, patch in enumerate(ax.artists):
     # Boxes from left to right
     hatch = next(hatches)
@@ -58,7 +58,7 @@ ax.annotate(r'$D^{QoS2}_{QoS}$ (50ms)',
 ax.grid(True)
 ax.legend(loc='upper left')
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
-ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch(".")
+ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("*")
 ax.set(xlabel=None)
 ax.set_ylabel('Queueing Delay (ms)')
 ax.set_yscale('log')
