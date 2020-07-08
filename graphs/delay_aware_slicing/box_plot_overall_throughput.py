@@ -34,14 +34,13 @@ ax = sns.boxplot(y='throughput',
                  notch=True)
 
 # Select which box you want to change
-
 # for artist in ax.artists:
     # Change the appearance of that box
     # mybox.set_facecolor('white')
-    # artist.set_edgecolor('black')
+    # artist.set_edgecolor('white')
     # artist.set_linewidth(2)
 
-hatches = cycle(['+', '*'])
+hatches = cycle(['+', 'Ox'])
 for i, patch in enumerate(ax.artists):
     # Boxes from left to right
     hatch = next(hatches)
@@ -51,7 +50,7 @@ for i, patch in enumerate(ax.artists):
 ax.grid(True)
 ax.legend(loc='upper left')
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
-ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("*")
+ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("Ox")
 # ax.legend_.findobj(mpl.patches.Rectangle)[0].set_edgecolor('white')
 # ax.legend_.findobj(mpl.patches.Rectangle)[1].set_edgecolor('white')
 ax.set(xlabel=None)
