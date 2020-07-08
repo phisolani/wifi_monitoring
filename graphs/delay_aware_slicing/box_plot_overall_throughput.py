@@ -35,10 +35,10 @@ ax = sns.boxplot(y='throughput',
 
 # Select which box you want to change
 
-for artist in ax.artists:
+# for artist in ax.artists:
     # Change the appearance of that box
     # mybox.set_facecolor('white')
-    artist.set_edgecolor('black')
+    # artist.set_edgecolor('black')
     # artist.set_linewidth(2)
 
 hatches = cycle(['+', '*'])
