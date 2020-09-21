@@ -83,7 +83,7 @@ ax.hist(cdf_delay_mcda['QoS 2'].values,
 
 ax.annotate('0Mbps (35%)',
             xy=(0, 0.35),
-            xytext=(1.9, 0.7),
+            xytext=(2.3, 0.7),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
