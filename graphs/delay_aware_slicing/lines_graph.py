@@ -19,6 +19,7 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                     title=None,
                     fig_size=None,
                     x_axis_label=None,
+                    x_axis_ticks=True,
                     x_axis_min_max=None,
                     y_axis_label=None,
                     y_axis_min_max=None,
@@ -44,9 +45,6 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
 
     if y_log_scale is not None:
         host.set_yscale('log')
-
-    # Adjust x Axis
-    plt.tight_layout()
 
     #colors = ['darkblue', 'darkviolet', 'mediumblue', 'deeppink', 'dodgerblue', 'magenta']
     # colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
@@ -101,8 +99,15 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                       y_axis_min_max['max'])
 
     plt.xticks(np.arange(0, 330, step=50))
-    host.set_xlabel(x_axis_label)
-    host.set_ylabel(y_axis_label)
+
+    if not x_axis_ticks:
+        plt.setp(host.get_xticklabels(), visible=False)
+
+    if x_axis_label is not None:
+        host.set_xlabel(x_axis_label)
+
+    if y_axis_label is not None:
+        host.set_ylabel(y_axis_label)
 
     plt.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=len(y_axes))  # shadow=True)
 

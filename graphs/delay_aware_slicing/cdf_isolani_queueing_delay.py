@@ -19,14 +19,14 @@ n_bins = 50
 colors = ['g', 'b', 'c', 'm', 'y']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ["QoS 1", "BE 1", "BE 2", "BE 3", "QoS 2"]
-cdf_delay_mcda = pd.read_csv("results/isolani/main/cdf_queueing_delay.csv",
-                             usecols=col_list, sep=';')
+cdf_delay = pd.read_csv("results/isolani/main/cdf_isolani_queueing_delay.csv",
+                        usecols=col_list, sep=';')
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(10, 3.6))
 
 # plot the cumulative histogram
-n, bins, patches = ax.hist(cdf_delay_mcda['QoS 1'].values,
+n, bins, patches = ax.hist(cdf_delay['QoS 1'].values,
                            n_bins,
                            density=True,
                            histtype='step',
@@ -37,7 +37,7 @@ n, bins, patches = ax.hist(cdf_delay_mcda['QoS 1'].values,
                            # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
                            label='QoS 1')
 
-ax.hist(cdf_delay_mcda['BE 1'].values,
+ax.hist(cdf_delay['BE 1'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -48,7 +48,7 @@ ax.hist(cdf_delay_mcda['BE 1'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 1')
 
-ax.hist(cdf_delay_mcda['BE 2'].values,
+ax.hist(cdf_delay['BE 2'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -59,7 +59,7 @@ ax.hist(cdf_delay_mcda['BE 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 2')
 
-ax.hist(cdf_delay_mcda['BE 3'].values,
+ax.hist(cdf_delay['BE 3'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -70,7 +70,7 @@ ax.hist(cdf_delay_mcda['BE 3'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 3')
 
-ax.hist(cdf_delay_mcda['QoS 2'].values,
+ax.hist(cdf_delay['QoS 2'].values,
         n_bins,
         density=True,
         histtype='step',
