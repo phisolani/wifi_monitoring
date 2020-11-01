@@ -28,7 +28,7 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
-    sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
+    sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=2.0, color_codes=True, rc=None)
 
     # Reading CSV results
     csv_file = experiment_path + filename + '.csv'

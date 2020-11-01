@@ -11,7 +11,7 @@ __status__ = "Prototype"
 
 from graphs.enhanced_qos.lines_graph import *
 
-fig_size = [10, 3.4]
+fig_size = [10, 4.4]
 
 # LVAP Shaper (Scenario A)
 make_line_graph(
