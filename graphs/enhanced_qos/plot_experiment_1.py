@@ -15,7 +15,7 @@ fig_size = [10, 4.4]
 
 # LVAP Shaper (Scenario A)
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/enhanced_qos/experiment_2/scenario_a/",
+    experiment_path="/graphs/enhanced_qos/experiment_1/scenario_a/",
     filename="lvap_shaper",
     x_axis='Time',
     x_axis_label='Time (sec)',
@@ -27,7 +27,7 @@ make_line_graph(
 
 # LVAP Throughput (Scenario A)
 make_line_graph(
-    experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/enhanced_qos/experiment_2/scenario_a/",
+    experiment_path="/graphs/enhanced_qos/experiment_1/scenario_a/",
     filename="lvap_throughput",
     x_axis='Time',
     x_axis_label='Time (sec)',
