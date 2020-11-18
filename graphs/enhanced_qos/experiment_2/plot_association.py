@@ -13,10 +13,10 @@ from graphs.enhanced_qos.association_graph import *
 
 make_association_graph(
     experiment_path='gomez/association/',
-    filenames=['wtp1_association', 'wtp2_association', 'wtp3_association']
+    filenames=['ap_1_association', 'ap_2_association', 'ap_3_association']
 )
 
 make_association_graph(
     experiment_path='isolani/association/',
-    filenames=['wtp1_association', 'wtp2_association', 'wtp3_association']
+    filenames=['ap_1_association', 'ap_2_association', 'ap_3_association']
 )

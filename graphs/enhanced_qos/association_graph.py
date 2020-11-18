@@ -32,7 +32,7 @@ def make_association_graph(experiment_path, filenames):
     # hatches = ['\\', '.', '/']
     hatches = ['', '.', '/']
 
-    legend_labels = [name[:4].upper() for name in filenames]
+    legend_labels = [name[:4].upper().replace('_', ' ') for name in filenames]
     xmin = 0
     xmax = min([len(x) for x in data])
     ymin = 0
