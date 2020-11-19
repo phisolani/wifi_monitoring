@@ -69,6 +69,7 @@ def make_association_graph(experiment_path, filenames):
         ax.axhline(y=i, color='w', linewidth=2)
 
     ax.set_xlabel('Time (sec)')
+    ax.set_xticks([0, 100, 200, 300, 400, 500, 600])
 
     filename = 'association'
     plt.savefig(str(experiment_path) + str(filename) + '.pdf', format="pdf", bbox_inches="tight")
@@ -87,7 +88,7 @@ def get_data(directory, filenames):
     for f in filenames:
         d = {}
         path = directory + f + '.csv'
-        df = pd.read_csv(path, ',', header=0)
+        df = pd.read_csv(path, ';', header=0)
         for header_val in df.columns.values:
             if 'STA' in header_val:
                 d[header_val] = []
