@@ -21,7 +21,7 @@ def make_association_graph(experiment_path, filenames):
     
     data, y_values = get_data(experiment_path, filenames)
 
-    fig, ax = plt.subplots(figsize=(12, 6), dpi=144)
+    fig, ax = plt.subplots(figsize=(42, 6), dpi=144)
 
     plt.tight_layout()
 
