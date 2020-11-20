@@ -28,7 +28,7 @@ n, bins, patches = ax.hist(cdf_delay['BE 1'].values,
                            n_bins,
                            density=True,
                            histtype='step',
-                           cumulative=True,
+                           cumulative=-1,
                            color=colors[0],
                            linestyle=line_styles[0],
                            linewidth=2,
@@ -39,7 +39,7 @@ ax.hist(cdf_delay['BE 2'].values,
         n_bins,
         density=True,
         histtype='step',
-        cumulative=True,
+        cumulative=-1,
         color=colors[1],
         linestyle=line_styles[1],
         linewidth=2,
@@ -50,7 +50,7 @@ ax.hist(cdf_delay['BE 3'].values,
         n_bins,
         density=True,
         histtype='step',
-        cumulative=True,
+        cumulative=-1,
         color=colors[2],
         linestyle=line_styles[2],
         linewidth=2,
@@ -61,7 +61,7 @@ ax.hist(cdf_delay['BE 4'].values,
         n_bins,
         density=True,
         histtype='step',
-        cumulative=True,
+        cumulative=-1,
         color=colors[3],
         linestyle=line_styles[3],
         linewidth=2,
@@ -72,7 +72,7 @@ ax.hist(cdf_delay['QoS 1'].values,
         n_bins,
         density=True,
         histtype='step',
-        cumulative=True,
+        cumulative=-1,
         color=colors[4],
         linestyle=line_styles[4],
         linewidth=2,
@@ -83,26 +83,26 @@ ax.hist(cdf_delay['QoS 2'].values,
         n_bins,
         density=True,
         histtype='step',
-        cumulative=True,
+        cumulative=-1,
         color=colors[5],
         linestyle=line_styles[5],
         linewidth=2,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-# plt.axvline(x=5, linestyle='--', color='dimgray')
-# ax.annotate(r'$D^{QoS1}_{QoS}$',
-#             xy=(5, 0.80),
-#             xytext=(2.5, 0.80),
-#             arrowprops=dict(facecolor='black', shrink=0.05),
-#             horizontalalignment='right', verticalalignment='top')
-#
-# plt.axvline(x=100, linestyle='--', color='dimgray')
-# ax.annotate(r'$D^{QoS2}_{QoS}$ (10%)',
-#             xy=(100, 0.10),
-#             xytext=(85, 0.65),
-#             arrowprops=dict(facecolor='black', shrink=0.05),
-#             horizontalalignment='right', verticalalignment='top')
+plt.axvline(x=10, linestyle='--', color='dimgray')
+ax.annotate(r'$\mu^{QoS1}_{QoS}$ (70%)',
+            xy=(10, 0.70),
+            xytext=(21, 0.85),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='right', verticalalignment='top')
+
+plt.axvline(x=5, linestyle='--', color='dimgray')
+ax.annotate(r'$\mu^{QoS2}_{QoS}$ (85%)',
+            xy=(5, 0.85),
+            xytext=(20, 1),
+            arrowprops=dict(facecolor='black', shrink=0.05),
+            horizontalalignment='right', verticalalignment='top')
 
 # tidy up the figure
 ax.grid(True)
@@ -113,7 +113,7 @@ ax.set_xlabel('Dequeueing rate (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
 plt.yticks(np.arange(0, 1.01, 0.1))
-# ax.set_xticks([0, 5, 10, 15, 20])
+ax.set_xticks([0, 5, 10, 15, 20, 25, 30])
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))

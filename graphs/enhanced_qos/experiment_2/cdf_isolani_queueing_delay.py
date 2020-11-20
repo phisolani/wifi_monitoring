@@ -100,7 +100,7 @@ ax.annotate(r'$D^{QoS1}_{QoS}$ (86%)',
 plt.axvline(x=100, linestyle='--', color='dimgray')
 ax.annotate(r'$D^{QoS2}_{QoS}$ (87%)',
             xy=(100, 0.87),
-            xytext=(95, 0.65),
+            xytext=(500, 0.55),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
