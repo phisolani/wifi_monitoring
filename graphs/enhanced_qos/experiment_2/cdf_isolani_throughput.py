@@ -17,7 +17,7 @@ n_bins = 50
 colors = ['g', 'b', 'c', 'm', 'y', 'r']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
-filename = 'gomez/throughput/overall_gomez_throughput'
+filename = 'isolani/throughput/overall_isolani_throughput'
 cdf_delay = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
@@ -112,7 +112,7 @@ ax.legend(loc='right')
 ax.set_xlabel('Dequeueing rate (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-plt.yticks(np.arange(0, 1.01, 0.1))
+plt.yticks(np.arange(0, 1.01, 0.2))
 # ax.set_xticks([0, 5, 10, 15, 20])
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
