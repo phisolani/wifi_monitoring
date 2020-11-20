@@ -112,7 +112,7 @@ ax.legend(loc='right')
 ax.set_xlabel('Dequeueing rate (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-plt.yticks(np.arange(0, 1.01, 0.2))
+plt.yticks(np.arange(0, 1.01, 0.1))
 # ax.set_xticks([0, 5, 10, 15, 20])
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
