@@ -17,11 +17,11 @@ n_bins = 50
 colors = ['g', 'b', 'c', 'm', 'y', 'r']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
-filename = 'gomez/throughput/overall_gomez_queueing_delay'
+filename = 'gomez/throughput/overall_gomez_throughput'
 cdf_delay = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(10, 3.6))
+fig, ax = plt.subplots(figsize=(7, 5))
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_delay['BE 1'].values,
@@ -90,19 +90,19 @@ ax.hist(cdf_delay['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-plt.axvline(x=5, linestyle='--', color='dimgray')
-ax.annotate(r'$D^{QoS1}_{QoS}$',
-            xy=(5, 0.80),
-            xytext=(2.5, 0.80),
-            arrowprops=dict(facecolor='black', shrink=0.05),
-            horizontalalignment='right', verticalalignment='top')
-
-plt.axvline(x=100, linestyle='--', color='dimgray')
-ax.annotate(r'$D^{QoS2}_{QoS}$ (10%)',
-            xy=(100, 0.10),
-            xytext=(85, 0.65),
-            arrowprops=dict(facecolor='black', shrink=0.05),
-            horizontalalignment='right', verticalalignment='top')
+# plt.axvline(x=5, linestyle='--', color='dimgray')
+# ax.annotate(r'$D^{QoS1}_{QoS}$',
+#             xy=(5, 0.80),
+#             xytext=(2.5, 0.80),
+#             arrowprops=dict(facecolor='black', shrink=0.05),
+#             horizontalalignment='right', verticalalignment='top')
+#
+# plt.axvline(x=100, linestyle='--', color='dimgray')
+# ax.annotate(r'$D^{QoS2}_{QoS}$ (10%)',
+#             xy=(100, 0.10),
+#             xytext=(85, 0.65),
+#             arrowprops=dict(facecolor='black', shrink=0.05),
+#             horizontalalignment='right', verticalalignment='top')
 
 # tidy up the figure
 ax.grid(True)
@@ -112,8 +112,8 @@ ax.legend(loc='right')
 ax.set_xlabel('Dequeueing rate (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-plt.yticks(np.arange(0, 1.01, 0.2))
-# ax.set_xticks([0.01, 0.1, 1, 10, 100, 1000, 10000, 100000])
+# plt.yticks(np.arange(0, 1.01, 0.2))
+# ax.set_xticks([0, 5, 10, 15, 20])
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
