@@ -12,6 +12,7 @@ __status__ = "Prototype"
 from graphs.enhanced_qos.lines_graph import *
 
 fig_size = [10, 3.4]
+x_max = 200
 
 # Scenario A (UL v UL)
 path = 'scenario_a/'
@@ -23,10 +24,10 @@ make_line_graph(
     filename='sta_throughput',
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max={'min': 0, 'max': x_max},
     y_axes=['BE Throughput', 'QoS Throughput', 'Shaper BE', 'Shaper QoS'],
     y_axis_label='Throughput (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 110},
+    y_axis_min_max={'min': 0, 'max': 1010},
     y_log_scale=True,
     markers=["", "", "D", "1"],
     fig_size=fig_size,
@@ -40,14 +41,14 @@ make_two_axis_line_graph(
     filename='sta_throughput',
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max={'min': 0, 'max': x_max},
     left_y_axes=['Shaper BE', 'Shaper QoS'],
-    left_y_axis_min_max={'min': 0, 'max': 110},
+    left_y_axis_min_max={'min': 0, 'max': 1010},
     left_y_axis_label='Shaper Value (Mbps)',
     left_y_log_scale=True,
     right_y_axes=['Delay BE', 'Delay QoS'],
     right_y_axis_min_max={'min': 0, 'max': 100},
-    right_y_axis_label='Delay (msec)',
+    right_y_axis_label='Queueing delay (ms)',
     right_y_log_scale=True,
     fig_size=fig_size,
     output_name=output_name
@@ -60,14 +61,14 @@ make_two_axis_line_graph(
     filename='sta_throughput',
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max={'min': 0, 'max': x_max},
     left_y_axes=['Shaper BE', 'Shaper QoS'],
-    left_y_axis_min_max={'min': 0, 'max': 110},
-    left_y_axis_label='Shaper Value (Mbps)',
+    left_y_axis_min_max={'min': 0, 'max': 1010},
+    left_y_axis_label='Throughput (Mbps)',
     left_y_log_scale=True,
     right_y_axes=['Loss BE', 'Loss QoS'],
-    right_y_axis_min_max={'min': 0, 'max': 60},
-    right_y_axis_label='Loss (packets/sec)',
+    right_y_axis_min_max={'min': None, 'max': 60},
+    right_y_axis_label='Loss (frames/sec)',
     fig_size=fig_size,
     output_name=output_name
 )
