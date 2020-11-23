@@ -113,7 +113,7 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
 
     xcoords = [10, 40, 70, 100, 130, 160, 190]
     for xc in xcoords:
-        plt.axvline(x=xc, linestyle='--', color='dimgray')
+        plt.axvline(x=xc, linestyle='--', color='dimgray', linewidth=2)
 
     if title is not None:
         plt.title(title)

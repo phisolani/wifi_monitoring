@@ -81,9 +81,9 @@ ax.hist(cdf_throughput['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-ax.annotate('0Mbps (35%)',
+ax.annotate('0Mbps\n(35%)',
             xy=(0, 0.35),
-            xytext=(2.3, 0.7),
+            xytext=(1.6, 0.9),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
