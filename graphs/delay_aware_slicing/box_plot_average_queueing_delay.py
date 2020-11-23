@@ -6,7 +6,7 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 3.6))
+fig, ax = plt.subplots(figsize=(10, 3.6))
 
 data = pd.read_csv('averages_queueing_delay.csv', sep=';')
 print('data', data)
@@ -23,7 +23,7 @@ def remove_outlier(df):
 new_data = remove_outlier(data)
 print('new_data', new_data)
 
-my_pal = {"Gómez": "lightslategray", "Proposed": "y"}
+my_pal = {"Gómez et al.": "lightslategray", "Proposed": "y"}
 
 ax = sns.boxplot(y='queueing delay',
                  x='slice',
@@ -63,7 +63,7 @@ ax.annotate(r'$D^{QoS2}_{QoS}$ (50ms)',
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=2)
+ax.legend(loc='upper left', ncol=1)
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
 ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("Ox")
 # ax.legend_.findobj(mpl.patches.Rectangle)[0].set_edgecolor('white')
