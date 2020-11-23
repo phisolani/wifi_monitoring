@@ -14,7 +14,7 @@ import pandas as pd
 from matplotlib.ticker import PercentFormatter
 
 n_bins = 50
-colors = ['g', 'b', 'c', 'm', 'y', 'r']
+colors = ['g', 'b', 'c', 'm', 'y', 'k']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
 filename = 'gomez/queueing_delay/overall_gomez_queueing_delay'
@@ -90,14 +90,14 @@ ax.hist(cdf_delay['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-plt.axvline(x=5, linestyle='--', color='dimgray')
+plt.axvline(x=5, linestyle='--', color='r')
 ax.annotate(r'$D^{QoS1}_{QoS}$',
             xy=(5, 0.80),
             xytext=(1, 0.80),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
-plt.axvline(x=100, linestyle='--', color='dimgray')
+plt.axvline(x=100, linestyle='--', color='r')
 ax.annotate(r'$D^{QoS2}_{QoS}$ (10%)',
             xy=(100, 0.10),
             xytext=(4, 0.40),

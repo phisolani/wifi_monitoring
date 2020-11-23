@@ -28,7 +28,10 @@ def make_association_graph(experiment_path, filenames):
     # colors = ["#001B2E", "#294C60", "#ADBC64"]
     colors = ['#CAE7B9', '#F3DE8A', '#EB9486']
     # colors = ['#00BBCC', '#F96E46', '#F9C846']
-    colors = ['#00BBCC', '#F96E46', '#78DB57']
+    # colors = ['#00BBCC', '#F96E46', '#78DB57']
+    # colors = ['brown', 'orange', 'olive']
+    colors = ['darkcyan', 'steelblue', 'slategray']
+
     # hatches = ['\\', '.', '/']
     hatches = ['', '.', '/']
 
@@ -52,7 +55,7 @@ def make_association_graph(experiment_path, filenames):
 
     xcoords = [10, 70, 130, 190]
     for xc in xcoords:
-        plt.axvline(x=xc, linestyle='--', color='#545863', linewidth=2)
+        plt.axvline(x=xc, linestyle='--', color='dimgray', linewidth=2)
 
     for i in range(len(data)):
         current = None #(current wtp, value first seen)
