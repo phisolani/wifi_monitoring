@@ -18,13 +18,13 @@ colors = ['g', 'b', 'c', 'm', 'y', 'k']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
 filename = 'isolani/queueing_delay/overall_isolani_queueing_delay'
-cdf_delay = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
+cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(7, 5))
 
 # plot the cumulative histogram
-n, bins, patches = ax.hist(cdf_delay['BE 1'].values,
+n, bins, patches = ax.hist(cdf_data['BE 1'].values,
                            n_bins,
                            density=True,
                            histtype='step',
@@ -35,7 +35,7 @@ n, bins, patches = ax.hist(cdf_delay['BE 1'].values,
                            # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
                            label='BE 1')
 
-ax.hist(cdf_delay['BE 2'].values,
+ax.hist(cdf_data['BE 2'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -46,7 +46,7 @@ ax.hist(cdf_delay['BE 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 2')
 
-ax.hist(cdf_delay['BE 3'].values,
+ax.hist(cdf_data['BE 3'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -57,7 +57,7 @@ ax.hist(cdf_delay['BE 3'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 3')
 
-ax.hist(cdf_delay['BE 4'].values,
+ax.hist(cdf_data['BE 4'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -68,7 +68,7 @@ ax.hist(cdf_delay['BE 4'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 4')
 
-ax.hist(cdf_delay['QoS 1'].values,
+ax.hist(cdf_data['QoS 1'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -79,7 +79,7 @@ ax.hist(cdf_delay['QoS 1'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 1')
 
-ax.hist(cdf_delay['QoS 2'].values,
+ax.hist(cdf_data['QoS 2'].values,
         n_bins,
         density=True,
         histtype='step',

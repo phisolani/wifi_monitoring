@@ -14,17 +14,18 @@ import pandas as pd
 from matplotlib.ticker import PercentFormatter
 
 n_bins = 50
-colors = ['g', 'b', 'c', 'm', 'y', 'k']
-line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
-col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
-filename = 'gomez/throughput/overall_gomez_throughput'
+colors = ['c', 'm', 'y', 'k']
+line_styles = [':', '-.', '-', '--', ':', '-.']
+col_list = ['BE 3', 'BE 4', 'QoS 1']
+filename = 'isolani/throughput/overall_isolani_slice_throughput'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
+print(cdf_data)
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(7, 5))
 
 # plot the cumulative histogram
-n, bins, patches = ax.hist(cdf_data['BE 1'].values,
+n, bins, patches = ax.hist(cdf_data['BE 3'].values,
                            n_bins,
                            density=True,
                            histtype='step',
@@ -33,37 +34,15 @@ n, bins, patches = ax.hist(cdf_data['BE 1'].values,
                            linestyle=line_styles[0],
                            linewidth=2,
                            # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
-                           label='BE 1')
-
-ax.hist(cdf_data['BE 2'].values,
-        n_bins,
-        density=True,
-        histtype='step',
-        cumulative=-1,
-        color=colors[1],
-        linestyle=line_styles[1],
-        linewidth=2,
-        # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
-        label='BE 2')
-
-ax.hist(cdf_data['BE 3'].values,
-        n_bins,
-        density=True,
-        histtype='step',
-        cumulative=-1,
-        color=colors[2],
-        linestyle=line_styles[2],
-        linewidth=2,
-        # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
-        label='BE 3')
+                           label='BE 3')
 
 ax.hist(cdf_data['BE 4'].values,
         n_bins,
         density=True,
         histtype='step',
         cumulative=-1,
-        color=colors[3],
-        linestyle=line_styles[3],
+        color=colors[1],
+        linestyle=line_styles[1],
         linewidth=2,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 4')
@@ -73,34 +52,16 @@ ax.hist(cdf_data['QoS 1'].values,
         density=True,
         histtype='step',
         cumulative=-1,
-        color=colors[4],
-        linestyle=line_styles[4],
+        color=colors[2],
+        linestyle=line_styles[2],
         linewidth=2,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 1')
 
-ax.hist(cdf_data['QoS 2'].values,
-        n_bins,
-        density=True,
-        histtype='step',
-        cumulative=-1,
-        color=colors[5],
-        linestyle=line_styles[5],
-        linewidth=2,
-        # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
-        label='QoS 2')
-
 plt.axvline(x=10, linestyle='--', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS1}_{QoS}$',
-            xy=(10, 0.30),
-            xytext=(18, 0.30),
-            arrowprops=dict(facecolor='black', shrink=0.05),
-            horizontalalignment='right', verticalalignment='top')
-
-plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS2}_{QoS}$ (10%)',
-            xy=(5, 0.10),
-            xytext=(20, 0.7),
+ax.annotate(r'$\mu^{QoS1}_{QoS}$ (72%)',
+            xy=(10, 0.72),
+            xytext=(18, 0.92),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
@@ -114,6 +75,7 @@ ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
 plt.yticks(np.arange(0, 1.01, 0.1))
 # ax.set_xticks([0, 5, 10, 15, 20])
+ax.set_xlim(0, 20)
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
