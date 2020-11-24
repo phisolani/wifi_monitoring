@@ -90,14 +90,14 @@ ax.hist(cdf_delay['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-plt.axvline(x=5, linestyle='--', color='r')
+plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS1}_{QoS}$',
             xy=(5, 0.80),
             xytext=(1, 0.80),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
-plt.axvline(x=100, linestyle='--', color='r')
+plt.axvline(x=100, linestyle='--', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS2}_{QoS}$ (10%)',
             xy=(100, 0.10),
             xytext=(4, 0.40),

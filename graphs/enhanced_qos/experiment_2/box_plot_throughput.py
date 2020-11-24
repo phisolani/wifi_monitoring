@@ -20,7 +20,8 @@ def remove_outlier(df):
             df = df[(df[name] > quant_df.loc[low, name]) & (df[name] < quant_df.loc[high, name])]
     return df
 
-new_data = remove_outlier(data)
+#new_data = remove_outlier(data)
+new_data = data
 print('new_data', new_data)
 
 my_pal = {"Gómez et al.": "cadetblue", "Proposed": "sandybrown"}
@@ -49,15 +50,15 @@ for i, patch in enumerate(ax.artists):
 plt.axhline(y=10, color='r', linestyle='--', linewidth=2)
 plt.axhline(y=5, color='r', linestyle='--', linewidth=2)
 
-ax.annotate(r'$\mu^{QoS1}_{QoS}$ (10Mbps)',
-            xy=(0.5, 10),
-            xytext=(0.5, 17),
+ax.annotate(r'$\mu^{QoS1}_{QoS}$' + '\n(10Mbps)',
+            xy=(-0.1, 10),
+            xytext=(-0.1, 19),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 
-ax.annotate(r'$\mu^{QoS2}_{QoS}$ (5Mbps)',
-            xy=(4.5, 5),
-            xytext=(4.5, 17),
+ax.annotate(r'$\mu^{QoS2}_{QoS}$' + '\n(5Mbps)',
+            xy=(5, 5),
+            xytext=(5, 17),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 
