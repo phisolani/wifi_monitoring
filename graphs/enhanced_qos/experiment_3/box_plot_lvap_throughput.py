@@ -8,7 +8,7 @@ from itertools import cycle
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(7, 5))
 
-data = pd.read_csv('overall_throughput.csv', sep=';')
+data = pd.read_csv('overall_lvap_throughput.csv', sep=';')
 print('data', data)
 
 def remove_outlier(df):
@@ -50,17 +50,12 @@ for i, patch in enumerate(ax.artists):
 plt.axhline(y=10, color='r', linestyle='--', linewidth=2)
 plt.axhline(y=5, color='r', linestyle='--', linewidth=2)
 
-ax.annotate(r'$\mu^{QoS1}_{QoS}$' + '\n(10Mbps)',
-            xy=(0, 10),
-            xytext=(0, 23),
+ax.annotate(r'$\mu^{QoS2}_{QoS}$ (10Mbps)',
+            xy=(1.7, 5),
+            xytext=(1.7, 19),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 
-ax.annotate(r'$\mu^{QoS2}_{QoS}$' + '\n(5Mbps)',
-            xy=(5, 5),
-            xytext=(5, 19),
-            arrowprops=dict(facecolor='black', shrink=0.05),
-            horizontalalignment='center', verticalalignment='top')
 
 # tidy up the figure
 ax.grid(True)
@@ -71,8 +66,8 @@ ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("Ox")
 # ax.legend_.findobj(mpl.patches.Rectangle)[1].set_edgecolor('white')
 ax.set(xlabel=None)
 ax.set_yticks([0, 5, 10, 15, 20, 25])
-ax.set_ylim(None, 25)
-ax.set_ylabel('Dequeueing rate (Mbps)')
+ax.set_ylim(-1, 25)
+ax.set_ylabel('Throughput (Mbps)')
 plt.tight_layout()
 plt.savefig("overall_results_throughput_box_plot.eps", format="eps")
 plt.savefig("overall_results_throughput_box_plot.pdf", format="pdf")
