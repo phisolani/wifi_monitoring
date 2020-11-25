@@ -17,7 +17,7 @@ n_bins = 50
 colors = ['g', 'b', 'k']
 line_styles = ['-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'QoS 2']
-filename = 'isolani/throughput/overall_lvap_rx_mbps'
+filename = 'isolani/throughput/overall_isolani_lvap_rx_mbps'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 print(cdf_data)
 
