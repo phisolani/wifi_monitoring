@@ -17,11 +17,11 @@ n_bins = 50
 colors = ['g', 'b', 'c', 'm', 'y', 'k']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
-filename = 'gomez/throughput/overall_gomez_throughput'
+filename = 'isolani/throughput/overall_isolani_slice_deuqueueing_rate'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 5))
+fig, ax = plt.subplots(figsize=(7, 4))
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_data['BE 1'].values,
@@ -91,16 +91,16 @@ ax.hist(cdf_data['QoS 2'].values,
         label='QoS 2')
 
 plt.axvline(x=10, linestyle='--', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS1}_{QoS}$',
-            xy=(10, 0.30),
-            xytext=(18, 0.30),
+ax.annotate(r'$\mu^{QoS1}_{QoS}$ (70%)',
+            xy=(10, 0.70),
+            xytext=(21, 0.85),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS2}_{QoS}$ (10%)',
-            xy=(5, 0.10),
-            xytext=(20, 0.7),
+ax.annotate(r'$\mu^{QoS2}_{QoS}$ (85%)',
+            xy=(5, 0.85),
+            xytext=(20, 1),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
@@ -112,8 +112,8 @@ ax.legend(loc='right')
 ax.set_xlabel('Dequeueing rate (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-plt.yticks(np.arange(0, 1.01, 0.1))
-# ax.set_xticks([0, 5, 10, 15, 20])
+plt.yticks(np.arange(0, 1.01, 0.2))
+ax.set_xticks([0, 5, 10, 15, 20, 25, 30])
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))

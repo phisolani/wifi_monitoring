@@ -6,9 +6,9 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 5))
+fig, ax = plt.subplots(figsize=(7, 4))
 
-data = pd.read_csv('overall_queueing_delay.csv', sep=';')
+data = pd.read_csv('overall_slice_queueing_delay.csv', sep=';')
 print('data', data)
 
 def remove_outlier(df):
@@ -74,7 +74,7 @@ ax.set_ylabel('Queueing Delay (ms)')
 ax.set_yscale('log')
 ax.set_yticks([0.1, 1, 10, 100, 1000, 10000, 100000, 1000000])
 plt.tight_layout()
-plt.savefig("overall_results_queueing_delay_box_plot.eps", format="eps")
-plt.savefig("overall_results_queueing_delay_box_plot.pdf", format="pdf")
-plt.savefig("overall_results_queueing_delay_box_plot.png", format="png")
+plt.savefig("overall_slice_queueing_delay_box_plot.eps", format="eps")
+plt.savefig("overall_slice_queueing_delay_box_plot.pdf", format="pdf")
+plt.savefig("overall_slice_queueing_delay_box_plot.png", format="png")
 plt.show()

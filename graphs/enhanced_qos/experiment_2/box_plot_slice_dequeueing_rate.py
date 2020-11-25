@@ -6,9 +6,9 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 5))
+fig, ax = plt.subplots(figsize=(7, 4))
 
-data = pd.read_csv('overall_throughput.csv', sep=';')
+data = pd.read_csv('overall_slice_dequeuing_rate.csv', sep=';')
 print('data', data)
 
 def remove_outlier(df):
@@ -58,7 +58,7 @@ ax.annotate(r'$\mu^{QoS1}_{QoS}$' + '\n(10Mbps)',
 
 ax.annotate(r'$\mu^{QoS2}_{QoS}$' + '\n(5Mbps)',
             xy=(5, 5),
-            xytext=(5, 19),
+            xytext=(5, 23),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 
@@ -74,7 +74,7 @@ ax.set_yticks([0, 5, 10, 15, 20, 25])
 ax.set_ylim(None, 25)
 ax.set_ylabel('Dequeueing rate (Mbps)')
 plt.tight_layout()
-plt.savefig("overall_results_throughput_box_plot.eps", format="eps")
-plt.savefig("overall_results_throughput_box_plot.pdf", format="pdf")
-plt.savefig("overall_results_throughput_box_plot.png", format="png")
+plt.savefig("overall_slice_dequeueing_rate_box_plot.eps", format="eps")
+plt.savefig("overall_slice_dequeueing_rate_box_plot.pdf", format="pdf")
+plt.savefig("overall_slice_dequeueing_rate_box_plot.png", format="png")
 plt.show()

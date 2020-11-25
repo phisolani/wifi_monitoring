@@ -17,11 +17,11 @@ n_bins = 50
 colors = ['g', 'b', 'c', 'm', 'y', 'k']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
-filename = 'gomez/queueing_delay/overall_gomez_queueing_delay'
+filename = 'gomez/queueing_delay/overall_gomez_slice_queueing_delay'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 5))
+fig, ax = plt.subplots(figsize=(7, 4))
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_data['BE 1'].values,
@@ -112,7 +112,7 @@ ax.set_xscale('log')
 ax.set_xlabel('Queueing delay (ms)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-plt.yticks(np.arange(0, 1.01, 0.1))
+plt.yticks(np.arange(0, 1.01, 0.2))
 ax.set_xticks([0.01, 0.1, 1, 10, 100, 1000, 10000, 100000])
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
