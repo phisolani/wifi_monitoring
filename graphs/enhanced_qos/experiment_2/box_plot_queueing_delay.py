@@ -51,8 +51,8 @@ plt.axhline(y=5, color='r', linestyle='--', linewidth=2)
 plt.axhline(y=100, color='r', linestyle='--', linewidth=2)
 
 ax.annotate(r'$D^{QoS1}_{QoS}$' + '\n(5ms)',
-            xy=(1.5, 5),
-            xytext=(1.5, 1),
+            xy=(1.3, 5),
+            xytext=(1.3, 1),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 

@@ -17,12 +17,12 @@ n_bins = 50
 colors = ['g', 'b', 'k']
 line_styles = ['-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'QoS 2']
-filename = 'gomez/throughput/lvap_rx_mbps'
+filename = 'gomez/throughput/overall_lvap_rx_mbps'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 print(cdf_data)
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 5))
+fig, ax = plt.subplots(figsize=(5, 4))
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_data['BE 1'].values,
@@ -61,7 +61,7 @@ ax.hist(cdf_data['QoS 2'].values,
 plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
 ax.annotate(r'$\mu^{QoS2}_{QoS}$',
             xy=(5, 0),
-            xytext=(12, 0.7),
+            xytext=(12, 0.9),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
@@ -73,14 +73,14 @@ ax.legend(loc='right')
 ax.set_xlabel('Throughput (Mbps)')
 ax.set_ylabel('Likelihood (%)')
 # plt.yticks([0, 0.2, 0.4, 0.6, 0.8, 1])
-plt.yticks(np.arange(0, 1.01, 0.1))
+plt.yticks(np.arange(0, 1.01, 0.2))
 # ax.set_xticks([0, 5, 10, 15, 20])
 ax.set_xlim(0, 20)
 # ax.get_xaxis().set_major_formatter(matplotlib.ticker.ScalarFormatter())
 
 plt.gca().yaxis.set_major_formatter(PercentFormatter(1))
 plt.tight_layout()
-plt.savefig(filename + '.pdf', format='pdf', bbox_inches='tight')
-plt.savefig(filename + '.png', format='png', bbox_inches='tight')
-plt.savefig(filename + '.eps', format='eps', bbox_inches='tight')
+plt.savefig(filename.replace('overall', 'cdf') +  '.pdf', format='pdf', bbox_inches='tight')
+plt.savefig(filename.replace('overall', 'cdf') +  '.png', format='png', bbox_inches='tight')
+plt.savefig(filename.replace('overall', 'cdf') +  '.eps', format='eps', bbox_inches='tight')
 plt.show()
