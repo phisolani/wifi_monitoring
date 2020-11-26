@@ -11,21 +11,23 @@ __status__ = "Prototype"
 
 from graphs.enhanced_qos.lines_graph import *
 
-fig_size = [10, 3.4]
+fig_size = [5, 4]
 
 # Scenario B (DL v UL)
 path = 'scenario_d/'
+filename = 'd_results'
+x_axis_min_max = {'min': 0, 'max': 300}
 
 #Throughput
 output_name = 'scenario_d_throughput'
 make_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
-    y_axes=['BE Throughput', 'QoS Throughput'],
-    y_axis_label='Throughput (Mbps)',
+    x_axis_min_max=x_axis_min_max,
+    y_axes=['Throughput BE', 'Throughput QoS'],
+    y_axis_label='Dequeuing rate (Mbps)',
     y_axis_min_max={'min': 0, 'max': 25},
     fig_size=fig_size,
     output_name=output_name
@@ -35,12 +37,12 @@ make_line_graph(
 output_name = 'scenario_d_quantum'
 make_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
-    y_axes=['BE Quantum', 'QoS Quantum'],
-    y_axis_label='Current Quantum (μsec)',
+    x_axis_min_max=x_axis_min_max,
+    y_axes=['Quantum BE', 'Quantum QoS'],
+    y_axis_label='Current quantum (μsec)',
     y_axis_min_max={'min': 0, 'max': 13000},
     y_log_scale=True,
     fig_size=fig_size,
@@ -50,12 +52,12 @@ make_line_graph(
 output_name = 'scenario_d_delay'
 make_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     y_axes=['Delay BE', 'Delay QoS'],
-    y_axis_label='Delay (msec)',
+    y_axis_label='Queueing delay (msec)',
     y_axis_min_max={'min': 0, 'max': 40000},
     y_log_scale=True,
     fig_size=fig_size,

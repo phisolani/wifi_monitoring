@@ -11,22 +11,24 @@ __status__ = "Prototype"
 
 from graphs.enhanced_qos.lines_graph import *
 
-fig_size = [10, 3.4]
+fig_size = [7, 4]
 
 # Scenario B (DL v UL)
 path = 'scenario_b_node74/'
+filename = 'b_results'
+x_axis_min_max = {'min': 0, 'max': 300}
 
 #Throughput
 output_name = 'scenario_b_74_throughput'
 make_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
-    y_axes=['BE Throughput', 'QoS Throughput', 'Shaper BE'],
+    x_axis_min_max= x_axis_min_max,
+    y_axes=['Throughput BE', 'Throughput QoS', 'Shaper BE'],
     y_axis_label='Throughput (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 110},
+    y_axis_min_max={'min': 0, 'max': 300},
     y_log_scale=True,
     markers=["", "", "D", "1"],
     fig_size=fig_size,
@@ -37,10 +39,10 @@ make_line_graph(
 output_name = 'scenario_b_74_ap_delay'
 make_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     y_axes=['Delay QoS'],
     y_axis_label='Delay (msec)',
     y_axis_min_max={'min': 0, 'max': 1000},
@@ -53,13 +55,13 @@ make_line_graph(
 output_name = 'scenario_b_74_delay_with_shaper'
 make_two_axis_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     left_y_axes=['Shaper BE'],
-    left_y_axis_min_max={'min': 0, 'max': 110},
-    left_y_axis_label='Shaper Value (Mbps)',
+    left_y_axis_min_max={'min': 0, 'max': 300},
+    left_y_axis_label='Throughput (Mbps)',
     left_y_log_scale=True,
     right_y_axes=['Delay BE'],
     right_y_axis_min_max={'min': 0, 'max': 60},
@@ -72,13 +74,13 @@ make_two_axis_line_graph(
 output_name = 'scenario_b_74_loss_with_shaper'
 make_two_axis_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     left_y_axes=['Shaper BE'],
-    left_y_axis_min_max={'min': 0, 'max': 110},
-    left_y_axis_label='Shaper Value (Mbps)',
+    left_y_axis_min_max={'min': 0, 'max': 300},
+    left_y_axis_label='Throughput (Mbps)',
     left_y_log_scale=True,
     right_y_axes=['Loss BE'],
     right_y_axis_min_max={'min': 0, 'max': 60},

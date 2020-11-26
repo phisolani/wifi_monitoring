@@ -111,7 +111,11 @@ def make_two_axis_line_graph(experiment_path, filename, x_axis, left_y_axes, rig
         ax2.set_ylabel(right_y_axis_label)
 
     labels = [l.get_label() for l in lines]
-    plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=len(lines))  # shadow=True)
+    if len(lines) > 2:
+        n_cols = int(len(lines)) // 2
+    else:
+        n_cols = len(lines)
+    plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols)  # shadow=True)
 
     # xcoords = [10, 40, 70, 100, 130, 160, 190]
     # for xc in xcoords:
@@ -207,10 +211,18 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes, output_name,
                            label=str(y_axes[y]))
                 lines.append(p)
 
+    x_range = data_dict['x_axis']['values'][-1]
+    plt.xticks(np.arange(0, x_range, step=50))
+
+    if not x_axis_ticks:
+        plt.setp(host.get_xticklabels(), visible=False)
+
     if x_axis_min_max is None:
+        print('default')
         host.set_xlim(0,
                       len(data_dict['x_axis']['values']))
     else:
+        print('custom')
         host.set_xlim(x_axis_min_max['min'],
                       x_axis_min_max['max'])
 
@@ -220,19 +232,17 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes, output_name,
         host.set_ylim(y_axis_min_max['min'],
                       y_axis_min_max['max'])
 
-    x_range = data_dict['x_axis']['values'][-1]
-    plt.xticks(np.arange(0, x_range, step=50))
-
-    if not x_axis_ticks:
-        plt.setp(host.get_xticklabels(), visible=False)
-
     if x_axis_label is not None:
         host.set_xlabel(x_axis_label)
 
     if y_axis_label is not None:
         host.set_ylabel(y_axis_label)
 
-    plt.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=len(y_axes))  # shadow=True)
+    if len(lines) > 2:
+        n_cols = len(lines) // 2
+    else:
+        n_cols = len(lines)
+    plt.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols)  # shadow=True)
 
     # xcoords = [10, 40, 70, 100, 130, 160, 190]
     # for xc in xcoords:

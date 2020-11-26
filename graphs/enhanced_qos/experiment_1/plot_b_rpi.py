@@ -11,19 +11,21 @@ __status__ = "Prototype"
 
 from graphs.enhanced_qos.lines_graph import *
 
-fig_size = [10, 3.4]
+fig_size = [10, 4]
 
 # Scenario B (DL v UL)
 path = 'scenario_b_rpi/'
+filename = 'b_results'
+x_axis_min_max = {'min': 0, 'max': 300}
 
 #Throughput
 output_name = 'scenario_b_rpi_throughput'
 make_line_graph(
     experiment_path=path,
-    filename='throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     y_axes=['BE Throughput', 'QoS Throughput', 'Shaper BE'],
     y_axis_label='Throughput (Mbps)',
     y_axis_min_max={'min': 0, 'max': 110},

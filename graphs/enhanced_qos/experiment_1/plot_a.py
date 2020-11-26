@@ -11,22 +11,24 @@ __status__ = "Prototype"
 
 from graphs.enhanced_qos.lines_graph import *
 
-fig_size = [10, 3.4]
+fig_size = [5, 4]
 
 # Scenario A (UL v UL)
 path = 'scenario_a/'
+filename = 'a_results'
+x_axis_min_max = {'min': 0, 'max': 300}
 
 # Throughput
 output_name = 'scenario_a_throughput'
 make_line_graph(
     experiment_path=path,
-    filename='sta_throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
-    y_axes=['BE Throughput', 'QoS Throughput', 'Shaper BE', 'Shaper QoS'],
+    x_axis_min_max=x_axis_min_max,
+    y_axes=['Throughput BE', 'Throughput QoS', 'Shaper BE', 'Shaper QoS'],
     y_axis_label='Throughput (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 110},
+    y_axis_min_max={'min': 0, 'max': 450},
     y_log_scale=True,
     markers=["", "", "D", "1"],
     fig_size=fig_size,
@@ -37,16 +39,16 @@ make_line_graph(
 output_name = 'scenario_a_delay_with_shaper'
 make_two_axis_line_graph(
     experiment_path=path,
-    filename='sta_throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     left_y_axes=['Shaper BE', 'Shaper QoS'],
-    left_y_axis_min_max={'min': 0, 'max': 110},
-    left_y_axis_label='Shaper Value (Mbps)',
+    left_y_axis_min_max={'min': 0, 'max': 450},
+    left_y_axis_label='Throughput (Mbps)',
     left_y_log_scale=True,
     right_y_axes=['Delay BE', 'Delay QoS'],
-    right_y_axis_min_max={'min': 0, 'max': 100},
+    right_y_axis_min_max={'min': 0, 'max': 50},
     right_y_axis_label='Delay (msec)',
     right_y_log_scale=True,
     fig_size=fig_size,
@@ -57,13 +59,13 @@ make_two_axis_line_graph(
 output_name = 'scenario_a_loss_with_shaper'
 make_two_axis_line_graph(
     experiment_path=path,
-    filename='sta_throughput',
+    filename=filename,
     x_axis='Time',
     x_axis_label='Time (sec)',
-    x_axis_min_max={'min': 0, 'max': 300},
+    x_axis_min_max=x_axis_min_max,
     left_y_axes=['Shaper BE', 'Shaper QoS'],
-    left_y_axis_min_max={'min': 0, 'max': 110},
-    left_y_axis_label='Shaper Value (Mbps)',
+    left_y_axis_min_max={'min': 0, 'max': 450},
+    left_y_axis_label='Throughput (Mbps)',
     left_y_log_scale=True,
     right_y_axes=['Loss BE', 'Loss QoS'],
     right_y_axis_min_max={'min': 0, 'max': 60},

@@ -1,4 +1,4 @@
-Time,Hour,QoS Throughput,BE Throughput,Quantum,Delay BE
+Time,Hour,Throughput QoS,Throughput BE,Quantum,Delay BE
 1,2020-10-30T12:01:59-07:00,0,0,12000,0
 2,2020-10-30T12:02:00-07:00,0,0,12000,0
 3,2020-10-30T12:02:01-07:00,0,0,12000,0
