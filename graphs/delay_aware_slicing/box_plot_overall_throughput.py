@@ -6,7 +6,7 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 3.6))
+fig, ax = plt.subplots(figsize=(10, 3.6))
 
 data = pd.read_csv('overall_throughput.csv', sep=';')
 print('data', data)
@@ -23,7 +23,7 @@ def remove_outlier(df):
 new_data = remove_outlier(data)
 print('new_data', new_data)
 
-my_pal = {"Gómez": "lightslategray", "Proposed": "y"}
+my_pal = {"Gómez et al.": "lightslategray", "Proposed": "y"}
 
 ax = sns.boxplot(y='throughput',
                  x='slice',
@@ -48,14 +48,14 @@ for i, patch in enumerate(ax.artists):
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=2)
+ax.legend(loc='upper left', ncol=1)
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
 ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("Ox")
 # ax.legend_.findobj(mpl.patches.Rectangle)[0].set_edgecolor('white')
 # ax.legend_.findobj(mpl.patches.Rectangle)[1].set_edgecolor('white')
 ax.set(xlabel=None)
 ax.set_yticks([0, 50, 100, 150, 200, 250])
-ax.set_ylim(0, 280)
+ax.set_ylim(0, 250)
 ax.set_ylabel('Throughput (MBytes)')
 plt.tight_layout()
 plt.savefig("overall_results_throughput_box_plot.eps", format="eps")

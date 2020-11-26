@@ -1,34 +1,34 @@
 ﻿#;approach;throughput;slice
-1;Gómez;72.934772;QoS 1
-2;Gómez;73.228536;QoS 1
-3;Gómez;74.50874;QoS 1
-4;Gómez;73.655632;QoS 1
-5;Gómez;74.716868;QoS 1
-6;Gómez;74.804672;QoS 1
-7;Gómez;58.75822;QoS 1
-8;Gómez;74.793832;QoS 1
-9;Gómez;74.642072;QoS 1
-10;Gómez;73.112548;QoS 1
-11;Gómez;74.941256;QoS 1
-12;Gómez;73.100624;QoS 1
-13;Gómez;46.397368;QoS 1
-14;Gómez;71.420424;QoS 1
-15;Gómez;65.792296;QoS 1
-16;Gómez;74.99112;QoS 1
-17;Gómez;64.522932;QoS 1
-18;Gómez;75.499516;QoS 1
-19;Gómez;74.777572;QoS 1
-20;Gómez;75.249112;QoS 1
-21;Gómez;74.539092;QoS 1
-22;Gómez;44.944808;QoS 1
-23;Gómez;68.16192;QoS 1
-24;Gómez;60.797224;QoS 1
-25;Gómez;74.967272;QoS 1
-26;Gómez;75.465912;QoS 1
-27;Gómez;75.044236;QoS 1
-28;Gómez;75.423636;QoS 1
-29;Gómez;63.024844;QoS 1
-30;Gómez;69.356488;QoS 1
+1;Gómez et al.;72.934772;QoS 1
+2;Gómez et al.;73.228536;QoS 1
+3;Gómez et al.;74.50874;QoS 1
+4;Gómez et al.;73.655632;QoS 1
+5;Gómez et al.;74.716868;QoS 1
+6;Gómez et al.;74.804672;QoS 1
+7;Gómez et al.;58.75822;QoS 1
+8;Gómez et al.;74.793832;QoS 1
+9;Gómez et al.;74.642072;QoS 1
+10;Gómez et al.;73.112548;QoS 1
+11;Gómez et al.;74.941256;QoS 1
+12;Gómez et al.;73.100624;QoS 1
+13;Gómez et al.;46.397368;QoS 1
+14;Gómez et al.;71.420424;QoS 1
+15;Gómez et al.;65.792296;QoS 1
+16;Gómez et al.;74.99112;QoS 1
+17;Gómez et al.;64.522932;QoS 1
+18;Gómez et al.;75.499516;QoS 1
+19;Gómez et al.;74.777572;QoS 1
+20;Gómez et al.;75.249112;QoS 1
+21;Gómez et al.;74.539092;QoS 1
+22;Gómez et al.;44.944808;QoS 1
+23;Gómez et al.;68.16192;QoS 1
+24;Gómez et al.;60.797224;QoS 1
+25;Gómez et al.;74.967272;QoS 1
+26;Gómez et al.;75.465912;QoS 1
+27;Gómez et al.;75.044236;QoS 1
+28;Gómez et al.;75.423636;QoS 1
+29;Gómez et al.;63.024844;QoS 1
+30;Gómez et al.;69.356488;QoS 1
 1;Proposed;75.691384;QoS 1
 2;Proposed;76.018752;QoS 1
 3;Proposed;75.046404;QoS 1
@@ -59,36 +59,36 @@
 28;Proposed;75.143964;QoS 1
 29;Proposed;75.539624;QoS 1
 30;Proposed;75.623092;QoS 1
-1;Gómez;123.325596;BE 1
-2;Gómez;125.048072;BE 1
-3;Gómez;134.520064;BE 1
-4;Gómez;135.213824;BE 1
-5;Gómez;130.384604;BE 1
-6;Gómez;138.297804;BE 1
-7;Gómez;64.53594;BE 1
-8;Gómez;73.716336;BE 1
-9;Gómez;77.7499;BE 1
-10;Gómez;40.242416;BE 1
-11;Gómez;132.461548;BE 1
-12;Gómez;123.915292;BE 1
-13;Gómez;128.433404;BE 1
-14;Gómez;180.907676;BE 1
-15;Gómez;140.42136000;BE 1
-16;Gómez;129.430684;BE 1
-17;Gómez;170.392876;BE 1
-18;Gómez;174.597712;BE 1
-19;Gómez;182.60522;BE 1
-20;Gómez;181.351032;BE 1
-21;Gómez;127.265936;BE 1
-22;Gómez;57.423816;BE 1
-23;Gómez;72.998728;BE 1
-24;Gómez;148.239168;BE 1
-25;Gómez;136.623024;BE 1
-26;Gómez;132.722792;BE 1
-27;Gómez;136.092948;BE 1
-28;Gómez;129.811168;BE 1
-29;Gómez;95.365984;BE 1
-30;Gómez;156.37242;BE 1
+1;Gómez et al.;123.325596;BE 1
+2;Gómez et al.;125.048072;BE 1
+3;Gómez et al.;134.520064;BE 1
+4;Gómez et al.;135.213824;BE 1
+5;Gómez et al.;130.384604;BE 1
+6;Gómez et al.;138.297804;BE 1
+7;Gómez et al.;64.53594;BE 1
+8;Gómez et al.;73.716336;BE 1
+9;Gómez et al.;77.7499;BE 1
+10;Gómez et al.;40.242416;BE 1
+11;Gómez et al.;132.461548;BE 1
+12;Gómez et al.;123.915292;BE 1
+13;Gómez et al.;128.433404;BE 1
+14;Gómez et al.;180.907676;BE 1
+15;Gómez et al.;140.42136000;BE 1
+16;Gómez et al.;129.430684;BE 1
+17;Gómez et al.;170.392876;BE 1
+18;Gómez et al.;174.597712;BE 1
+19;Gómez et al.;182.60522;BE 1
+20;Gómez et al.;181.351032;BE 1
+21;Gómez et al.;127.265936;BE 1
+22;Gómez et al.;57.423816;BE 1
+23;Gómez et al.;72.998728;BE 1
+24;Gómez et al.;148.239168;BE 1
+25;Gómez et al.;136.623024;BE 1
+26;Gómez et al.;132.722792;BE 1
+27;Gómez et al.;136.092948;BE 1
+28;Gómez et al.;129.811168;BE 1
+29;Gómez et al.;95.365984;BE 1
+30;Gómez et al.;156.37242;BE 1
 1;Proposed;174.131592;BE 1
 2;Proposed;120.896352;BE 1
 3;Proposed;157.043416;BE 1
@@ -119,36 +119,36 @@
 28;Proposed;122.295796;BE 1
 29;Proposed;173.231872;BE 1
 30;Proposed;134.604616;BE 1
-1;Gómez;107.442828;BE 2
-2;Gómez;109.166388;BE 2
-3;Gómez;119.019948;BE 2
-4;Gómez;119.405852;BE 2
-5;Gómez;115.201016;BE 2
-6;Gómez;123.143484;BE 2
-7;Gómez;55.892124;BE 2
-8;Gómez;57.851996;BE 2
-9;Gómez;62.238944;BE 2
-10;Gómez;40.329136;BE 2
-11;Gómez;116.487724;BE 2
-12;Gómez;108.276424;BE 2
-13;Gómez;116.235152;BE 2
-14;Gómez;165.0661;BE 2
-15;Gómez;124.84970000;BE 2
-16;Gómez;114.382596;BE 2
-17;Gómez;155.047772;BE 2
-18;Gómez;159.045564;BE 2
-19;Gómez;166.733292;BE 2
-20;Gómez;165.246044;BE 2
-21;Gómez;111.775576;BE 2
-22;Gómez;41.735084;BE 2
-23;Gómez;58.17286;BE 2
-24;Gómez;132.740136;BE 2
-25;Gómez;120.376032;BE 2
-26;Gómez;116.739212;BE 2
-27;Gómez;120.133216;BE 2
-28;Gómez;114.365252;BE 2
-29;Gómez;81.360704;BE 2
-30;Gómez;140.7303;BE 2
+1;Gómez et al.;107.442828;BE 2
+2;Gómez et al.;109.166388;BE 2
+3;Gómez et al.;119.019948;BE 2
+4;Gómez et al.;119.405852;BE 2
+5;Gómez et al.;115.201016;BE 2
+6;Gómez et al.;123.143484;BE 2
+7;Gómez et al.;55.892124;BE 2
+8;Gómez et al.;57.851996;BE 2
+9;Gómez et al.;62.238944;BE 2
+10;Gómez et al.;40.329136;BE 2
+11;Gómez et al.;116.487724;BE 2
+12;Gómez et al.;108.276424;BE 2
+13;Gómez et al.;116.235152;BE 2
+14;Gómez et al.;165.0661;BE 2
+15;Gómez et al.;124.84970000;BE 2
+16;Gómez et al.;114.382596;BE 2
+17;Gómez et al.;155.047772;BE 2
+18;Gómez et al.;159.045564;BE 2
+19;Gómez et al.;166.733292;BE 2
+20;Gómez et al.;165.246044;BE 2
+21;Gómez et al.;111.775576;BE 2
+22;Gómez et al.;41.735084;BE 2
+23;Gómez et al.;58.17286;BE 2
+24;Gómez et al.;132.740136;BE 2
+25;Gómez et al.;120.376032;BE 2
+26;Gómez et al.;116.739212;BE 2
+27;Gómez et al.;120.133216;BE 2
+28;Gómez et al.;114.365252;BE 2
+29;Gómez et al.;81.360704;BE 2
+30;Gómez et al.;140.7303;BE 2
 1;Proposed;158.272672;BE 2
 2;Proposed;105.552332;BE 2
 3;Proposed;141.344928;BE 2
@@ -179,36 +179,36 @@
 28;Proposed;106.374004;BE 2
 29;Proposed;158.08514;BE 2
 30;Proposed;119.270352;BE 2
-1;Gómez;112.113784;BE 3
-2;Gómez;67.081172;BE 3
-3;Gómez;119.027536;BE 3
-4;Gómez;119.474144;BE 3
-5;Gómez;116.041116;BE 3
-6;Gómez;122.782512;BE 3
-7;Gómez;73.596012;BE 3
-8;Gómez;63.882288;BE 3
-9;Gómez;222.687204;BE 3
-10;Gómez;207.1253;BE 3
-11;Gómez;125.450236;BE 3
-12;Gómez;155.632048;BE 3
-13;Gómez;78.76886;BE 3
-14;Gómez;104.847732;BE 3
-15;Gómez;185.34990800;BE 3
-16;Gómez;114.126772;BE 3
-17;Gómez;129.58678;BE 3
-18;Gómez;127.854548;BE 3
-19;Gómez;125.611752;BE 3
-20;Gómez;115.428656;BE 3
-21;Gómez;112.532208;BE 3
-22;Gómez;72.409032;BE 3
-23;Gómez;99.595752;BE 3
-24;Gómez;143.282036;BE 3
-25;Gómez;120.636192;BE 3
-26;Gómez;116.005344;BE 3
-27;Gómez;119.929424;BE 3
-28;Gómez;112.912692;BE 3
-29;Gómez;85.530852;BE 3
-30;Gómez;144.9037;BE 3
+1;Gómez et al.;112.113784;BE 3
+2;Gómez et al.;67.081172;BE 3
+3;Gómez et al.;119.027536;BE 3
+4;Gómez et al.;119.474144;BE 3
+5;Gómez et al.;116.041116;BE 3
+6;Gómez et al.;122.782512;BE 3
+7;Gómez et al.;73.596012;BE 3
+8;Gómez et al.;63.882288;BE 3
+9;Gómez et al.;222.687204;BE 3
+10;Gómez et al.;207.1253;BE 3
+11;Gómez et al.;125.450236;BE 3
+12;Gómez et al.;155.632048;BE 3
+13;Gómez et al.;78.76886;BE 3
+14;Gómez et al.;104.847732;BE 3
+15;Gómez et al.;185.34990800;BE 3
+16;Gómez et al.;114.126772;BE 3
+17;Gómez et al.;129.58678;BE 3
+18;Gómez et al.;127.854548;BE 3
+19;Gómez et al.;125.611752;BE 3
+20;Gómez et al.;115.428656;BE 3
+21;Gómez et al.;112.532208;BE 3
+22;Gómez et al.;72.409032;BE 3
+23;Gómez et al.;99.595752;BE 3
+24;Gómez et al.;143.282036;BE 3
+25;Gómez et al.;120.636192;BE 3
+26;Gómez et al.;116.005344;BE 3
+27;Gómez et al.;119.929424;BE 3
+28;Gómez et al.;112.912692;BE 3
+29;Gómez et al.;85.530852;BE 3
+30;Gómez et al.;144.9037;BE 3
 1;Proposed;114.946276;BE 3
 2;Proposed;183.202504;BE 3
 3;Proposed;152.51338;BE 3
@@ -239,36 +239,36 @@
 28;Proposed;208.888968;BE 3
 29;Proposed;124.306616;BE 3
 30;Proposed;171.279588;BE 3
-1;Gómez;28.4279;QoS 2
-2;Gómez;28.3466;QoS 2
-3;Gómez;28.077768;QoS 2
-4;Gómez;27.996468;QoS 2
-5;Gómez;28.278308;QoS 2
-6;Gómez;27.86964;QoS 2
-7;Gómez;6.302376;QoS 2
-8;Gómez;10.399896;QoS 2
-9;Gómez;12.855156;QoS 2
-10;Gómez;28.141724;QoS 2
-11;Gómez;27.828448;QoS 2
-12;Gómez;26.38456;QoS 2
-13;Gómez;16.884384;QoS 2
-14;Gómez;24.67184;QoS 2
-15;Gómez;28.57207200;QoS 2
-16;Gómez;17.26812;QoS 2
-17;Gómez;28.402968;QoS 2
-18;Gómez;25.198664;QoS 2
-19;Gómez;28.299988;QoS 2
-20;Gómez;28.251208;QoS 2
-21;Gómez;28.16232;QoS 2
-22;Gómez;13.315856;QoS 2
-23;Gómez;17.151048;QoS 2
-24;Gómez;28.142808;QoS 2
-25;Gómez;28.087524;QoS 2
-26;Gómez;28.328172;QoS 2
-27;Gómez;28.000804;QoS 2
-28;Gómez;27.760156;QoS 2
-29;Gómez;15.706076;QoS 2
-30;Gómez;28.824644;QoS 2
+1;Gómez et al.;28.4279;QoS 2
+2;Gómez et al.;28.3466;QoS 2
+3;Gómez et al.;28.077768;QoS 2
+4;Gómez et al.;27.996468;QoS 2
+5;Gómez et al.;28.278308;QoS 2
+6;Gómez et al.;27.86964;QoS 2
+7;Gómez et al.;6.302376;QoS 2
+8;Gómez et al.;10.399896;QoS 2
+9;Gómez et al.;12.855156;QoS 2
+10;Gómez et al.;28.141724;QoS 2
+11;Gómez et al.;27.828448;QoS 2
+12;Gómez et al.;26.38456;QoS 2
+13;Gómez et al.;16.884384;QoS 2
+14;Gómez et al.;24.67184;QoS 2
+15;Gómez et al.;28.57207200;QoS 2
+16;Gómez et al.;17.26812;QoS 2
+17;Gómez et al.;28.402968;QoS 2
+18;Gómez et al.;25.198664;QoS 2
+19;Gómez et al.;28.299988;QoS 2
+20;Gómez et al.;28.251208;QoS 2
+21;Gómez et al.;28.16232;QoS 2
+22;Gómez et al.;13.315856;QoS 2
+23;Gómez et al.;17.151048;QoS 2
+24;Gómez et al.;28.142808;QoS 2
+25;Gómez et al.;28.087524;QoS 2
+26;Gómez et al.;28.328172;QoS 2
+27;Gómez et al.;28.000804;QoS 2
+28;Gómez et al.;27.760156;QoS 2
+29;Gómez et al.;15.706076;QoS 2
+30;Gómez et al.;28.824644;QoS 2
 1;Proposed;28.522208;QoS 2
 2;Proposed;26.472364;QoS 2
 3;Proposed;26.752036;QoS 2
