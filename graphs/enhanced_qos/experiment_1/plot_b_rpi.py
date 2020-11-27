@@ -30,7 +30,7 @@ plot_info = {
             'y_axes': ['Shaper BE','Throughput BE', 'Throughput QoS'],
             'y_axes_labels': [r'$\lambda^{STA 1}$',
                               r'$\mu^{BE, STA 1}$', r'$\mu^{QoS, STA 2}$'],
-            'y_axis_min_max': {'min': 0, 'max': 1000},
+            'y_axis_min_max': {'min': 0, 'max': 1500},
             'y_axis_label': 'Throughput (Mbps)',
             'y_log_scale': True,
             'y_axis_colors': experiment1_styles['colors']['shaper'][:1] + experiment1_styles['colors']['throughput'],
@@ -39,7 +39,6 @@ plot_info = {
     ]
 }
 
-fig_size = [10, 4]
 make_share_x_graph(
     experiment_path=path,
     filename=filename,
