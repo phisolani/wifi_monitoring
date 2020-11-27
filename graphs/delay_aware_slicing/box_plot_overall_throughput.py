@@ -7,6 +7,7 @@ from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(10, 3.6))
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 data = pd.read_csv('overall_throughput.csv', sep=';')
 print('data', data)
