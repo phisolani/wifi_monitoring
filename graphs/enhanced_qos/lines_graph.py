@@ -259,6 +259,126 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes, output_name,
     print('Done!')
 
 
+def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_size=None):
+    # Applying Seaborn style
+    # whitegrid, darkgrid, whitegrid, dark, white, and ticks
+    sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
+
+    x_axis = plot_info['x_axis']
+    x_axis_label = plot_info['x_axis_label']
+    x_axis_min_max = plot_info['x_axis_min_max']
+
+    # figure out how many subplots
+    num_subplots = len(plot_info['subplots'])
+
+    if fig_size is not None:
+        fig = plt.figure(figsize=(fig_size[0], fig_size[1]), dpi=144)
+    else:
+        fig = plt.figure(figsize=(12, 6), dpi=144)
+
+    for i in range(num_subplots):
+        share_y = plot_info['subplots'][i]['y_shared']
+
+        y_axes = plot_info['subplots'][i]['y_axes']
+        y_axes_labels = plot_info['subplots'][i]['y_axes_labels']
+        y_axis_min_max = plot_info['subplots'][i]['y_axis_min_max']
+        y_axis_label = plot_info['subplots'][i]['y_axis_label']
+        y_log_scale = plot_info['subplots'][i]['y_log_scale']
+        y_axis_colors = plot_info['subplots'][i]['y_axis_colors']
+        y_axis_line_styles = plot_info['subplots'][i]['y_axis_styles']
+
+        if share_y:
+            right_y_axes = plot_info['subplots'][i]['right_y_axes']
+            right_y_axes_labels = plot_info['subplots'][i]['right_y_axes_labels']
+            right_y_axis_min_max = plot_info['subplots'][i]['right_y_axis_min_max']
+            right_y_axis_label = plot_info['subplots'][i]['right_y_axis_label']
+            right_y_log_scale = plot_info['subplots'][i]['right_y_log_scale']
+            right_y_axis_colors = plot_info['subplots'][i]['right_y_axis_colors']
+            right_y_axis_line_styles = plot_info['subplots'][i]['right_y_axis_styles']
+
+        # read in the data
+        csv_file = experiment_path + filename + '.csv'
+        data_dict = read_results(filename=csv_file, x_axis=x_axis, y_axes=y_axes)
+
+        if share_y:
+            right_data_dict = read_results(filename=csv_file, x_axis=x_axis, y_axes=right_y_axes)
+
+        plt.tight_layout()
+
+        ax = fig.add_subplot(num_subplots, 1, i+1)
+
+        if share_y:
+            ax_right = ax.twinx()
+
+        if y_log_scale is not None:
+            ax.set_yscale('log')
+        if share_y and right_y_log_scale is not None:
+            ax_right.set_yscale('log')
+
+
+        lines = []
+
+        for y in range(len(y_axes)):
+            p, = ax.plot(data_dict['x_axis']['values'], data_dict['y' + str(y) + '_axis']['values'],
+                         color=y_axis_colors[y], linestyle=y_axis_line_styles[y], linewidth=2,
+                         label=str(y_axes[y]))
+            lines.append(p)
+
+        if share_y:
+            for y_right in range(len(y_axes)):
+                p, = ax_right.plot(right_data_dict['x_axis']['values'],
+                             right_data_dict['y' + str(y_right) + '_axis']['values'],
+                             color=right_y_axis_colors[y_right], linestyle=right_y_axis_line_styles[y_right], linewidth=2,
+                             label=str(right_y_axes[y_right]))
+                lines.append(p)
+
+        # x_range = data_dict['x_axis']['values'][-1]
+        # plt.xticks(np.arange(0, x_range, step=50))
+
+        ax.set_xlim(x_axis_min_max['min'], x_axis_min_max['max'])
+
+        if i == num_subplots - 1:
+            ax.set_xlabel(x_axis_label)
+            plt.setp(ax.get_xticklabels(), visible=True)
+        else:
+            plt.setp(ax.get_xticklabels(), visible=False)
+
+
+        ax.set_ylim(y_axis_min_max['min'], y_axis_min_max['max'])
+        if share_y:
+            ax_right.set_ylim(right_y_axis_min_max['min'], right_y_axis_min_max['max'])
+
+
+        ax.set_ylabel(y_axis_label)
+        if share_y:
+            ax_right.set_ylabel(right_y_axis_label)
+
+        # labels = [l.get_label() for l in lines]
+        labels = y_axes_labels
+        if share_y:
+            labels = labels + right_y_axes_labels
+        if len(lines) > 2:
+            n_cols = int(len(lines))
+        else:
+            n_cols = len(lines)
+
+        plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols)
+
+
+    plt.xlim(x_axis_min_max['min'], x_axis_min_max['max'])
+
+    plt.savefig(str(experiment_path) + str(output_name) + '.pdf', format="pdf", bbox_inches="tight")
+    plt.savefig(str(experiment_path) + str(output_name) + '.png', format="png", bbox_inches="tight")
+    plt.savefig(str(experiment_path) + str(output_name) + '.eps', format="eps", bbox_inches="tight")
+
+    plt.show()
+
+
+
+
+
+
+
 def read_results(filename, x_axis, y_axes):
     # Common dict structure
     data_dict = {'x_axis': {'label': '', 'values': []}}

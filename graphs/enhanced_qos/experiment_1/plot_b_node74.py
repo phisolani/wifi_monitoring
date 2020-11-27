@@ -9,83 +9,83 @@ __status__ = "Prototype"
 
 " Python script for making all graphs at once for sensors experiment 1"
 
-from graphs.enhanced_qos.lines_graph import *
-
-fig_size = [7, 4]
+from graphs.enhanced_qos.lines_graph import make_share_x_graph
+from graphs.enhanced_qos.experiment1_styles import experiment1_styles
 
 # Scenario B (DL v UL)
 path = 'scenario_b_node74/'
-filename = 'b_results'
+filename = 'b74_results'
 x_axis_min_max = {'min': 0, 'max': 300}
+output_name = 'plots/scenario_b_sharex_graph'
 
-#Throughput
-output_name = 'scenario_b_74_throughput'
-make_line_graph(
+plot_info = {
+    'x_axis': 'Time',
+    'x_axis_label': 'Time (sec)',
+    'x_axis_min_max': x_axis_min_max,
+    'subplots': [
+        {
+            'y_shared': False,
+            'y_axes': ['Shaper BE','Throughput BE', 'Throughput QoS'],
+            'y_axes_labels': [r'$\lambda^{STA 1}$',
+                              r'$\mu^{BE, STA 1}$', r'$\mu^{QoS, STA 2}$'],
+            'y_axis_min_max': {'min': 0, 'max': 1000},
+            'y_axis_label': 'Throughput (Mbps)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['shaper'][:1] + experiment1_styles['colors']['throughput'],
+            'y_axis_styles': experiment1_styles['line_styles']['shaper'][:1] + experiment1_styles['line_styles']['throughput'],
+        },
+        {
+            'y_shared': False,
+            'y_axes': ['Delay QoS'],
+            'y_axes_labels': [r'$D^{QoS}$'],
+            'y_axis_min_max': {'min': 0, 'max': 40000},
+            'y_axis_label': 'Queuing Delay (ms)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['delay'][1:],
+            'y_axis_styles': experiment1_styles['line_styles']['delay'][1:],
+        },
+        {
+            'y_shared': True,
+            'y_axes': ['Shaper BE'],
+            'y_axes_labels': [r'$\lambda^{STA 1}$'],
+            'y_axis_min_max': {'min': 0, 'max': 1000},
+            'y_axis_label': 'Throughput (Mbps)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['shaper'],
+            'y_axis_styles': experiment1_styles['line_styles']['shaper'],
+            'right_y_axes': ['Delay BE'],
+            'right_y_axes_labels': [r'$D^{BE}$'],
+            'right_y_axis_min_max': {'min': 10e-6, 'max': 1500},
+            'right_y_axis_label': 'Queueing delay (ms)',
+            'right_y_log_scale': True,
+            'right_y_axis_colors': experiment1_styles['colors']['delay'],
+            'right_y_axis_styles': experiment1_styles['line_styles']['delay'],
+        },
+        {
+            'y_shared': True,
+            'y_axes': ['Shaper BE'],
+            'y_axes_labels': [r'$\lambda^{STA 1}$'],
+            'y_axis_min_max': {'min': 0, 'max': 1000},
+            'y_axis_label': 'Throughput (Mbps)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['shaper'],
+            'y_axis_styles': experiment1_styles['line_styles']['shaper'],
+            'right_y_axes': ['Loss BE'],
+            'right_y_axes_labels': [r'$\lambda^{STA 1}_{\mathrm{LOSS}}$'],
+            'right_y_axis_min_max': {'min': 0, 'max': 300},
+            'right_y_axis_label': 'Loss (frames/sec)',
+            'right_y_log_scale': False,
+            'right_y_axis_colors': experiment1_styles['colors']['loss'],
+            'right_y_axis_styles': experiment1_styles['line_styles']['loss'],
+         }
+    ]
+}
+
+fig_size = [10, 12]
+make_share_x_graph(
     experiment_path=path,
     filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max= x_axis_min_max,
-    y_axes=['Throughput BE', 'Throughput QoS', 'Shaper BE'],
-    y_axis_label='Throughput (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 300},
-    y_log_scale=True,
-    markers=["", "", "D", "1"],
     fig_size=fig_size,
-    output_name=output_name
+    output_name=output_name,
+    plot_info=plot_info
 )
-
-# Delay of AP
-output_name = 'scenario_b_74_ap_delay'
-make_line_graph(
-    experiment_path=path,
-    filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    y_axes=['Delay QoS'],
-    y_axis_label='Delay (msec)',
-    y_axis_min_max={'min': 0, 'max': 1000},
-    y_log_scale=True,
-    fig_size=fig_size,
-    output_name=output_name
-)
-
-# Delay with shaper
-output_name = 'scenario_b_74_delay_with_shaper'
-make_two_axis_line_graph(
-    experiment_path=path,
-    filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    left_y_axes=['Shaper BE'],
-    left_y_axis_min_max={'min': 0, 'max': 300},
-    left_y_axis_label='Throughput (Mbps)',
-    left_y_log_scale=True,
-    right_y_axes=['Delay BE'],
-    right_y_axis_min_max={'min': 0, 'max': 60},
-    right_y_axis_label='Delay (msec)',
-    fig_size=fig_size,
-    output_name=output_name
-)
-
-# Loss with Shaper
-output_name = 'scenario_b_74_loss_with_shaper'
-make_two_axis_line_graph(
-    experiment_path=path,
-    filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    left_y_axes=['Shaper BE'],
-    left_y_axis_min_max={'min': 0, 'max': 300},
-    left_y_axis_label='Throughput (Mbps)',
-    left_y_log_scale=True,
-    right_y_axes=['Loss BE'],
-    right_y_axis_min_max={'min': 0, 'max': 60},
-    right_y_axis_label='Loss (packets/sec)',
-    fig_size=fig_size,
-    output_name=output_name
-)
-

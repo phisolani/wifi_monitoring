@@ -9,57 +9,60 @@ __status__ = "Prototype"
 
 " Python script for making all graphs at once for sensors experiment 1"
 
-from graphs.enhanced_qos.lines_graph import *
+from graphs.enhanced_qos.lines_graph import make_share_x_graph
+from graphs.enhanced_qos.experiment1_styles import experiment1_styles
 
-fig_size = [5, 4]
+fig_size = [10, 9]
 
 # Scenario B (DL v UL)
 path = 'scenario_d/'
 filename = 'd_results'
 x_axis_min_max = {'min': 0, 'max': 300}
+output_name = 'plots/scenario_d_sharex_graph'
 
-#Throughput
-output_name = 'scenario_d_throughput'
-make_line_graph(
+plot_info = {
+    'x_axis': 'Time',
+    'x_axis_label': 'Time (sec)',
+    'x_axis_min_max': x_axis_min_max,
+    'subplots': [
+        {
+            'y_shared': False,
+            'y_axes': ['Throughput BE', 'Throughput QoS'],
+            'y_axes_labels': [r'$\mu^{BE, STA 1}$', r'$\mu^{QoS, STA 2}$'],
+            'y_axis_min_max': {'min': 0, 'max': 300},
+            'y_axis_label': 'Throughput (Mbps)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['throughput'],
+            'y_axis_styles': experiment1_styles['line_styles']['throughput'],
+        },
+        {
+            'y_shared': False,
+            'y_axes': ['Quantum BE', 'Quantum QoS'],
+            'y_axes_labels': [r'$Q^{BE}$',r'$Q^{QoS}$'],
+            'y_axis_min_max': {'min': 0, 'max': 75000},
+            'y_axis_label': 'Current quantum (μs)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['quantum'],
+            'y_axis_styles': experiment1_styles['line_styles']['quantum'],
+        },
+        {
+            'y_shared': False,
+            'y_axes': ['Delay BE', 'Delay QoS'],
+            'y_axes_labels': [r'$D^{BE}$', r'$D^{QoS}$'],
+            'y_axis_min_max': {'min': 0, 'max': 50000},
+            'y_axis_label': 'Queuing Delay (ms)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['delay'],
+            'y_axis_styles': experiment1_styles['line_styles']['delay'],
+        },
+
+    ]
+}
+
+make_share_x_graph(
     experiment_path=path,
     filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    y_axes=['Throughput BE', 'Throughput QoS'],
-    y_axis_label='Dequeuing rate (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 25},
     fig_size=fig_size,
-    output_name=output_name
-)
-
-# Quantum
-output_name = 'scenario_d_quantum'
-make_line_graph(
-    experiment_path=path,
-    filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    y_axes=['Quantum BE', 'Quantum QoS'],
-    y_axis_label='Current quantum (μsec)',
-    y_axis_min_max={'min': 0, 'max': 13000},
-    y_log_scale=True,
-    fig_size=fig_size,
-    output_name=output_name
-)
-
-output_name = 'scenario_d_delay'
-make_line_graph(
-    experiment_path=path,
-    filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    y_axes=['Delay BE', 'Delay QoS'],
-    y_axis_label='Queueing delay (msec)',
-    y_axis_min_max={'min': 0, 'max': 40000},
-    y_log_scale=True,
-    fig_size=fig_size,
-    output_name=output_name
+    output_name=output_name,
+    plot_info=plot_info
 )

@@ -9,28 +9,42 @@ __status__ = "Prototype"
 
 " Python script for making all graphs at once for sensors experiment 1"
 
-from graphs.enhanced_qos.lines_graph import *
+from graphs.enhanced_qos.lines_graph import make_share_x_graph
+from graphs.enhanced_qos.experiment1_styles import experiment1_styles
 
-fig_size = [10, 4]
+fig_size = [10, 3]
 
 # Scenario B (DL v UL)
 path = 'scenario_b_rpi/'
-filename = 'b_results'
+filename = 'brpi_results'
 x_axis_min_max = {'min': 0, 'max': 300}
+output_name = 'plots/scenario_brpi_sharex_graph'
 
-#Throughput
-output_name = 'scenario_b_rpi_throughput'
-make_line_graph(
+plot_info = {
+    'x_axis': 'Time',
+    'x_axis_label': 'Time (sec)',
+    'x_axis_min_max': x_axis_min_max,
+    'subplots': [
+        {
+            'y_shared': False,
+            'y_axes': ['Shaper BE','Throughput BE', 'Throughput QoS'],
+            'y_axes_labels': [r'$\lambda^{STA 1}$',
+                              r'$\mu^{BE, STA 1}$', r'$\mu^{QoS, STA 2}$'],
+            'y_axis_min_max': {'min': 0, 'max': 1000},
+            'y_axis_label': 'Throughput (Mbps)',
+            'y_log_scale': True,
+            'y_axis_colors': experiment1_styles['colors']['shaper'][:1] + experiment1_styles['colors']['throughput'],
+            'y_axis_styles': experiment1_styles['line_styles']['shaper'][:1] + experiment1_styles['line_styles']['throughput'],
+        }
+    ]
+}
+
+fig_size = [10, 4]
+make_share_x_graph(
     experiment_path=path,
     filename=filename,
-    x_axis='Time',
-    x_axis_label='Time (sec)',
-    x_axis_min_max=x_axis_min_max,
-    y_axes=['BE Throughput', 'QoS Throughput', 'Shaper BE'],
-    y_axis_label='Throughput (Mbps)',
-    y_axis_min_max={'min': 0, 'max': 110},
-    y_log_scale=True,
-    markers=["", "", "D", "1"],
     fig_size=fig_size,
-    output_name=output_name
+    output_name=output_name,
+    plot_info=plot_info
 )
+
