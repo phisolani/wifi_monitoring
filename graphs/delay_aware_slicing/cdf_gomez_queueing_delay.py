@@ -24,6 +24,7 @@ cdf_delay = pd.read_csv("results/gomez/main/cdf_gomez_queueing_delay.csv",
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(10, 3.6))
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_delay['QoS 1'].values,
@@ -81,13 +82,13 @@ ax.hist(cdf_delay['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-ax.annotate(r'$D^{QoS1}_{QoS}$ (84%)',
+ax.annotate(r'$D^{QoS1}_{QoS} (84\%)$',
             xy=(30, 0.84),
             xytext=(220, 0.7),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
-ax.annotate(r'$D^{QoS2}_{QoS}$ (95%)',
+ax.annotate(r'$D^{QoS2}_{QoS} (95\%)$',
             xy=(50, 0.95),
             xytext=(300, 0.85),
             arrowprops=dict(facecolor='black', shrink=0.05),

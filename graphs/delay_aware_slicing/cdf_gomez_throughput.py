@@ -24,6 +24,7 @@ cdf_throughput = pd.read_csv("results/gomez/main/cdf_gomez_throughput.csv",
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(10, 3.6))
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_throughput['QoS 1'].values,
