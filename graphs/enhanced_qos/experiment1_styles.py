@@ -12,17 +12,19 @@ __status__ = "Prototype"
 
 experiment1_styles = {
     'colors': {
-        'throughput': ['tab:blue', 'tab:cyan'],
+        'throughput': ['darkblue', 'tab:cyan'],
         'shaper': ['tab:orange', 'gold'],
-        'delay': ['tab:green', 'limegreen'],
+        'delay': ['darkgreen', 'limegreen'],
         'loss': ['magenta', 'hotpink'],
         'quantum': ['purple', 'mediumpurple'],
+        'requirement': ['tab:red'],
     },
     'line_styles': {
         'throughput': ['-', '-'],
         'shaper': ['--', '--'],
-        'delay': [':', ':'],
-        'loss': ['-.', '-.'],
-        'quantum': ['--', '--'],
+        'delay': ['-', '-'],
+        'loss': ['-', '-'],
+        'quantum': ['-', '-'],
+        'requirement': [':'],
     },
 }

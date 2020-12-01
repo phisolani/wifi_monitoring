@@ -288,6 +288,8 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
         y_axis_colors = plot_info['subplots'][i]['y_axis_colors']
         y_axis_line_styles = plot_info['subplots'][i]['y_axis_styles']
 
+        qos_annotation = plot_info['subplots'][i]['qos_annotation']
+
         if share_y:
             right_y_axes = plot_info['subplots'][i]['right_y_axes']
             right_y_axes_labels = plot_info['subplots'][i]['right_y_axes_labels']
@@ -311,9 +313,9 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
         if share_y:
             ax_right = ax.twinx()
 
-        if y_log_scale is not None:
+        if y_log_scale:
             ax.set_yscale('log')
-        if share_y and right_y_log_scale is not None:
+        if share_y and right_y_log_scale:
             ax_right.set_yscale('log')
 
 
@@ -365,6 +367,26 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
 
         plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols)
 
+        if qos_annotation:
+            plt.axhline(y=qos_annotation['value'],
+                        color=qos_annotation['color'],
+                        linestyle=qos_annotation['line_style'],
+                        linewidth=2)
+
+            if qos_annotation['type'] == 'throughput':
+                ax.annotate(r'$\mu^{' + qos_annotation['sta_num'] + '}_{QoS}$' + '\n' '$(' + str(qos_annotation['value']) + 'Mbps)$',
+                            xy=(23, qos_annotation['value']),
+                            xytext=(23, qos_annotation['value'] + 13),
+                            arrowprops=dict(facecolor='black', shrink=0.05),
+                            horizontalalignment='center', verticalalignment='top')
+            elif qos_annotation['type'] == 'delay':
+                ax.annotate(r'$D^{' + qos_annotation['sta_num'] + '}_{QoS}$' + '\n' + '$(' + str(qos_annotation['value']) + 'ms)$',
+                            xy=(25, qos_annotation['value']),
+                            xytext=(25, qos_annotation['value']+15000),
+                            arrowprops=dict(facecolor='black', shrink=0.05),
+                            horizontalalignment='center', verticalalignment='top')
+            else:
+                print("Error: Incorrect qos_annotation type")
 
     plt.xlim(x_axis_min_max['min'], x_axis_min_max['max'])
 
