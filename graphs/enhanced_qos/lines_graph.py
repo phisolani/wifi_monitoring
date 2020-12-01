@@ -263,6 +263,7 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
     sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
+    plt.rcParams['mathtext.fontset'] = 'stix'
 
     x_axis = plot_info['x_axis']
     x_axis_label = plot_info['x_axis_label']

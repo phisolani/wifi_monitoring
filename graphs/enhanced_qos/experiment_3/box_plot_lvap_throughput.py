@@ -7,6 +7,7 @@ from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(5, 4))
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 data = pd.read_csv('overall_lvap_throughput.csv', sep=';')
 print('data', data)
@@ -49,7 +50,7 @@ for i, patch in enumerate(ax.artists):
 
 plt.axhline(y=5, color='r', linestyle='--', linewidth=2)
 
-ax.annotate(r'$\mu^{QoS2}_{QoS}$' + '\n(5Mbps)',
+ax.annotate(r'$\mu^{QoS2}_{QoS}$' + '\n' + '$(5Mbps)$',
             xy=(1.7, 5),
             xytext=(1.7, 20.5),
             arrowprops=dict(facecolor='black', shrink=0.05),

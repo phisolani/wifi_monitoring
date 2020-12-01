@@ -71,7 +71,7 @@ plot_info = {
     ]
 }
 
-fig_size = [10, 9]
+fig_size = [14, 8]
 make_share_x_graph(
     experiment_path=path,
     filename=filename,

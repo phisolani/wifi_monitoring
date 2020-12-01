@@ -12,7 +12,7 @@ __status__ = "Prototype"
 from graphs.enhanced_qos.lines_graph import make_share_x_graph
 from graphs.enhanced_qos.experiment1_styles import experiment1_styles
 
-fig_size = [10, 3]
+fig_size = [14, 2.5]
 
 # Scenario B (DL v UL)
 path = 'scenario_b_rpi/'

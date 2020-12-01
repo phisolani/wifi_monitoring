@@ -7,6 +7,7 @@ from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(5, 4))
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 data = pd.read_csv('overall_slice_queueing_delay.csv', sep=';')
 print('data', data)
@@ -49,7 +50,7 @@ for i, patch in enumerate(ax.artists):
 
 plt.axhline(y=5, color='r', linestyle='--', linewidth=2)
 
-ax.annotate(r'$D^{QoS1}_{QoS}$' + '\n(5ms)',
+ax.annotate(r'$D^{QoS1}_{QoS}$' + '\n' + '$(5ms)$',
             xy=(1.3, 5),
             xytext=(1.3, 1),
             arrowprops=dict(facecolor='black', shrink=0.05),

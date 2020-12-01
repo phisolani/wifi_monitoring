@@ -115,6 +115,10 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
     for xc in xcoords:
         plt.axvline(x=xc, linestyle='--', color='dimgray', linewidth=2)
 
+    ycoords = [30, 50]
+    for yc in ycoords:
+        plt.axhline(y=yc, linestyle='--', color='r', linewidth=2)
+
     if title is not None:
         plt.title(title)
 

@@ -22,6 +22,7 @@ cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(7, 4))
+plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_data['BE 1'].values,
@@ -91,14 +92,14 @@ ax.hist(cdf_data['QoS 2'].values,
         label='QoS 2')
 
 plt.axvline(x=10, linestyle='--', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS1}_{QoS}$ (70%)',
+ax.annotate(r'$\mu^{QoS1}_{QoS} (70\%)$',
             xy=(10, 0.70),
             xytext=(21, 0.85),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS2}_{QoS}$ (85%)',
+ax.annotate(r'$\mu^{QoS2}_{QoS} (85\%)$',
             xy=(5, 0.85),
             xytext=(20, 1),
             arrowprops=dict(facecolor='black', shrink=0.05),
