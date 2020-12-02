@@ -55,7 +55,7 @@ def make_association_graph(experiment_path, filenames):
 
     xcoords = [10, 70, 130, 190]
     for xc in xcoords:
-        plt.axvline(x=xc, linestyle='--', color='r', linewidth=2)
+        plt.axvline(x=xc, linestyle=':', color='r', linewidth=2)
 
     for i in range(len(data)):
         current = None #(current wtp, value first seen)

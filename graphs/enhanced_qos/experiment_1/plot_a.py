@@ -52,7 +52,7 @@ def plot_a():
                 'y_axis_colors': experiment1_styles['colors']['shaper'][:1],
                 'y_axis_styles': experiment1_styles['line_styles']['shaper'][:1],
                 'right_y_axes': ['Delay BE', 'Delay QoS'],
-                'right_y_axes_labels': [r'$D^{BE}$', r'$D^{QoS}$'],
+                'right_y_axes_labels': [r'$D^{STA 1}$', r'$D^{STA 2}$'],
                 'right_y_axis_min_max': {'min': 0, 'max': 50},
                 'right_y_axis_label': 'Queueing delay (ms)',
                 'right_y_log_scale': True,

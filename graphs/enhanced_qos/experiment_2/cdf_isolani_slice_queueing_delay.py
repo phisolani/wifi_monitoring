@@ -91,14 +91,14 @@ ax.hist(cdf_data['QoS 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 2')
 
-plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
+plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS1}_{QoS} (86\%)$',
             xy=(5, 0.86),
             xytext=(2.5, 0.70),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
-plt.axvline(x=100, linestyle='--', color='r', linewidth=2)
+plt.axvline(x=100, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS2}_{QoS}$' + '\n' + '$(87\%)$',
             xy=(100, 0.87),
             xytext=(65, 0.55),

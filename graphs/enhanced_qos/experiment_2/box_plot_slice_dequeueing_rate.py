@@ -48,8 +48,8 @@ for i, patch in enumerate(ax.artists):
     hatch = next(hatches)
     patch.set_hatch(hatch)
 
-plt.axhline(y=10, color='r', linestyle='--', linewidth=2)
-plt.axhline(y=5, color='r', linestyle='--', linewidth=2)
+plt.axhline(y=10, color='r', linestyle=':', linewidth=2)
+plt.axhline(y=5, color='r', linestyle=':', linewidth=2)
 
 ax.annotate(r'$\mu^{QoS1}_{QoS}$' + '\n' '$(10Mbps)$',
             xy=(0, 10),

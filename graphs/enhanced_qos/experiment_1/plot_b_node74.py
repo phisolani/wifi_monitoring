@@ -64,7 +64,7 @@ def plot_b_74():
                 'y_axis_colors': experiment1_styles['colors']['shaper'],
                 'y_axis_styles': experiment1_styles['line_styles']['shaper'],
                 'right_y_axes': ['Delay BE'],
-                'right_y_axes_labels': [r'$D^{BE}$'],
+                'right_y_axes_labels': [r'$D^{STA 1}$'],
                 'right_y_axis_min_max': {'min': 10e-6, 'max': 1500},
                 'right_y_axis_label': 'Queueing delay (ms)',
                 'right_y_log_scale': True,

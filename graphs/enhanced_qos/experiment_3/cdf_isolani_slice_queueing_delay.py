@@ -58,7 +58,7 @@ ax.hist(cdf_data['QoS 1'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='QoS 1')
 
-plt.axvline(x=5, linestyle='--', color='r', linewidth=2)
+plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS1}_{QoS}$' + '\n' + '$(93\%)$',
             xy=(5, 0.93),
             xytext=(1, 0.70),
