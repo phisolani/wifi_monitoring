@@ -24,7 +24,8 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                     y_axis_label=None,
                     y_axis_min_max=None,
                     y_log_scale=None,
-                    stacked=None):
+                    stacked=None,
+                    annotation_info=None):
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
@@ -39,6 +40,8 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
         fig, host = plt.subplots(figsize=(fig_size[0], fig_size[1]), dpi=144)
     else:
         fig, host = plt.subplots(figsize=(12, 6), dpi=144)
+
+    plt.rcParams['mathtext.fontset'] = 'stix'
 
     # Adjust x Axis
     plt.tight_layout()
@@ -115,9 +118,18 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
     for xc in xcoords:
         plt.axvline(x=xc, linestyle='--', color='dimgray', linewidth=2)
 
-    ycoords = [30, 50]
-    for yc in ycoords:
-        plt.axhline(y=yc, linestyle='--', color='r', linewidth=2)
+    if annotation_info:
+        for annotation in annotation_info:
+            if annotation['line'] == 'vertical':
+                plt.axvline(x=annotation['x_coord'], linestyle=':', color='r', linewidth=2)
+            elif annotation['line'] == 'horizontal':
+                plt.axhline(y=annotation['y_coord'], linestyle=':', color='r', linewidth=2)
+
+            host.annotate(annotation['label'],
+                          xy=(annotation['x_coord'], annotation['y_coord']),
+                          xytext=(annotation['x_coord_label'], annotation['y_coord_label']),
+                          arrowprops=dict(facecolor='black', shrink=0.05),
+                          horizontalalignment='right', verticalalignment='top')
 
     if title is not None:
         plt.title(title)

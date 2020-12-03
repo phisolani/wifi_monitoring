@@ -12,6 +12,24 @@ __status__ = "Prototype"
 from graphs.delay_aware_slicing.lines_graph import *
 
 fig_size = [10, 3.4]
+qos_reqs_annotation = [
+    {
+        'line': 'horizontal',
+        'x_coord': 50,
+        'y_coord': 30,
+        'x_coord_label': 50,
+        'y_coord_label': 5,
+        'label': r'$D^{QoS1}_{QoS} (30ms)$',
+    },
+    {
+        'line': 'horizontal',
+        'x_coord': 50,
+        'y_coord': 50,
+        'x_coord_label': 50,
+        'y_coord_label': 3000,
+        'label': r'$D^{QoS2}_{QoS} (50ms)$',
+    }
+]
 
 # Throughput graph (Isolani)
 make_line_graph(
@@ -54,7 +72,8 @@ make_line_graph(
     y_axis_label='Queueing delay (ms)',
     y_axis_min_max={'min': 0, 'max': 100000},
     y_log_scale=True,
-    fig_size=fig_size)
+    fig_size=fig_size,
+    annotation_info=qos_reqs_annotation)
 
 make_line_graph(
     experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/isolani/main/",
@@ -65,7 +84,8 @@ make_line_graph(
     y_axis_label='Queueing delay (ms)',
     y_axis_min_max={'min': 0, 'max': 100000},
     y_log_scale=True,
-    fig_size=fig_size)
+    fig_size=fig_size,
+    annotation_info=qos_reqs_annotation)
 
 # Slices current quantum graph
 make_line_graph(
@@ -175,7 +195,8 @@ make_line_graph(
     y_axis_label='Queueing delay (ms)',
     y_axis_min_max={'min': 0, 'max': 100000},
     y_log_scale=True,
-    fig_size=fig_size)
+    fig_size=fig_size,
+    annotation_info=qos_reqs_annotation)
 
 make_line_graph(
     experiment_path="/Users/phisolani/Github/wifi_monitoring/graphs/delay_aware_slicing/results/gomez/main/",
@@ -186,4 +207,5 @@ make_line_graph(
     y_axis_label='Queueing delay (ms)',
     y_axis_min_max={'min': 0, 'max': 100000},
     y_log_scale=True,
-    fig_size=fig_size)
+    fig_size=fig_size,
+    annotation_info=qos_reqs_annotation)
