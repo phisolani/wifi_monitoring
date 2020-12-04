@@ -13,12 +13,12 @@ from graphs.enhanced_qos.lines_graph import make_share_x_graph
 from graphs.enhanced_qos.experiment1_styles import experiment1_styles
 
 def plot_b_rpi():
-    fig_size = [14, 5]
+    fig_size = [9, 10.5]
 
     # Scenario B (DL v UL)
     path = 'scenario_b_rpi/'
     filename = 'brpi_results'
-    x_axis_min_max = {'min': 0, 'max': 300}
+    x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_brpi_sharex_graph'
 
     plot_info = {
@@ -31,7 +31,7 @@ def plot_b_rpi():
                 'y_axes': ['Shaper BE','Throughput BE', 'Throughput QoS'],
                 'y_axes_labels': [r'$\lambda^{STA 1}$',
                                   r'$\mu^{BE, STA 1}$', r'$\mu^{QoS, STA 2}$'],
-                'y_axis_min_max': {'min': 0, 'max': 40},
+                'y_axis_min_max': {'min': 0, 'max': 45},
                 'y_axis_label': 'Throughput (Mbps)',
                 'y_log_scale': False,
                 'y_axis_colors': experiment1_styles['colors']['shaper'][:1] + experiment1_styles['colors']['throughput'],
@@ -53,9 +53,44 @@ def plot_b_rpi():
                     'color': experiment1_styles['colors']['requirement'][0],
                     'line_style': experiment1_styles['line_styles']['requirement'][0],
                     'sta_num': 'STA2',
-
-                },
-            }
+                }
+            },
+            {
+                'y_shared': True,
+                'y_axes': ['Shaper BE'],
+                'y_axes_labels': [r'$\lambda^{STA 1}$'],
+                'y_axis_min_max': {'min': 0, 'max': 150},
+                'y_axis_label': 'Throughput (Mbps)',
+                'y_log_scale': False,
+                'y_axis_colors': experiment1_styles['colors']['shaper'],
+                'y_axis_styles': experiment1_styles['line_styles']['shaper'],
+                'right_y_axes': ['Delay BE'],
+                'right_y_axes_labels': [r'$D^{STA 1}$'],
+                'right_y_axis_min_max': {'min': -1, 'max': 1500},
+                'right_y_axis_label': 'Queueing delay (ms)',
+                'right_y_log_scale': True,
+                'right_y_axis_colors': experiment1_styles['colors']['delay'],
+                'right_y_axis_styles': experiment1_styles['line_styles']['delay'],
+                'qos_annotation': False,
+            },
+            {
+                'y_shared': True,
+                'y_axes': ['Shaper BE'],
+                'y_axes_labels': [r'$\lambda^{STA 1}$'],
+                'y_axis_min_max': {'min': 0, 'max': 150},
+                'y_axis_label': 'Throughput (Mbps)',
+                'y_log_scale': False,
+                'y_axis_colors': experiment1_styles['colors']['shaper'],
+                'y_axis_styles': experiment1_styles['line_styles']['shaper'],
+                'right_y_axes': ['Loss BE'],
+                'right_y_axes_labels': [r'$\lambda^{STA 1}_{\mathrm{LOSS}}$'],
+                'right_y_axis_min_max': {'min': -1, 'max': 50},
+                'right_y_axis_label': 'Loss (frames/sec)',
+                'right_y_log_scale': False,
+                'right_y_axis_colors': experiment1_styles['colors']['loss'],
+                'right_y_axis_styles': experiment1_styles['line_styles']['loss'],
+                'qos_annotation': False,
+            },
         ]
     }
 

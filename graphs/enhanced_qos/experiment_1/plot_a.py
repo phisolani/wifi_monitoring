@@ -16,8 +16,9 @@ def plot_a():
     # Scenario A (UL v UL)
     path = 'scenario_a/'
     filename = 'a_results'
-    x_axis_min_max = {'min': 0, 'max': 300}
+    x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_a_sharex_graph'
+    fig_size = [9, 8]
 
     plot_info = {
         'x_axis': 'Time',
@@ -81,7 +82,6 @@ def plot_a():
         ]
     }
 
-    fig_size = [14, 8]
     make_share_x_graph(
         experiment_path=path,
         filename=filename,
