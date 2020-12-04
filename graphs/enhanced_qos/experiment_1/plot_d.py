@@ -19,7 +19,7 @@ def plot_d():
     filename = 'd_results'
     x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_d_sharex_graph'
-    fig_size = [9, 8]
+    fig_size = [9, 10]
 
     plot_info = {
         'x_axis': 'Time',

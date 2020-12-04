@@ -13,7 +13,7 @@ from graphs.enhanced_qos.lines_graph import make_share_x_graph
 from graphs.enhanced_qos.experiment1_styles import experiment1_styles
 
 def plot_b_rpi():
-    fig_size = [9, 10.5]
+    fig_size = [9, 12.5]
 
     # Scenario B (DL v UL)
     path = 'scenario_b_rpi/'
