@@ -375,14 +375,14 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
 
             if qos_annotation['type'] == 'throughput':
                 ax.annotate(r'$\mu^{' + qos_annotation['sta_num'] + '}_{QoS}$' + '\n' '$(' + str(qos_annotation['value']) + 'Mbps)$',
-                            xy=(23, qos_annotation['value']),
-                            xytext=(23, qos_annotation['value'] + 13),
+                            xy=(12, qos_annotation['value']),
+                            xytext=(12, qos_annotation['value'] + 19.5),
                             arrowprops=dict(facecolor='black', shrink=0.05),
                             horizontalalignment='center', verticalalignment='top')
             elif qos_annotation['type'] == 'delay':
                 ax.annotate(r'$D^{' + qos_annotation['sta_num'] + '}_{QoS}$' + '\n' + '$(' + str(qos_annotation['value']) + 'ms)$',
-                            xy=(25, qos_annotation['value']),
-                            xytext=(25, qos_annotation['value']+15000),
+                            xy=(18, qos_annotation['value']),
+                            xytext=(18, qos_annotation['value']+16000),
                             arrowprops=dict(facecolor='black', shrink=0.05),
                             horizontalalignment='center', verticalalignment='top')
             else:

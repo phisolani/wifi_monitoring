@@ -17,8 +17,9 @@ def plot_b_74():
     # Scenario B (DL v UL)
     path = 'scenario_b_node74/'
     filename = 'b74_results'
-    x_axis_min_max = {'min': 0, 'max': 300}
+    x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_b_sharex_graph'
+    fig_size = [9, 12.5]
 
     plot_info = {
         'x_axis': 'Time',
@@ -30,7 +31,7 @@ def plot_b_74():
                 'y_axes': ['Shaper BE','Throughput BE', 'Throughput QoS'],
                 'y_axes_labels': [r'$\lambda^{STA 1}$',
                                   r'$\mu^{BE, STA 1}$', r'$\mu^{QoS, STA 2}$'],
-                'y_axis_min_max': {'min': 0, 'max': 35},
+                'y_axis_min_max': {'min': 0, 'max': 45},
                 'y_axis_label': 'Throughput (Mbps)',
                 'y_log_scale': False,
                 'y_axis_colors': experiment1_styles['colors']['shaper'][:1] + experiment1_styles['colors']['throughput'],
@@ -93,7 +94,6 @@ def plot_b_74():
         ]
     }
 
-    fig_size = [14, 10.5]
     make_share_x_graph(
         experiment_path=path,
         filename=filename,

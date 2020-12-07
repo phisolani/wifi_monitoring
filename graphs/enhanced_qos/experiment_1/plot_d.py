@@ -17,8 +17,9 @@ def plot_d():
     # Scenario B (DL v UL)
     path = 'scenario_d/'
     filename = 'd_results'
-    x_axis_min_max = {'min': 0, 'max': 300}
+    x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_d_sharex_graph'
+    fig_size = [9, 10]
 
     plot_info = {
         'x_axis': 'Time',
@@ -51,9 +52,9 @@ def plot_d():
                 'y_shared': False,
                 'y_axes': ['Delay BE', 'Delay QoS'],
                 'y_axes_labels': [r'$D^{BE}$', r'$D^{QoS}$'],
-                'y_axis_min_max': {'min': 0, 'max': 800},
+                'y_axis_min_max': {'min': 0, 'max': 40000},
                 'y_axis_label': 'Queuing Delay (ms)',
-                'y_log_scale': False,
+                'y_log_scale': True,
                 'y_axis_colors': experiment1_styles['colors']['delay'],
                 'y_axis_styles': experiment1_styles['line_styles']['delay'],
                 'qos_annotation': {
@@ -63,11 +64,11 @@ def plot_d():
                     'line_style': experiment1_styles['line_styles']['requirement'][0],
                     'sta_num': 'STA2',
                 },
+                # 'qos_annotation': False,
             },
 
         ]
     }
-    fig_size = [14, 8]
 
     make_share_x_graph(
         experiment_path=path,
