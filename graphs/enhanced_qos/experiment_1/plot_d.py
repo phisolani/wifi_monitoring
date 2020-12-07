@@ -62,7 +62,7 @@ def plot_d():
                     'value': 30,
                     'color': experiment1_styles['colors']['requirement'][0],
                     'line_style': experiment1_styles['line_styles']['requirement'][0],
-                    'sta_num': 'STA2',
+                    'sta_num': 'QoS',
                 },
                 # 'qos_annotation': False,
             },
