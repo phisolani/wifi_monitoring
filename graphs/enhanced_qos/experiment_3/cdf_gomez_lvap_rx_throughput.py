@@ -13,7 +13,7 @@ import seaborn as sns
 import pandas as pd
 from matplotlib.ticker import PercentFormatter
 
-n_bins = 50
+n_bins = 5000
 colors = ['g', 'b', 'k']
 line_styles = ['-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'QoS 2']
@@ -21,10 +21,20 @@ filename = 'gomez/throughput/overall_gomez_lvap_rx_mbps'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
 print(cdf_data)
 
+# Frequency
+stats_df = cdf_data.groupby('QoS 2')['QoS 2'].agg('count').pipe(pd.DataFrame).rename(columns = {'QoS 2': 'frequency'})
+
+# PDF
+stats_df['pdf'] = stats_df['frequency'] / sum(stats_df['frequency'])
+
+# CDF
+stats_df['cdf'] = stats_df['pdf'].cumsum()
+stats_df = stats_df.reset_index()
+print(stats_df.to_string())
+
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(5, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
-
 
 # plot the cumulative histogram
 n, bins, patches = ax.hist(cdf_data['BE 1'].values,
@@ -61,9 +71,9 @@ ax.hist(cdf_data['QoS 2'].values,
         label='QoS 2')
 
 plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS2}_{QoS}$',
+ax.annotate(r'$\mu^{QoS2}_{QoS} (1\%)$',
             xy=(5, 0),
-            xytext=(12, 0.9),
+            xytext=(15, 0.9),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
