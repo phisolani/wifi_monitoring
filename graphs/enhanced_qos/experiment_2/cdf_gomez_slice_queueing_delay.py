@@ -13,12 +13,27 @@ import seaborn as sns
 import pandas as pd
 from matplotlib.ticker import PercentFormatter
 
-n_bins = 50
+n_bins = 5000
 colors = ['g', 'b', 'c', 'm', 'y', 'k']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ['BE 1', 'BE 2', 'BE 3', 'BE 4', 'QoS 1', 'QoS 2']
 filename = 'gomez/queueing_delay/overall_gomez_slice_queueing_delay'
 cdf_data = pd.read_csv(filename + '.csv', usecols=col_list, sep=';')
+
+qos_flows = ['QoS 1', 'QoS 2']
+
+for qos_flow in qos_flows:
+    # Frequency
+    stats_df = cdf_data.groupby(qos_flow)[qos_flow].agg('count').pipe(pd.DataFrame).rename(
+        columns={qos_flow: 'frequency'})
+
+    # PDF
+    stats_df['pdf'] = stats_df['frequency'] / sum(stats_df['frequency'])
+
+    # CDF
+    stats_df['cdf'] = stats_df['pdf'].cumsum()
+    stats_df = stats_df.reset_index()
+    print(stats_df.to_string())
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(7, 4))
@@ -94,20 +109,20 @@ ax.hist(cdf_data['QoS 2'].values,
 plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS1}_{QoS}$',
             xy=(5, 0.80),
-            xytext=(1, 0.80),
+            xytext=(80, 0.80),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 plt.axvline(x=100, linestyle=':', color='r', linewidth=2)
-ax.annotate(r'$D^{QoS2}_{QoS} (10\%)$',
-            xy=(100, 0.10),
-            xytext=(4, 0.40),
+ax.annotate(r'$D^{QoS2}_{QoS}$' + '\n' '$(1\%)$',
+            xy=(42, 0.01),
+            xytext=(42, 0.40),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='right')
+ax.legend(loc='center left')
 ax.set_xscale('log')
 # ax.set_title('Cumulative step histograms')
 ax.set_xlabel('Queueing delay (ms)')
