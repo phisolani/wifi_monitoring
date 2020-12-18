@@ -13,21 +13,36 @@ import seaborn as sns
 import pandas as pd
 from matplotlib.ticker import PercentFormatter
 
-n_bins = 50
+n_bins = 5000
 
 # colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
 colors = ['g', 'b', 'c', 'm', 'y']
 line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
 col_list = ["QoS 1", "BE 1", "BE 2", "BE 3", "QoS 2"]
-cdf_throughput = pd.read_csv("results/gomez/main/cdf_gomez_throughput.csv",
+cdf_data = pd.read_csv("results/gomez/main/cdf_gomez_throughput.csv",
                              usecols=col_list, sep=';')
+
+qos_flows = ['BE 3']
+
+for qos_flow in qos_flows:
+    # Frequency
+    stats_df = cdf_data.groupby(qos_flow)[qos_flow].agg('count').pipe(pd.DataFrame).rename(
+        columns={qos_flow: 'frequency'})
+
+    # PDF
+    stats_df['pdf'] = stats_df['frequency'] / sum(stats_df['frequency'])
+
+    # CDF
+    stats_df['cdf'] = stats_df['pdf'].cumsum()
+    stats_df = stats_df.reset_index()
+    print(stats_df.to_string())
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
 fig, ax = plt.subplots(figsize=(10, 3.6))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
-n, bins, patches = ax.hist(cdf_throughput['QoS 1'].values,
+n, bins, patches = ax.hist(cdf_data['QoS 1'].values,
                            n_bins,
                            density=True,
                            histtype='step',
@@ -38,7 +53,7 @@ n, bins, patches = ax.hist(cdf_throughput['QoS 1'].values,
                            # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
                            label='QoS 1')
 
-ax.hist(cdf_throughput['BE 1'].values,
+ax.hist(cdf_data['BE 1'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -49,7 +64,7 @@ ax.hist(cdf_throughput['BE 1'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 1')
 
-ax.hist(cdf_throughput['BE 2'].values,
+ax.hist(cdf_data['BE 2'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -60,7 +75,7 @@ ax.hist(cdf_throughput['BE 2'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 2')
 
-ax.hist(cdf_throughput['BE 3'].values,
+ax.hist(cdf_data['BE 3'].values,
         n_bins,
         density=True,
         histtype='step',
@@ -71,7 +86,7 @@ ax.hist(cdf_throughput['BE 3'].values,
         # weights=np.ones(len(x_aux.values)) / len(x_aux.values),
         label='BE 3')
 
-ax.hist(cdf_throughput['QoS 2'].values,
+ax.hist(cdf_data['QoS 2'].values,
         n_bins,
         density=True,
         histtype='step',

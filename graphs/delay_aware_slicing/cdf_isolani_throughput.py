@@ -13,7 +13,7 @@ import seaborn as sns
 import pandas as pd
 from matplotlib.ticker import PercentFormatter
 
-n_bins = 50
+n_bins = 5000
 
 # colors = ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
 colors = ['g', 'b', 'c', 'm', 'y']
