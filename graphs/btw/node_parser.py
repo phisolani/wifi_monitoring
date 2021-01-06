@@ -30,7 +30,7 @@ if col_time in df.columns:
 index_time = 1
 
 # open a new csv for the parsed values
-with open('eggs.csv', 'w', newline='') as csvfile:
+with open(filename, 'w', newline='') as csvfile:
     writer = csv.writer(csvfile, delimiter=';')
 
     # writing the header
