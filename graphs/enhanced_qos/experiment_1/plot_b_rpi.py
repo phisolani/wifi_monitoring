@@ -85,6 +85,7 @@ def plot_b_rpi():
                 'right_y_axes': ['Loss BE'],
                 'right_y_axes_labels': [r'$\lambda^{STA 1}_{\mathrm{LOSS}}$'],
                 'right_y_axis_min_max': {'min': -1, 'max': 50},
+                'right_y_axis_ticks': [0, 10, 20, 30, 40, 50],
                 'right_y_axis_label': 'Loss (frames/sec)',
                 'right_y_log_scale': False,
                 'right_y_axis_colors': experiment1_styles['colors']['loss'],

@@ -298,6 +298,11 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
             right_y_log_scale = plot_info['subplots'][i]['right_y_log_scale']
             right_y_axis_colors = plot_info['subplots'][i]['right_y_axis_colors']
             right_y_axis_line_styles = plot_info['subplots'][i]['right_y_axis_styles']
+            right_y_axis_ticks = None
+            if 'right_y_axis_ticks' in plot_info['subplots'][i].keys():
+                right_y_axis_ticks = plot_info['subplots'][i]['right_y_axis_ticks']
+                print(right_y_axis_ticks)
+
 
         # read in the data
         csv_file = experiment_path + filename + '.csv'
@@ -328,12 +333,15 @@ def make_share_x_graph(experiment_path, filename, output_name, plot_info, fig_si
             lines.append(p)
 
         if share_y:
-            for y_right in range(len(y_axes)):
+            for y_right in range(len(right_y_axes)):
                 p, = ax_right.plot(right_data_dict['x_axis']['values'],
                              right_data_dict['y' + str(y_right) + '_axis']['values'],
                              color=right_y_axis_colors[y_right], linestyle=right_y_axis_line_styles[y_right], linewidth=2,
                              label=str(right_y_axes[y_right]))
                 lines.append(p)
+
+            if right_y_axis_ticks is not None:
+                ax_right.set_yticks(right_y_axis_ticks)
 
         # x_range = data_dict['x_axis']['values'][-1]
         # plt.xticks(np.arange(0, x_range, step=50))
