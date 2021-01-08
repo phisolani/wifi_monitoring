@@ -15,11 +15,11 @@ import dateutil.parser
 " Python script for parsing some Grafana results"
 # TODO: this script needs refactoring..."
 
-filename = 'experiment_2/gomez_rssi/rssi/ap_3_rssi.csv'
+filename = 'experiment_rssi/workload/experiment_2/gomez/rssi/ap_3_rssi.csv'
 col_time = 'Time'
 col_datetime = 'Datetime'
-begin_datetime = dateutil.parser.parse('2021-01-06T12:35:20+01:00')
-end_datetime = dateutil.parser.parse('2021-01-06T12:45:20+01:00')
+begin_datetime = dateutil.parser.parse('2021-01-06T17:49:10+01:00')
+end_datetime = dateutil.parser.parse('2021-01-06T17:59:10+01:00')
 
 # open csv file to be parsed
 df = pd.read_csv(filename, sep=';')
