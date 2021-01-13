@@ -14,11 +14,20 @@ import dateutil.parser
 
 " Python script for parsing Grafana results"
 
-filename = 'experiment_mcs/node_mcs.csv'
+filename = 'experiment_mcs/file.csv'
 col_time = 'Time'
 col_datetime = 'Datetime'
 begin_datetime = dateutil.parser.parse('2020-10-09T12:38:00+02:00')
 end_datetime = dateutil.parser.parse('2020-10-09T12:43:00+02:00')
+
+# open csv file to be parsed
+df = pd.read_csv(filename, sep=';')
+
+if col_time in df.columns:
+    df = df.drop(columns=col_time, axis=1)
+
+# index column
+index_time = 1
 
 # open csv file to be parsed
 df = pd.read_csv(filename, sep=';')
@@ -41,10 +50,33 @@ with open(filename, 'w', newline='') as csvfile:
     flag_begin = False
     flag_end = False
     prev_datetime = None
+    crr_datetime = None
+    prev_datetime = None
+
     # writing the values
     for index, row in df.iterrows():
         add_null_row = False
         crr_datetime = dateutil.parser.parse(row[col_datetime])
+
+        # if begin is null
+        if crr_datetime > begin_datetime and not flag_begin:
+            add_null_row = True
+            while add_null_row:
+                aux_datetime = begin_datetime + datetime.timedelta(0, index_time)  # days, seconds, then other fields.
+                values = [index_time]
+                for col in list(df):
+                    if col == col_datetime:
+                        values.append(aux_datetime.isoformat())
+                    else:
+                        values.append('null')
+                writer.writerow(values)
+                print(values)
+                index_time += 1
+                gap_time = crr_datetime - aux_datetime
+                prev_datetime = aux_datetime
+                if gap_time.total_seconds() == 1:
+                    add_null_row = False
+                    flag_begin = True
 
         # if begin has been found
         if crr_datetime == begin_datetime:
@@ -86,3 +118,19 @@ with open(filename, 'w', newline='') as csvfile:
                 break
 
             prev_datetime = crr_datetime
+    if crr_datetime is not None and prev_datetime is not None:
+        if crr_datetime <= end_datetime:
+            add_null_row = True
+            while add_null_row:
+                aux_datetime = begin_datetime + datetime.timedelta(0, index_time)  # days, seconds, then other fields.
+                values = [index_time]
+                for col in list(df):
+                    if col == col_datetime:
+                        values.append(aux_datetime.isoformat())
+                    else:
+                        values.append('null')
+                writer.writerow(values)
+                print(values)
+                index_time += 1
+                if aux_datetime >= end_datetime:
+                    add_null_row = False
