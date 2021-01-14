@@ -9,8 +9,20 @@ __status__ = "Prototype"
 
 "File for defining the colors and line styles for experiment graphs"
 
-apps = {
-    'colors': ['g', 'b', 'y', 'm', 'c', 'k'],
-    'line_styles': ['-', '--', ':', '-.', '-', '--'],
-    'markers': ['o', '^', '+', 'x', '*', 'd']
+node = {
+    'colors': ['g', 'b', 'y', 'm', 'c', 'k', 'tab:brown', 'tab:olive'],
+    'line_styles': ['-', '--', ':', '-.', '-', '--', '-', '--'],
+    'markers': ['o', '^', '+', 'x', '*', 'd', 'h', '2']
+}
+
+e2e = {
+    'colors': ['tab:purple', 'tab:brown', 'tab:olive', 'tab:gray', 'tab:pink', 'tab:cyan', 'tab:orange'],
+    'line_styles': ['-', '--', ':', '-.', '-', '--', '-', '--'],
+    'markers': ['o', '^', '+', 'x', '*', 'd', 'h', '2']
+}
+
+slice = {
+    'colors': ['tab:cyan', 'tab:orange', 'tab:brown', 'tab:olive', 'tab:purple', 'tab:gray'],
+    'line_styles': ['-', '--', ':', '-.', '-', '--', '-', '--'],
+    'markers': ['o', '^', '+', 'x', '*', 'd', 'h', '2']
 }

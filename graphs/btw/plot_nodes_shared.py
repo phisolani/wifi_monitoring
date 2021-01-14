@@ -10,7 +10,7 @@ __status__ = "Prototype"
 " Python script for making all graphs at once"
 
 from graphs.btw.lines_graph import *
-from graphs.btw.experiment_style import apps
+from graphs.btw.experiment_style import node
 
 
 # Experiment MCS
@@ -19,6 +19,7 @@ filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processi
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_1st_hop_graph'
 fig_size = [8, 12]
+events = [85, 170, 250]
 
 y_axes = ['AP 3 (APP 1)', 'AP 3 (APP 2)', 'AP 1 (APP 3)', 'AP 2 (APP 4)']
 y_axes_labels = ['APP 1', 'APP 2', 'APP 3', 'APP 4']
@@ -66,9 +67,10 @@ make_share_x_graph(
     fig_size=fig_size,
     output_name=output_name,
     plot_info=plot_info,
-    y_axis_colors=apps['colors'],
-    y_axis_line_styles=apps['line_styles'],
-    y_axis_markers=apps['markers']
+    y_axis_colors=node['colors'],
+    y_axis_line_styles=node['line_styles'],
+    y_axis_markers=node['markers'],
+    events=events
 )
 
 # Experiment MCS
@@ -124,7 +126,8 @@ make_share_x_graph(
     fig_size=fig_size,
     output_name=output_name,
     plot_info=plot_info,
-    y_axis_colors=apps['colors'],
-    y_axis_line_styles=apps['line_styles'],
-    y_axis_markers=apps['markers']
+    y_axis_colors=node['colors'],
+    y_axis_line_styles=node['line_styles'],
+    y_axis_markers=node['markers'],
+    events=events
 )

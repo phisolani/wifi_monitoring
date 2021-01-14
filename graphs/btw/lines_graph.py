@@ -14,6 +14,8 @@ import pandas as pd
 import seaborn as sns
 import numpy as np
 
+from matplotlib import colors as mcolors
+
 
 def make_line_graph(experiment_path, filename, x_axis, y_axes,
                     title=None,
@@ -27,7 +29,11 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                     y_axis_ticks=None,
                     log_type='log',
                     stacked=None,
-                    annotation_info=None):
+                    annotation_info=None,
+                    colors=list(mcolors.CSS4_COLORS),
+                    markers=None,
+                    line_styles=None,
+                    events=None):
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
@@ -51,30 +57,17 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
     if y_log_scale is not None:
         host.set_yscale(log_type)
 
-    colors = ['darkblue', 'darkviolet', 'mediumblue', 'deeppink', 'dodgerblue', 'magenta', 'darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
-    # colors += ['darkolivegreen', 'darkblue', 'deepskyblue', 'magenta', 'goldenrod']
-    # colors = ['g', 'b', 'c', 'm', 'y']
-    line_styles = ['-', '--', ':', '-.', '-', '--', ':', '-.']
-    markers = ['o', '^', '+', 'x', '*', 'D', 'o', '^', '+', 'x', '*', 'D']
-
     if stacked:
         y_values = []
         for axis in data_dict:
             if 'x_axis' not in axis:
                 y_values.append(data_dict[axis]['values'])
 
-        # original
-        # pal = ["#9b59b6", "#e74c3c", "#34495e", "#2ecc71"]
-        # pal = ["darkolivegreen", "darkblue", "darkmagenta", "goldenrod"]
-        pal = ["g", "b", "m", "y"]
-
-        stacks = host.stackplot(data_dict['x_axis']['values'], y_values, labels=y_axes, colors=pal)
-                                # colors=pal, alpha=0.6)
+        stacks = host.stackplot(data_dict['x_axis']['values'], y_values, labels=y_axes, colors=colors) #alpha=0.6)
         hatches = ['+', 'x', '.', '*', '\\', 'O', 'o', '-']
         for stack, hatch in zip(stacks, hatches):
             stack.set_hatch(hatch)
 
-        # plt.stackplot(data_dict['x_axis']['values'], y_values, labels=y_axes, colors=pal, alpha=0.4)
         plt.legend(loc='upper left')
     else:
         lines = []
@@ -82,18 +75,43 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
             smask = np.isfinite(data_dict['y' + str(y) + '_axis']['values'])
             xs = np.asarray(data_dict['x_axis']['values'])
             ys = np.asarray(data_dict['y' + str(y) + '_axis']['values'])
-            p, = host.plot(xs[smask], ys[smask],
-            # p, = host.plot(data_dict['x_axis']['values'], data_dict['y' + str(y) + '_axis']['values'],
-                           color=colors[y],
-                           marker=markers[y],
-                           mfc='none',
-                           markersize=8,
-                           markeredgewidth=2,
-                           markevery=1,
-                           linestyle=line_styles[y],
-                           linewidth=2,
-                           label=str(y_axes[y]))
+            if markers is not None and line_styles is not None:
+                p, = host.plot(xs[smask], ys[smask],
+                               color=colors[y],
+                               marker=markers[y],
+                               mfc='none',
+                               markersize=8,
+                               markeredgewidth=2,
+                               markevery=1,
+                               linestyle=line_styles[y],
+                               linewidth=2,
+                               label=str(y_axes[y]))
+            elif markers is not None and line_styles is None:
+                p, = host.plot(xs[smask], ys[smask],
+                               color=colors[y],
+                               marker=markers[y],
+                               mfc='none',
+                               markersize=8,
+                               markeredgewidth=2,
+                               markevery=1,
+                               linewidth=2,
+                               label=str(y_axes[y]))
+            elif markers is None and line_styles is not None:
+                p, = host.plot(xs[smask], ys[smask],
+                               color=colors[y],
+                               linestyle=line_styles[y],
+                               linewidth=2,
+                               label=str(y_axes[y]))
+            else:
+                p, = host.plot(xs[smask], ys[smask],
+                               color=colors[y],
+                               linewidth=2,
+                               label=str(y_axes[y]))
             lines.append(p)
+
+    if events is not None:
+        for xc in events:
+            plt.axvline(x=xc, linestyle=':', color='r', linewidth=2)
 
     if x_axis_min_max is None:
         host.set_xlim(0,
@@ -160,7 +178,8 @@ def make_share_x_graph(experiment_path=None,
                        fig_size=None,
                        y_axis_colors=None,
                        y_axis_line_styles=None,
-                       y_axis_markers=None):
+                       y_axis_markers=None,
+                       events=None):
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
     sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
@@ -232,6 +251,10 @@ def make_share_x_graph(experiment_path=None,
         if y_axis_ticks:
             ax.set_yticks(y_axis_ticks['ticks'])
             ax.set_yticklabels(y_axis_ticks['labels'])
+
+        if events is not None:
+            for xc in events:
+                plt.axvline(x=xc, linestyle=':', color='r', linewidth=2)
 
         ax.set_ylim(y_axis_min_max['min'], y_axis_min_max['max'])
         ax.set_ylabel(y_axis_label)
