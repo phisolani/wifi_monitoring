@@ -33,7 +33,8 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                     colors=list(mcolors.CSS4_COLORS),
                     markers=None,
                     line_styles=None,
-                    events=None):
+                    events=None,
+                    requirements=None):
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
@@ -111,7 +112,12 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
 
     if events is not None:
         for xc in events:
-            plt.axvline(x=xc, linestyle=':', color='r', linewidth=2)
+            plt.axvline(x=xc, linestyle=':', color='dimgray', linewidth=2)
+
+    if requirements is not None:
+        for yc in requirements:
+            plt.axhline(y=yc, linestyle=':', color='r', linewidth=2)
+
 
     if x_axis_min_max is None:
         host.set_xlim(0,

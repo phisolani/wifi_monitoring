@@ -16,13 +16,19 @@ node = {
 }
 
 e2e = {
-    'colors': ['tab:purple', 'tab:brown', 'tab:olive', 'tab:gray', 'tab:pink', 'tab:cyan', 'tab:orange'],
+    'colors': ['sienna', 'goldenrod', 'dodgerblue', 'darkviolet'],
     'line_styles': ['-', '--', ':', '-.', '-', '--', '-', '--'],
     'markers': ['o', '^', '+', 'x', '*', 'd', 'h', '2']
 }
 
 slice = {
     'colors': ['tab:cyan', 'tab:orange', 'tab:brown', 'tab:olive', 'tab:purple', 'tab:gray'],
+    'line_styles': ['-', '--', ':', '-.', '-', '--', '-', '--'],
+    'markers': ['o', '^', '+', 'x', '*', 'd', 'h', '2']
+}
+
+quantum = {
+    'colors': ['darkcyan', 'deeppink', 'steelblue', 'slategray', 'dodgerblue', 'darkviolet', 'mediumblue', 'dodgerblue'],
     'line_styles': ['-', '--', ':', '-.', '-', '--', '-', '--'],
     'markers': ['o', '^', '+', 'x', '*', 'd', 'h', '2']
 }

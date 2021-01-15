@@ -13,7 +13,7 @@ from graphs.btw.lines_graph import *
 from graphs.btw.experiment_style import node
 
 
-# Experiment MCS
+# Experiment MCS 1st hop
 path = 'experiment_mcs/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
@@ -73,7 +73,7 @@ make_share_x_graph(
     events=events
 )
 
-# Experiment MCS
+# Experiment MCS 2nd hop
 path = 'experiment_mcs/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
