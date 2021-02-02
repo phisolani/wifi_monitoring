@@ -33,6 +33,10 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                     colors=list(mcolors.CSS4_COLORS),
                     markers=None,
                     line_styles=None,
+                    linewidth=2,
+                    markersize=8,
+                    markeredgewidth=2,
+                    markevery=1,
                     events=None,
                     requirements=None):
 
@@ -81,42 +85,42 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
                                color=colors[y],
                                marker=markers[y],
                                mfc='none',
-                               markersize=8,
-                               markeredgewidth=2,
-                               markevery=1,
+                               markersize=markersize,
+                               markeredgewidth=markeredgewidth,
+                               markevery=markevery,
                                linestyle=line_styles[y],
-                               linewidth=2,
+                               linewidth=linewidth,
                                label=str(y_axes[y]))
             elif markers is not None and line_styles is None:
                 p, = host.plot(xs[smask], ys[smask],
                                color=colors[y],
                                marker=markers[y],
                                mfc='none',
-                               markersize=8,
-                               markeredgewidth=2,
-                               markevery=1,
-                               linewidth=2,
+                               markersize=markersize,
+                               markeredgewidth=markeredgewidth,
+                               markevery=markevery,
+                               linewidth=linewidth,
                                label=str(y_axes[y]))
             elif markers is None and line_styles is not None:
                 p, = host.plot(xs[smask], ys[smask],
                                color=colors[y],
                                linestyle=line_styles[y],
-                               linewidth=2,
+                               linewidth=linewidth,
                                label=str(y_axes[y]))
             else:
                 p, = host.plot(xs[smask], ys[smask],
                                color=colors[y],
-                               linewidth=2,
+                               linewidth=linewidth,
                                label=str(y_axes[y]))
             lines.append(p)
 
     if events is not None:
         for xc in events:
-            plt.axvline(x=xc, linestyle=':', color='dimgray', linewidth=2)
+            plt.axvline(x=xc, linestyle=':', color='dimgray', linewidth=linewidth)
 
     if requirements is not None:
         for yc in requirements:
-            plt.axhline(y=yc, linestyle=':', color='r', linewidth=2)
+            plt.axhline(y=yc, linestyle=':', color='r', linewidth=linewidth)
 
 
     if x_axis_min_max is None:
@@ -151,14 +155,14 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
 
     # xcoords = [60, 120, 70, 100, 130, 160, 190]
     # for xc in xcoords:
-    #     plt.axvline(x=xc, linestyle=':', color='dimgray', linewidth=2)
+    #     plt.axvline(x=xc, linestyle=':', color='dimgray', linewidth=linewidth)
 
     if annotation_info:
         for annotation in annotation_info:
             if annotation['line'] == 'vertical':
-                plt.axvline(x=annotation['x_coord'], linestyle=':', color='r', linewidth=2)
+                plt.axvline(x=annotation['x_coord'], linestyle=':', color='r', linewidth=linewidth)
             elif annotation['line'] == 'horizontal':
-                plt.axhline(y=annotation['y_coord'], linestyle=':', color='r', linewidth=2)
+                plt.axhline(y=annotation['y_coord'], linestyle=':', color='r', linewidth=linewidth)
 
             host.annotate(annotation['label'],
                           xy=(annotation['x_coord'], annotation['y_coord']),
@@ -186,9 +190,22 @@ def make_share_x_graph(experiment_path=None,
                        y_axis_line_styles=None,
                        y_axis_markers=None,
                        events=None):
+    font_scale = 1.5
+    markersize = 8
+    markeredgewidth = 2
+    linewidth = 2
+    if 'font_scale' in plot_info:
+        font_scale = plot_info['font_scale']
+    if 'markersize' in plot_info:
+        markersize = plot_info['markersize']
+    if 'markeredgewidth' in plot_info:
+        markeredgewidth = plot_info['markeredgewidth']
+    if 'linewidth' in plot_info:
+        linewidth = plot_info['linewidth']
+
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
-    sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
+    sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=font_scale, color_codes=True, rc=None)
     plt.rcParams['mathtext.fontset'] = 'stix'
 
     x_axis = plot_info['x_axis']
@@ -210,10 +227,13 @@ def make_share_x_graph(experiment_path=None,
         y_axis_min_max = plot_info['subplots'][i]['y_axis_min_max']
         y_axis_label = plot_info['subplots'][i]['y_axis_label']
         y_log_scale = plot_info['subplots'][i]['y_log_scale']
+        y_axis_ticks = None
+        annotation_info = None
         if 'y_axis_ticks' in plot_info['subplots'][i]:
             y_axis_ticks = plot_info['subplots'][i]['y_axis_ticks']
-        else:
-            y_axis_ticks = None
+        if 'annotation_info' in plot_info['subplots'][i]:
+            annotation_info = plot_info['subplots'][i]['annotation_info']
+
         # read in the data
         csv_file = experiment_path + filenames[i] + '.csv'
         data_dict = read_results(filename=csv_file, x_axis=x_axis, y_axes=y_axes)
@@ -238,11 +258,11 @@ def make_share_x_graph(experiment_path=None,
             p, = ax.plot(xs[smask], ys[smask],
                          marker=y_axis_markers[y],
                          mfc='none',
-                         markersize=8,
-                         markeredgewidth=2,
+                         markersize=markersize,
+                         markeredgewidth=markeredgewidth,
                          color=y_axis_colors[y],
                          linestyle=y_axis_line_styles[y],
-                         linewidth=2,
+                         linewidth=linewidth,
                          label=str(y_axes[y]))
             lines.append(p)
 
@@ -260,7 +280,7 @@ def make_share_x_graph(experiment_path=None,
 
         if events is not None:
             for xc in events:
-                plt.axvline(x=xc, linestyle=':', color='r', linewidth=2)
+                plt.axvline(x=xc, linestyle=':', color='dimgray', linewidth=linewidth)
 
         ax.set_ylim(y_axis_min_max['min'], y_axis_min_max['max'])
         ax.set_ylabel(y_axis_label)
@@ -270,6 +290,14 @@ def make_share_x_graph(experiment_path=None,
             n_cols = int(len(lines))
         else:
             n_cols = len(lines)
+
+        if annotation_info:
+            for annotation in annotation_info:
+                ax.annotate(annotation['label'],
+                            xy=(annotation['x_coord'], annotation['y_coord']),
+                            xytext=(annotation['x_coord_label'], annotation['y_coord_label']),
+                            arrowprops=dict(facecolor='black', shrink=0.05),
+                            horizontalalignment='right', verticalalignment='top')
 
         if i == 0:
             plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols)

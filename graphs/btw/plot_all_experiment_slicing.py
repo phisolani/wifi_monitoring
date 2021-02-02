@@ -12,11 +12,14 @@ __status__ = "Prototype"
 from graphs.btw.lines_graph import *
 from graphs.btw.experiment_style import node, slice, e2e, quantum
 
-fig_size_paper = [8, 4]
+fig_size_paper = [8.7, 3]
 fig_size_wide = [22, 4]
 events = [132, 177, 271]
-requirements_latency = [10]
-requirements_jitter = [5]
+requirements_latency = [20]
+requirements_jitter = [10]
+linewidth = 1.5
+markeredgewidth = 1.5
+markersize = 12
 
 # Apps e2e latency
 make_line_graph(
@@ -26,13 +29,16 @@ make_line_graph(
     x_axis_label='Time (sec)',
     y_axes=['APP 1', 'APP 2'],
     y_axis_label='Latency (ms)',
-    y_axis_min_max={'min': 0.1, 'max': 100000},
+    y_axis_min_max={'min': 0.1, 'max': 1000000},
     y_log_scale=True,
     log_type='log',
     fig_size=fig_size_paper,
     colors=e2e['colors'],
     line_styles=e2e['line_styles'],
     markers=e2e['markers'],
+    linewidth=linewidth,
+    markersize=markersize,
+    markeredgewidth=markeredgewidth,
     events=events,
     requirements=requirements_latency)
 
@@ -51,6 +57,9 @@ make_line_graph(
     colors=e2e['colors'],
     line_styles=e2e['line_styles'],
     markers=e2e['markers'],
+    linewidth=linewidth,
+    markersize=markersize,
+    markeredgewidth=markeredgewidth,
     events=events,
     requirements=requirements_jitter)
 
@@ -70,6 +79,9 @@ make_line_graph(
     colors=node['colors'],
     line_styles=node['line_styles'],
     markers=node['markers'],
+    linewidth=linewidth,
+    markersize=markersize,
+    markeredgewidth=markeredgewidth,
     events=events)
 
 # Node RSSI
@@ -88,6 +100,9 @@ make_line_graph(
     colors=node['colors'],
     line_styles=node['line_styles'],
     markers=node['markers'],
+    linewidth=linewidth,
+    markersize=markersize,
+    markeredgewidth=markeredgewidth,
     events=events)
 
 # Node retransmission flag
@@ -107,6 +122,9 @@ make_line_graph(
     colors=node['colors'],
     line_styles=node['line_styles'],
     markers=node['markers'],
+    linewidth=linewidth,
+    markersize=markersize,
+    markeredgewidth=markeredgewidth,
     events=events)
 
 # Node processing delay
@@ -126,6 +144,9 @@ make_line_graph(
     colors=node['colors'],
     line_styles=node['line_styles'],
     markers=node['markers'],
+    linewidth=linewidth,
+    markersize=markersize,
+    markeredgewidth=markeredgewidth,
     events=events)
 
 # AP 3 slice throughput
@@ -141,6 +162,7 @@ make_line_graph(
     fig_size=fig_size_paper,
     colors=slice['colors'],
     line_styles=slice['line_styles'],
+    linewidth=linewidth,
     events=events)
 
 # AP 3 slice quantum
@@ -149,7 +171,7 @@ make_line_graph(
     filename="slice_quantum",
     x_axis='Time',
     x_axis_label='Time (sec)',
-    y_axis_min_max={'min': 0, 'max': 150000},
+    y_axis_min_max={'min': 0, 'max': 1000000},
     y_log_scale=True,
     log_type='log',
     y_axes=['Slice (APP 1)',
@@ -158,4 +180,5 @@ make_line_graph(
     fig_size=fig_size_paper,
     colors=quantum['colors'],
     line_styles=quantum['line_styles'],
+    linewidth=linewidth,
     events=events)

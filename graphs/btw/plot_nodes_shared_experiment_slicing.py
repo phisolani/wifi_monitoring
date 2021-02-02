@@ -18,7 +18,7 @@ path = 'experiment_slicing/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_1st_hop_graph'
-fig_size = [8, 12]
+fig_size = [6, 6]
 events = [132, 177, 271]
 
 y_axes = ['AP 3 (APP 1)', 'AP 3 (APP 2)']
@@ -28,11 +28,15 @@ plot_info = {
     'x_axis_label': 'Time (sec)',
     'x_axis_min_max': x_axis_min_max,
     'fig_title': '1st hop',
+    'font_scale': 1,
+    'markersize': 8,
+    'markeredgewidth': 1,
+    'linewidth': 1,
     'subplots': [
         {
             'y_axes': y_axes,
             'y_axes_labels': y_axes_labels,
-            'y_axis_min_max': {'min': 0, 'max': 10},
+            'y_axis_min_max': {'min': 0, 'max': 12},
             'y_axis_label': 'MCS',
             'y_log_scale': False,
         },
@@ -48,7 +52,7 @@ plot_info = {
             'y_axes_labels': y_axes_labels,
             'y_axis_min_max': {'min': -0.2, 'max': 1.2},
             'y_axis_ticks': {'ticks': [0, 1], 'labels': ['False', 'True']},
-            'y_axis_label': 'Retransmission (true/false)',
+            'y_axis_label': 'Retransmission flag',
             'y_log_scale': False,
         },
         {
@@ -78,7 +82,7 @@ path = 'experiment_slicing/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_2nd_hop_graph'
-fig_size = [8, 12]
+fig_size = [6, 6]
 
 y_axes = ['STA 7 (APP 1)', 'STA 8 (APP 2)']
 y_axes_labels = ['APP 1', 'APP 2']
@@ -87,11 +91,15 @@ plot_info = {
     'x_axis_label': 'Time (sec)',
     'x_axis_min_max': x_axis_min_max,
     'fig_title': '2nd hop',
+    'font_scale': 1,
+    'markersize': 8,
+    'markeredgewidth': 1,
+    'linewidth': 1,
     'subplots': [
         {
             'y_axes': y_axes,
             'y_axes_labels': y_axes_labels,
-            'y_axis_min_max': {'min': 0, 'max': 10},
+            'y_axis_min_max': {'min': 0, 'max': 12},
             'y_axis_label': 'MCS',
             'y_log_scale': False,
         },
@@ -107,7 +115,7 @@ plot_info = {
             'y_axes_labels': y_axes_labels,
             'y_axis_min_max': {'min': -0.2, 'max': 1.2},
             'y_axis_ticks': {'ticks': [0, 1], 'labels': ['False', 'True']},
-            'y_axis_label': 'Retransmission (true/false)',
+            'y_axis_label': 'Retransmission flag',
             'y_log_scale': False,
         },
         {

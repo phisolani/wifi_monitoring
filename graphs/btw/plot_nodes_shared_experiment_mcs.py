@@ -18,7 +18,7 @@ path = 'experiment_mcs/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_1st_hop_graph'
-fig_size = [8, 12]
+fig_size = [6, 6]
 events = [85, 170, 250]
 
 y_axes = ['AP 3 (APP 1)', 'AP 3 (APP 2)', 'AP 1 (APP 3)', 'AP 2 (APP 4)']
@@ -28,11 +28,15 @@ plot_info = {
     'x_axis_label': 'Time (sec)',
     'x_axis_min_max': x_axis_min_max,
     'fig_title': '1st hop',
+    'font_scale': 1,
+    'markersize': 8,
+    'markeredgewidth': 1,
+    'linewidth': 1,
     'subplots': [
         {
             'y_axes': y_axes,
             'y_axes_labels': y_axes_labels,
-            'y_axis_min_max': {'min': 0, 'max': 10},
+            'y_axis_min_max': {'min': 0, 'max': 12},
             'y_axis_label': 'MCS',
             'y_log_scale': False,
         },
@@ -48,7 +52,7 @@ plot_info = {
             'y_axes_labels': y_axes_labels,
             'y_axis_min_max': {'min': -0.2, 'max': 1.2},
             'y_axis_ticks': {'ticks': [0, 1], 'labels': ['False', 'True']},
-            'y_axis_label': 'Retransmission (true/false)',
+            'y_axis_label': 'Retransmission',
             'y_log_scale': False,
         },
         {
@@ -78,20 +82,35 @@ path = 'experiment_mcs/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_2nd_hop_graph'
-fig_size = [8, 12]
+fig_size = [6, 6]
 
 y_axes = ['STA 7 (APP 1)', 'STA 8 (APP 2)', 'STA 2 (APP 3)', 'STA 3 (APP 4)']
 y_axes_labels = ['APP 1', 'APP 2', 'APP 3', 'APP 4']
+
+annotation_info = [
+    {
+        'x_coord': 130,
+        'y_coord': -55,
+        'x_coord_label': 165.5,
+        'y_coord_label': -70,
+        'label': 'no measurements',
+    }
+]
+
 plot_info = {
     'x_axis': 'Time',
     'x_axis_label': 'Time (sec)',
     'x_axis_min_max': x_axis_min_max,
     'fig_title': '2nd hop',
+    'font_scale': 1,
+    'markersize': 8,
+    'markeredgewidth': 1,
+    'linewidth': 1,
     'subplots': [
         {
             'y_axes': y_axes,
             'y_axes_labels': y_axes_labels,
-            'y_axis_min_max': {'min': 0, 'max': 10},
+            'y_axis_min_max': {'min': 0, 'max': 12},
             'y_axis_label': 'MCS',
             'y_log_scale': False,
         },
@@ -101,13 +120,14 @@ plot_info = {
             'y_axis_min_max': {'min': -80, 'max': -20},
             'y_axis_label': 'RSSI (dBm)',
             'y_log_scale': False,
+            'annotation_info': annotation_info
         },
         {
             'y_axes': y_axes,
             'y_axes_labels': y_axes_labels,
             'y_axis_min_max': {'min': -0.2, 'max': 1.2},
             'y_axis_ticks': {'ticks': [0, 1], 'labels': ['False', 'True']},
-            'y_axis_label': 'Retransmission (true/false)',
+            'y_axis_label': 'Retransmission',
             'y_log_scale': False,
         },
         {
