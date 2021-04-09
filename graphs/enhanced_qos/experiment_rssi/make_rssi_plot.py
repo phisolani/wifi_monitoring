@@ -1,5 +1,8 @@
 from graphs.enhanced_qos.rssi_plot import *
 
+# Sensors
+fig_size = [11, 4]
+
 make_scatter_rssi_shared_y(
     experiment_path='arp_only/rssi/',
     x_axis='Time',
@@ -9,7 +12,7 @@ make_scatter_rssi_shared_y(
     y_axis_label='RSSI (dBm)',
     y_axis_min_max={'min': -100, 'max': 0},
     filenames=['ap_1_rssi', 'ap_2_rssi', 'ap_3_rssi'],
-    fig_size=[14, 4]
+    fig_size=fig_size
 )
 
 make_scatter_rssi_shared_y(
@@ -21,6 +24,6 @@ make_scatter_rssi_shared_y(
     y_axis_label='RSSI (dBm)',
     y_axis_min_max={'min': -100, 'max': 0},
     filenames=['ap_1_rssi', 'ap_2_rssi', 'ap_3_rssi'],
-    fig_size=[14, 4],
+    fig_size=fig_size,
     events=True
 )

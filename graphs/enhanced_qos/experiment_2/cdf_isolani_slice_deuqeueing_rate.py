@@ -36,7 +36,10 @@ for qos_flow in qos_flows:
     print(stats_df.to_string())
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 4))
+# Sensors
+# fig, ax = plt.subplots(figsize=(7, 4))
+# Thesis
+fig, ax = plt.subplots(figsize=(6, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
@@ -107,16 +110,16 @@ ax.hist(cdf_data['QoS 2'].values,
         label='QoS 2')
 
 plt.axvline(x=10, linestyle=':', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS1}_{QoS} (63\%)$',
-            xy=(10, 0.63),
-            xytext=(21, 0.63),
+ax.annotate(r'$\mu^{QoS1}_{QoS}$' + '\n' + '$(63\%)$',
+            xy=(10, 0.5),
+            xytext=(17, 0.5),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
-ax.annotate(r'$\mu^{QoS2}_{QoS} (85\%)$',
+ax.annotate(r'$\mu^{QoS2}_{QoS}$' + '\n' + '$(85\%)$',
             xy=(5, 0.85),
-            xytext=(20, 0.85),
+            xytext=(17, 0.85),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 

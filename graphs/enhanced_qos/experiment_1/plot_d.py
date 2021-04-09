@@ -19,7 +19,10 @@ def plot_d():
     filename = 'd_results'
     x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_d_sharex_graph'
-    fig_size = [9, 10]
+    # Sensors
+    # fig_size = [9, 12.5]
+    # Thesis
+    fig_size = [6.7, 7.5]
 
     plot_info = {
         'x_axis': 'Time',
@@ -42,7 +45,7 @@ def plot_d():
                 'y_axes': ['Quantum BE', 'Quantum QoS'],
                 'y_axes_labels': [r'$Q^{BE}$',r'$Q^{QoS}$'],
                 'y_axis_min_max': {'min': 0, 'max': 100000},
-                'y_axis_label': 'Current Quantum (μs)',
+                'y_axis_label': 'Quantum (μs)',
                 'y_log_scale': True,
                 'y_axis_colors': experiment1_styles['colors']['quantum'],
                 'y_axis_styles': experiment1_styles['line_styles']['quantum'],

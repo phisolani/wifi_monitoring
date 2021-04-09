@@ -36,7 +36,10 @@ for qos_flow in qos_flows:
     print(stats_df.to_string())
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(7, 4))
+# Sensors
+# fig, ax = plt.subplots(figsize=(7, 4))
+# Thesis
+fig, ax = plt.subplots(figsize=(6, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
@@ -109,7 +112,7 @@ ax.hist(cdf_data['QoS 2'].values,
 plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS1}_{QoS}$',
             xy=(5, 0.80),
-            xytext=(80, 0.80),
+            xytext=(170, 0.80),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 

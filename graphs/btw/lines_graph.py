@@ -151,7 +151,7 @@ def make_line_graph(experiment_path, filename, x_axis, y_axes,
         host.set_yticks(y_axis_ticks['ticks'])
         host.set_yticklabels(y_axis_ticks['labels'])
 
-    plt.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=len(y_axes))  # shadow=True)
+    plt.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=len(y_axes)) #, handletextpad=0.1, columnspacing=0.6)  # shadow=True)
 
     # xcoords = [60, 120, 70, 100, 130, 160, 190]
     # for xc in xcoords:
@@ -300,7 +300,7 @@ def make_share_x_graph(experiment_path=None,
                             horizontalalignment='right', verticalalignment='top')
 
         if i == 0:
-            plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols)
+            plt.legend(lines, labels, loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=n_cols, handletextpad=0.1, columnspacing=0.8)
 
     plt.xlim(x_axis_min_max['min'], x_axis_min_max['max'])
 

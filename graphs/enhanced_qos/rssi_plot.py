@@ -85,7 +85,10 @@ def make_scatter_rssi_shared_y(experiment_path,
     if y_axis_label is not None:
         axs[0].set_ylabel(y_axis_label)
 
-    fig.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 0.95), ncol=len(y_axes))  # shadow=True)
+    # Sensors
+    # fig.legend(y_axes, loc='upper center', bbox_to_anchor=(0.5, 0.95), ncol=len(y_axes))  # shadow=True)
+    # Thesis
+    fig.legend(y_axes, loc='upper center', bbox_to_anchor=(0.523, 0.95), ncol=len(y_axes))  # shadow=True)
 
     if events:
         xcoords = [10, 70, 130, 190]

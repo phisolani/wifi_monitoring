@@ -18,7 +18,10 @@ path = 'experiment_mcs/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_1st_hop_graph'
-fig_size = [6, 6]
+# Journal version
+# fig_size = [6, 6]
+# Thesis
+fig_size = [6.5, 9.5]
 events = [85, 170, 250]
 
 y_axes = ['AP 3 (APP 1)', 'AP 3 (APP 2)', 'AP 1 (APP 3)', 'AP 2 (APP 4)']
@@ -28,10 +31,10 @@ plot_info = {
     'x_axis_label': 'Time (sec)',
     'x_axis_min_max': x_axis_min_max,
     'fig_title': '1st hop',
-    'font_scale': 1,
-    'markersize': 8,
-    'markeredgewidth': 1,
-    'linewidth': 1,
+    'font_scale': 1.5,
+    'markersize': 10,
+    'markeredgewidth': 2,
+    'linewidth': 2,
     'subplots': [
         {
             'y_axes': y_axes,
@@ -82,7 +85,10 @@ path = 'experiment_mcs/'
 filenames = ['node_mcs', 'node_rssi', 'node_retransmission_flag', 'node_processing_delay']
 x_axis_min_max = {'min': 0, 'max': 300}
 output_name = 'plots/nodes_sharex_2nd_hop_graph'
-fig_size = [6, 6]
+# Journal version
+# fig_size = [6, 6]
+# Thesis
+fig_size = [6.5, 9.5]
 
 y_axes = ['STA 7 (APP 1)', 'STA 8 (APP 2)', 'STA 2 (APP 3)', 'STA 3 (APP 4)']
 y_axes_labels = ['APP 1', 'APP 2', 'APP 3', 'APP 4']
@@ -102,10 +108,10 @@ plot_info = {
     'x_axis_label': 'Time (sec)',
     'x_axis_min_max': x_axis_min_max,
     'fig_title': '2nd hop',
-    'font_scale': 1,
-    'markersize': 8,
-    'markeredgewidth': 1,
-    'linewidth': 1,
+    'font_scale': 1.5,
+    'markersize': 10,
+    'markeredgewidth': 2,
+    'linewidth': 2,
     'subplots': [
         {
             'y_axes': y_axes,

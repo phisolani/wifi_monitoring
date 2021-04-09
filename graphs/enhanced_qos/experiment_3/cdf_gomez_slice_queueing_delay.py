@@ -33,7 +33,10 @@ stats_df = stats_df.reset_index()
 print(stats_df.to_string())
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 4))
+# Sensors
+# fig, ax = plt.subplots(figsize=(5, 4))
+# Thesis
+fig, ax = plt.subplots(figsize=(4.5, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
@@ -72,8 +75,8 @@ ax.hist(cdf_data['QoS 1'].values,
 
 plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$D^{QoS1}_{QoS}$',
-            xy=(5, 0.80),
-            xytext=(500, 0.80),
+            xy=(5, 0.90),
+            xytext=(900, 0.90),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 

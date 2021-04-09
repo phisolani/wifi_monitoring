@@ -19,7 +19,10 @@ def plot_b_74():
     filename = 'b74_results'
     x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_b_sharex_graph'
-    fig_size = [9, 12.5]
+    # Sensors
+    # fig_size = [9, 12.5]
+    # Thesis
+    fig_size = [7.25, 9.5]
 
     plot_info = {
         'x_axis': 'Time',

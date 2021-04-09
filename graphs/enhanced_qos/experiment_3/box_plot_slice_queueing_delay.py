@@ -6,7 +6,10 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 4))
+# Sensors
+# fig, ax = plt.subplots(figsize=(5, 4))
+# Thesis
+fig, ax = plt.subplots(figsize=(4.5, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 data = pd.read_csv('overall_slice_queueing_delay.csv', sep=';')
@@ -25,7 +28,7 @@ def remove_outlier(df):
 new_data = data
 print('new_data', new_data)
 
-my_pal = {"Gómez et al.": "cadetblue", "Proposed": "sandybrown"}
+my_pal = {"Gómez et al.": "cadetblue", "Prop.": "sandybrown"}
 
 ax = sns.boxplot(y='queueing delay',
                  x='slice',
@@ -60,7 +63,7 @@ ax.annotate(r'$D^{QoS1}_{QoS}$' + '\n' + '$(5ms)$',
 ax.grid(True)
 # ax.legend(loc='upper center', bbox_to_anchor=(0.5, 1.00), ncol=2)
 plt.legend(bbox_to_anchor=(0., 0.85, 1., .102), loc='lower left',
-           ncol=2, mode="expand", borderaxespad=0.)
+           ncol=2, mode="expand", borderaxespad=0., handletextpad=0.5)
 ax.legend_.findobj(mpl.patches.Rectangle)[0].set_hatch("+")
 ax.legend_.findobj(mpl.patches.Rectangle)[1].set_hatch("Ox")
 # ax.legend_.findobj(mpl.patches.Rectangle)[0].set_edgecolor('white')

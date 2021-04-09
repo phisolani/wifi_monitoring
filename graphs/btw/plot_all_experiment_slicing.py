@@ -12,14 +12,17 @@ __status__ = "Prototype"
 from graphs.btw.lines_graph import *
 from graphs.btw.experiment_style import node, slice, e2e, quantum
 
-fig_size_paper = [8.7, 3]
+# journal version
+# fig_size_paper = [8.7, 3]
+# thesis version
+fig_size_paper = [6, 3]
 fig_size_wide = [22, 4]
 events = [132, 177, 271]
 requirements_latency = [20]
 requirements_jitter = [10]
-linewidth = 1.5
-markeredgewidth = 1.5
-markersize = 12
+linewidth = 2
+markeredgewidth = 2
+markersize = 10
 
 # Apps e2e latency
 make_line_graph(

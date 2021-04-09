@@ -33,7 +33,10 @@ stats_df = stats_df.reset_index()
 print(stats_df.to_string())
 
 sns.set(style='whitegrid', font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 4))
+# Sensors
+# fig, ax = plt.subplots(figsize=(5, 4))
+# Thesis
+fig, ax = plt.subplots(figsize=(4.5, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 # plot the cumulative histogram
@@ -73,13 +76,13 @@ ax.hist(cdf_data['QoS 2'].values,
 plt.axvline(x=5, linestyle=':', color='r', linewidth=2)
 ax.annotate(r'$\mu^{QoS2}_{QoS} (76\%)$',
             xy=(5, 0.76),
-            xytext=(16, 0.95),
+            xytext=(18, 0.55),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='right', verticalalignment='top')
 
 # tidy up the figure
 ax.grid(True)
-ax.legend(loc='right')
+ax.legend(loc='upper right')
 # ax.set_xscale('log')
 # ax.set_title('Cumulative step histograms')
 ax.set_xlabel('Throughput (Mbps)')

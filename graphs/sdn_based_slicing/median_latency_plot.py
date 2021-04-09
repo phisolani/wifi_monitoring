@@ -18,14 +18,14 @@ def make_graph(experiment_path, filename):
 
     # Applying Seaborn style
     # whitegrid, darkgrid, whitegrid, dark, white, and ticks
-    sns.set(style="whitegrid", font_scale=2, font='Times New Roman')
+    sns.set(style="whitegrid", font_scale=1.5, font='Times New Roman')
 
     # Reading ICMP CSV results
     icmp_data_dict = read_icmp_results(experiment_path=experiment_path,
                                        filename=filename)
 
     #print(icmp_data_dict)
-    fig, host = plt.subplots(figsize=(12, 6), dpi=144)
+    fig, host = plt.subplots(figsize=(10, 3.4), dpi=144)
 
     #ax1 = plt.subplot(311)
     #plt.setp(host.get_xticklabels())
@@ -43,7 +43,7 @@ def make_graph(experiment_path, filename):
                     markevery=1, markersize=10, mfc='none', markeredgewidth=2,  #linewidth=2.0,
                     label="Adaptive Slices")
 
-    axis_padding = 0.3  # percentage
+    axis_padding = 0.4  # percentage
     host.set_xlim(min(icmp_data_dict['x_axis']['values']),
                   max(icmp_data_dict['x_axis']['values']))
     host.set_ylim(0,
@@ -51,7 +51,7 @@ def make_graph(experiment_path, filename):
                   (max(icmp_data_dict['y_axis']['values']+icmp_data_dict['y1_axis']['values'])*axis_padding))
 
     host.set_xlabel("Time (sec)")
-    host.set_ylabel("Median Latency (ms)")
+    host.set_ylabel("Latency (ms)")
 
     lines = [p1, p2, p3]
 

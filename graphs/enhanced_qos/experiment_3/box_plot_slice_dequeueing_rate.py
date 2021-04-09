@@ -6,7 +6,10 @@ import seaborn as sns
 from itertools import cycle
 
 sns.set(style="whitegrid", font='Times New Roman', palette='deep', font_scale=1.5, color_codes=True, rc=None)
-fig, ax = plt.subplots(figsize=(5, 4))
+# Sensors
+# fig, ax = plt.subplots(figsize=(5, 4))
+# Thesis
+fig, ax = plt.subplots(figsize=(4.5, 4))
 plt.rcParams['mathtext.fontset'] = 'stix'
 
 data = pd.read_csv('overall_slice_dequeueing_rate.csv', sep=';')
@@ -25,7 +28,7 @@ def remove_outlier(df):
 new_data = data
 print('new_data', new_data)
 
-my_pal = {"Gómez et al.": "cadetblue", "Proposed": "sandybrown"}
+my_pal = {"Gómez et al.": "cadetblue", "Prop.": "sandybrown"}
 
 ax = sns.boxplot(y='throughput',
                  x='slice',
@@ -51,8 +54,8 @@ for i, patch in enumerate(ax.artists):
 plt.axhline(y=10, color='r', linestyle=':', linewidth=2)
 
 ax.annotate(r'$\mu^{QoS1}_{QoS}$' + '\n' + '$(10Mbps)$',
-            xy=(1.6, 10),
-            xytext=(1.6, 20.5),
+            xy=(1.55, 10),
+            xytext=(1.55, 19),
             arrowprops=dict(facecolor='black', shrink=0.05),
             horizontalalignment='center', verticalalignment='top')
 

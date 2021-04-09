@@ -18,7 +18,10 @@ def plot_a():
     filename = 'a_results'
     x_axis_min_max = {'min': 0, 'max': 200}
     output_name = 'plots/scenario_a_sharex_graph'
-    fig_size = [9, 10]
+    # Sensors
+    # fig_size = [9, 10]
+    # Thesis
+    fig_size = [9, 8]
 
     plot_info = {
         'x_axis': 'Time',
